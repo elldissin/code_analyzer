@@ -8,9 +8,9 @@ public class HelloWorldTest {
 
 	@Test
 	public void saySomethingTest() {
-		HelloWorld helloWorldTest = new HelloWorld();
+		HelloWorld helloWorldTest1 = new HelloWorld();
 		String result;
-		result = helloWorldTest.saySomething();
+		result = helloWorldTest1.saySomething();
 		assertTrue(result.equals("Hello World"));
 	}
 
