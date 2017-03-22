@@ -1,0 +1,3 @@
+MyCodeLine(hello);
+MyCodeAnotherLine(bye);
+ThirdLine(third);
