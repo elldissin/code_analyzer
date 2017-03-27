@@ -8,12 +8,11 @@ public class SourceFileReaderTest {
 
 	@Test
 	public void readFileContentTest() {
-		SourceFileReader readerTest = new SourceFileReader();
 		String result = new String();
 		String expected = new String();
 
 		expected = "MyCodeLine(hello);" + "MyCodeAnotherLine(bye);" + "ThirdLine(third);";
-		result = readerTest.readFileContent();
+		result = SourceFileReader.readFileContent("file.txt");
 		assertTrue("Wrong string read from file:" + result, result.equals(expected));
 	}
 

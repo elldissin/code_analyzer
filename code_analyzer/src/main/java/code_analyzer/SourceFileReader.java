@@ -6,12 +6,12 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class SourceFileReader {
-	public String readFileContent() {
+	public static String readFileContent(String fileName) {
 		String lastReadLine = new String();
 		String wholeFile = new String();
 		BufferedReader Reader;
 		try {
-			Reader = new BufferedReader(new FileReader("file.txt"));
+			Reader = new BufferedReader(new FileReader(fileName));
 			while ((lastReadLine = Reader.readLine()) != null) {
 				wholeFile = wholeFile + lastReadLine;
 			}
