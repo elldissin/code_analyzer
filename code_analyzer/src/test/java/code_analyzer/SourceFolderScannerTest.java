@@ -11,7 +11,7 @@ public class SourceFolderScannerTest {
 
 	@Test
 	public void getFileListTest() {
-		SourceFolderScanner folderScannerTest = new SourceFolderScanner();
+		SourceFolderScanner folderScannerTest = new SourceFolderScanner(".");
 		List<File> resultFileListTest;
 		boolean allFilesAreTxt = true;
 
