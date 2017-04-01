@@ -12,7 +12,7 @@ public class BatchFileReader {
 		for (int i = 0; i < fileList.size(); i++) {
 			File fileName = fileList.get(i);
 			if (fileName.exists()) {
-				result = result + SourceFileReader.readFileContent(fileName.getName());
+				result = result + SourceFileReader.readFileContent(fileName.getPath());
 			}
 		}
 		return result;

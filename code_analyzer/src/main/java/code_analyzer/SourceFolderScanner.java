@@ -16,7 +16,7 @@ public class SourceFolderScanner {
 	private void scanFolder(final File folder) {
 		for (final File fileEntry : folder.listFiles()) {
 			if (fileEntry.isDirectory()) {
-				// scanFolder(fileEntry); //TODO errors on recursion
+				scanFolder(fileEntry);
 			} else {
 				if (fileEntry.getName().toLowerCase().endsWith(".txt"))
 					foundFileList.add(fileEntry);
