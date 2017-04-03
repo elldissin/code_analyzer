@@ -5,6 +5,7 @@ public class ExpressionScanner {
 	String result[];
 	int i = 0;
 
+	// FIXME rework to class hierarchy
 	ExpressionScanner(final String fullString) {
 		this.fullString = fullString;
 		result = fullString.split(";");
@@ -21,7 +22,7 @@ public class ExpressionScanner {
 		}
 		return nextExpression;
 		// for(int i = 0; i<result.length;i++){
-		// NextExpression=result[i];
+		// nextExpression=result[i];
 		// System.out.println(NextExpression);
 		// }
 
