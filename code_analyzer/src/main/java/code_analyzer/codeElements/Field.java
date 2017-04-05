@@ -1,5 +1,5 @@
 package code_analyzer.codeElements;
 
-public class Field {
+public class Field extends CodeElement {
 
 }
