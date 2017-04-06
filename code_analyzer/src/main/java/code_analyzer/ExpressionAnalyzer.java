@@ -57,40 +57,18 @@ public class ExpressionAnalyzer {
 			return FIELD_PROPERTY;
 		}
 		return WRONGTYPE;
-
-		// String fullFile = "tableStart(Name, 0, \" \")";
-		// String result1[], result2[];
-		// int i = 0;
-		// result1 = string.split("tableStart");
-		// result2 = result1[1].split(",");
-		// for (i = 0; i < result2.length; i++) {
-		// result2[i] = result2[i].trim();
-		// }
-		// StringBuffer stringBuffer = new StringBuffer(result2[0]);
-		// stringBuffer.deleteCharAt(0);
-		// result2[0] = stringBuffer.toString();
-		//
-		// int lastSymbol = result2[2].length() - 1;
-		// stringBuffer = new StringBuffer(result2[2]);
-		// stringBuffer.deleteCharAt(lastSymbol);
-		// result2[2] = stringBuffer.toString();
-		//
-		// for (i = 0; i < result2.length; i++) {
-		// System.out.println(result2[i]);
-		// }
-
 	}
 
-	public CodeElement makeCodeElement(CodeElementType type) {
+	public CodeElement makeCodeElement(CodeElementType type, String expression) {
 		switch (type) {
 		case TABLE:
-			return new Table();
+			return new Table(expression);
 		case MODIFIER:
-			return new Modifier();
+			return new Modifier(expression);
 		case FIELD:
-			return new Field();
+			return new Field(expression);
 		case FIELD_PROPERTY:
-			return new FieldProperty();
+			return new FieldProperty(expression);
 		}
 		return null;
 	}

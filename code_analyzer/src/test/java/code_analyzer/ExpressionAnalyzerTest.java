@@ -19,7 +19,7 @@ public class ExpressionAnalyzerTest {
 	@Test
 	public void analyzeTest() {
 		ExpressionAnalyzer expressionAnalyzer = new ExpressionAnalyzer();
-		expressionList.add("table(name,0,\" \")");
+		expressionList.add("table(name,1,\" \")");
 		expressionList.add("serverLink,0,1");
 		expressionList.add("field(nameF)");
 		expressionList.add("Property(nameF)");
@@ -34,16 +34,16 @@ public class ExpressionAnalyzerTest {
 	public void makeCodeElementTest() {
 		CodeElement codeElement;
 		ExpressionAnalyzer expressionAnalyzer = new ExpressionAnalyzer();
-		codeElement = expressionAnalyzer.makeCodeElement(TABLE);
+		codeElement = expressionAnalyzer.makeCodeElement(TABLE, "expression");
 		assertTrue("wrong class " + codeElement.getClass().getSimpleName(),
 				codeElement.getClass().getSimpleName().equals("Table"));
-		codeElement = expressionAnalyzer.makeCodeElement(MODIFIER);
+		codeElement = expressionAnalyzer.makeCodeElement(MODIFIER, "expression");
 		assertTrue("wrong class " + codeElement.getClass().getSimpleName(),
 				codeElement.getClass().getSimpleName().equals("Modifier"));
-		codeElement = expressionAnalyzer.makeCodeElement(FIELD);
+		codeElement = expressionAnalyzer.makeCodeElement(FIELD, "expression");
 		assertTrue("wrong class " + codeElement.getClass().getSimpleName(),
 				codeElement.getClass().getSimpleName().equals("Field"));
-		codeElement = expressionAnalyzer.makeCodeElement(FIELD_PROPERTY);
+		codeElement = expressionAnalyzer.makeCodeElement(FIELD_PROPERTY, "expression");
 		assertTrue("wrong class " + codeElement.getClass().getSimpleName(),
 				codeElement.getClass().getSimpleName().equals("FieldProperty"));
 

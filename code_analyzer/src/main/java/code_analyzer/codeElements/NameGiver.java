@@ -1,18 +1,19 @@
 package code_analyzer.codeElements;
 
-import static org.junit.Assert.assertTrue;
+public class NameGiver {
 
-import org.junit.Test;
+	public String giveNameTo(CodeElement element) {
+		switch (element.getType()) {
+		case TABLE:
+			return giveNameToTable(element);
+		}
+		return null;
+	}
 
-public class TableListMakerTest {
-
-	@Test
-	public void test() {
-		String fullFile = "tableStart(Name, 0, \" \")";
+	private String giveNameToTable(CodeElement element) {
 		String result1[], result2[];
 		int i = 0;
-		result1 = fullFile.split("tableStart");
-
+		result1 = element.getExpression().split("Table");
 		result2 = result1[1].split(",");
 		for (i = 0; i < result2.length; i++) {
 			result2[i] = result2[i].trim();
@@ -29,7 +30,7 @@ public class TableListMakerTest {
 		for (i = 0; i < result2.length; i++) {
 			System.out.println(result2[i]);
 		}
-		assertTrue("name not found", result2[0].equals("Name"));
+		return result2[0];
 	}
 
 }

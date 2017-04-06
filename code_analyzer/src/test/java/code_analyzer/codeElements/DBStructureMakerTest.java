@@ -16,13 +16,13 @@ public class DBStructureMakerTest {
 	public void putCodeElementTest() {
 
 		List<CodeElement> tableList = dBStructureMaker.getTableList();
-		CodeElement codeElement = new Table();
+		CodeElement codeElement = new Table("expression");
 		dBStructureMaker.putCodeElement(codeElement);
-		codeElement = new Modifier();
+		codeElement = new Modifier("expression");
 		dBStructureMaker.putCodeElement(codeElement);
-		codeElement = new Field();
+		codeElement = new Field("expression");
 		dBStructureMaker.putCodeElement(codeElement);
-		codeElement = new FieldProperty();
+		codeElement = new FieldProperty("expression");
 		dBStructureMaker.putCodeElement(codeElement);
 		assertTrue("Wrong DB structure: tables", testTables());
 		assertTrue("Wrong DB structure: modifiers", testModifiers());

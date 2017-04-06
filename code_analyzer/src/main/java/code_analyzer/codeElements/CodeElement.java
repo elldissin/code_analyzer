@@ -4,11 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class CodeElement {
+	protected String name;
+	protected String expressionString;
 	protected CodeElementType type;
 	protected List<CodeElement> childList;
 
-	public CodeElement() {
+	public CodeElement(String expression) {
 		childList = new ArrayList<CodeElement>();
+		expressionString = expression;
 	}
 
 	public void setType(CodeElementType type) {
@@ -25,6 +28,10 @@ public abstract class CodeElement {
 
 	public void addChild(CodeElement element) {
 		childList.add(element);
+	}
+
+	public String getExpression() {
+		return expressionString;
 	}
 
 }
