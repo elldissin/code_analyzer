@@ -1,5 +1,10 @@
 package code_analyzer;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
 import code_analyzer.codeElements.CodeElement;
 import code_analyzer.codeElements.Field;
 import code_analyzer.codeElements.FieldProperty;
@@ -7,21 +12,46 @@ import code_analyzer.codeElements.ServerLink;
 import code_analyzer.codeElements.Table;
 
 public class ExpressionAnalyzer {
+	private String tableKeyWord;
+	private String severLinkKeyWord;
+	private String fieldKeyWord;
+	private String fieldPropertyKeyWord;
+	private BufferedReader configReader;
 
 	public int analyze(String string) {
+		try {
+			configReader = new BufferedReader(new FileReader("config.txt"));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			tableKeyWord = configReader.readLine();
+			severLinkKeyWord = configReader.readLine();
+			fieldKeyWord = configReader.readLine();
+			fieldPropertyKeyWord = configReader.readLine();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if (string.indexOf(tableKeyWord) != -1) {
+			return 0;
+		}
+		if (string.indexOf(severLinkKeyWord) != -1) {
+			return 1;
+		}
+		if (string.indexOf(fieldKeyWord) != -1) {
+			return 2;
+		}
+		if (string.indexOf(fieldPropertyKeyWord) != -1) {
+			return 3;
+		}
+		return -1;
+
 		// String fullFile = "tableStart(Name, 0, \" \")";
-		String result1[], result2[];
+		// String result1[], result2[];
 		// int i = 0;
 		// result1 = string.split("tableStart");
-		if (string.indexOf("tableStart") != -1)
-			return 0;
-		if (string.indexOf("server") != -1)
-			return 1;
-		if (string.indexOf("fild") != -1)
-			return 2;
-		if (string.indexOf("blabla") != -1)
-			return 3;
-		return -1;
 		// result2 = result1[1].split(",");
 		// for (i = 0; i < result2.length; i++) {
 		// result2[i] = result2[i].trim();

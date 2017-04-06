@@ -15,10 +15,10 @@ public class ExpressionAnalyzerTest {
 	@Test
 	public void analyzeTest() {
 		ExpressionAnalyzer expressionAnalyzer = new ExpressionAnalyzer();
-		expressionList.add("tableStart(Name, 0, \" \");");
-		expressionList.add("server use;");
-		expressionList.add("fild 1;");
-		expressionList.add("blabla bla for 1;");
+		expressionList.add("table(name,0,\" \")");
+		expressionList.add("serverLink,0,1");
+		expressionList.add("field(nameF)");
+		expressionList.add("Property(nameF)");
 		// expressionAnalyzer.analyze(expressionList.get(0));
 
 		for (int i = 0; i < expressionList.size(); i++) {
