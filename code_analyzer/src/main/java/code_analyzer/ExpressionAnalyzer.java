@@ -18,7 +18,7 @@ public class ExpressionAnalyzer {
 	private String fieldPropertyKeyWord;
 	private BufferedReader configReader;
 
-	public int analyze(String string) {
+	public ExpressionAnalyzer() {
 		try {
 			configReader = new BufferedReader(new FileReader("config.txt"));
 		} catch (FileNotFoundException e) {
@@ -34,6 +34,9 @@ public class ExpressionAnalyzer {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	public int analyze(String string) {
 		if (string.indexOf(tableKeyWord) != -1) {
 			return 0;
 		}
