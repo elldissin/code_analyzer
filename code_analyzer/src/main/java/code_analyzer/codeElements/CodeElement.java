@@ -3,13 +3,13 @@ package code_analyzer.codeElements;
 import java.util.List;
 
 public abstract class CodeElement {
-	private int type;
+	protected CodeElementType type;
 
-	public void setType(int type) {
+	public void setType(CodeElementType type) {
 		this.type = type;
 	}
 
-	public int getType() {
+	public CodeElementType getType() {
 		return type;
 	}
 

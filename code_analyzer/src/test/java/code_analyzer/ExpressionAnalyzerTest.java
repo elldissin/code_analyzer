@@ -1,5 +1,9 @@
 package code_analyzer;
 
+import static code_analyzer.codeElements.CodeElementType.FIELD;
+import static code_analyzer.codeElements.CodeElementType.FIELD_PROPERTY;
+import static code_analyzer.codeElements.CodeElementType.MODIFIER;
+import static code_analyzer.codeElements.CodeElementType.TABLE;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
@@ -22,7 +26,7 @@ public class ExpressionAnalyzerTest {
 		// expressionAnalyzer.analyze(expressionList.get(0));
 
 		for (int i = 0; i < expressionList.size(); i++) {
-			assertTrue("wrong expression type", i == expressionAnalyzer.analyze(expressionList.get(i)));
+			assertTrue("wrong expression type", i == expressionAnalyzer.analyze(expressionList.get(i)).getValue());
 		}
 	}
 
@@ -30,16 +34,16 @@ public class ExpressionAnalyzerTest {
 	public void makeCodeElementTest() {
 		CodeElement codeElement;
 		ExpressionAnalyzer expressionAnalyzer = new ExpressionAnalyzer();
-		codeElement = expressionAnalyzer.makeCodeElement(0);
+		codeElement = expressionAnalyzer.makeCodeElement(TABLE);
 		assertTrue("wrong class " + codeElement.getClass().getSimpleName(),
 				codeElement.getClass().getSimpleName().equals("Table"));
-		codeElement = expressionAnalyzer.makeCodeElement(1);
+		codeElement = expressionAnalyzer.makeCodeElement(MODIFIER);
 		assertTrue("wrong class " + codeElement.getClass().getSimpleName(),
-				codeElement.getClass().getSimpleName().equals("ServerLink"));
-		codeElement = expressionAnalyzer.makeCodeElement(2);
+				codeElement.getClass().getSimpleName().equals("Modifier"));
+		codeElement = expressionAnalyzer.makeCodeElement(FIELD);
 		assertTrue("wrong class " + codeElement.getClass().getSimpleName(),
 				codeElement.getClass().getSimpleName().equals("Field"));
-		codeElement = expressionAnalyzer.makeCodeElement(3);
+		codeElement = expressionAnalyzer.makeCodeElement(FIELD_PROPERTY);
 		assertTrue("wrong class " + codeElement.getClass().getSimpleName(),
 				codeElement.getClass().getSimpleName().equals("FieldProperty"));
 

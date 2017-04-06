@@ -1,5 +1,9 @@
 package code_analyzer.codeElements;
 
-public class Field extends CodeElement {
+import static code_analyzer.codeElements.CodeElementType.FIELD;
 
+public class Field extends CodeElement {
+	public Field() {
+		type = FIELD;
+	}
 }
