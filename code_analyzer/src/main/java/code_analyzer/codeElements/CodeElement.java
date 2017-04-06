@@ -1,9 +1,15 @@
 package code_analyzer.codeElements;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class CodeElement {
 	protected CodeElementType type;
+	protected List<CodeElement> childList;
+
+	public CodeElement() {
+		childList = new ArrayList<CodeElement>();
+	}
 
 	public void setType(CodeElementType type) {
 		this.type = type;
@@ -13,13 +19,12 @@ public abstract class CodeElement {
 		return type;
 	}
 
-	public List<Field> getFieldList() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<CodeElement> getChildList() {
+		return childList;
 	}
 
-	public void setFieldList(List<Field> fieldList) {
-		// TODO Auto-generated method stub
-
+	public void addChild(CodeElement element) {
+		childList.add(element);
 	}
+
 }
