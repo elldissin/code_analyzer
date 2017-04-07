@@ -15,5 +15,9 @@ public class StatusPanel extends JPanel {
 		JLabel info2 = new JLabel();
 		info2.setText("Info:");
 		this.add(info2);
+
+		JLabel info3 = new JLabel();
+		info3.setText("Path:");
+		this.add(info3);
 	}
 }
