@@ -10,13 +10,13 @@ import code_analyzer.BatchFileReader;
 import code_analyzer.SourceFolderScanner;
 
 public class BrowseButtonListener implements ActionListener {
-	WindowPanel windowPanel;
+	MenuPanel menuPanel;
 	SourceFolderScanner sourceFolderScanner;
 	BatchFileReader batchFileReader = new BatchFileReader();
 
-	public BrowseButtonListener(WindowPanel windowPanel) {
+	public BrowseButtonListener(MenuPanel menuPanel) {
 
-		this.windowPanel = windowPanel;
+		this.menuPanel = menuPanel;
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -24,7 +24,7 @@ public class BrowseButtonListener implements ActionListener {
 		chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 		chooser.setCurrentDirectory(new File("."));
 		chooser.setAcceptAllFileFilterUsed(false);
-		int returnVal = chooser.showOpenDialog(windowPanel);
+		int returnVal = chooser.showOpenDialog(menuPanel);
 		if (returnVal == JFileChooser.APPROVE_OPTION) {
 			sourceFolderScanner = new SourceFolderScanner(chooser.getSelectedFile().getPath());
 			String result = batchFileReader.readFilesContent(sourceFolderScanner.getFileList());
