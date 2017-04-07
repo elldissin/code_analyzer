@@ -8,15 +8,20 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class MenuPanel extends JPanel {
+	JComboBox searchBox;
+	JTextField searchField;
+
 	MenuPanel() {
 		this.setPreferredSize(new Dimension(600, 40));
 
 		String[] variants = { "Table", "Field", "Window" };
 		// FIXME should take variants from config file
-		JComboBox searchBox = new JComboBox(variants);
+		searchBox = new JComboBox(variants);
+		SearchBoxActionListener searchBoxActionListener = new SearchBoxActionListener(this);
+		searchBox.addActionListener(searchBoxActionListener);
 		this.add(searchBox);
 
-		JTextField searchField = new JTextField();
+		searchField = new JTextField();
 		searchField.setPreferredSize(new Dimension(300, 27));
 		this.add(searchField);
 
