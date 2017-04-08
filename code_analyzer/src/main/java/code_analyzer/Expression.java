@@ -10,6 +10,7 @@ import code_analyzer.codeElements.CodeElementType;
 
 public class Expression {
 	private String expressionString;
+
 	private CodeElementType type;
 	private Configuration configuration;
 
@@ -37,5 +38,9 @@ public class Expression {
 
 	public CodeElementType getType() {
 		return type;
+	}
+
+	public String toString() {
+		return expressionString;
 	}
 }

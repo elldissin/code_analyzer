@@ -9,6 +9,9 @@ import java.util.List;
 
 import org.junit.Test;
 
+import code_analyzer.Configuration;
+import code_analyzer.Expression;
+
 public class DBStructureMakerTest {
 	private DBStructureMaker dBStructureMaker = new DBStructureMaker();
 
@@ -16,13 +19,21 @@ public class DBStructureMakerTest {
 	public void putCodeElementTest() {
 
 		List<CodeElement> tableList = dBStructureMaker.getTableList();
-		CodeElement codeElement = new Table("expression");
+		Configuration configTest = new Configuration();
+		Expression expressionTest = new Expression("table", configTest);
+		CodeElement codeElement = new Table(expressionTest);
 		dBStructureMaker.putCodeElement(codeElement);
-		codeElement = new Modifier("expression");
+
+		expressionTest = new Expression("serverLink", configTest);
+		codeElement = new Modifier(expressionTest);
 		dBStructureMaker.putCodeElement(codeElement);
-		codeElement = new Field("expression");
+
+		expressionTest = new Expression("field", configTest);
+		codeElement = new Field(expressionTest);
 		dBStructureMaker.putCodeElement(codeElement);
-		codeElement = new FieldProperty("expression");
+
+		expressionTest = new Expression("property", configTest);
+		codeElement = new FieldProperty(expressionTest);
 		dBStructureMaker.putCodeElement(codeElement);
 		assertTrue("Wrong DB structure: tables", testTables());
 		assertTrue("Wrong DB structure: modifiers", testModifiers());
@@ -77,13 +88,5 @@ public class DBStructureMakerTest {
 		}
 		return true;
 	}
-
-	// @Test
-	// public void putElementToParentTest() {
-	// dBStructureMaker.putElementToParent(codeElement1);
-	// List<CodeElement> tableList = dBStructureMaker.getTableList();
-	// tableList.get(tableList.size()).getFieldList();
-	//
-	// }
 
 }

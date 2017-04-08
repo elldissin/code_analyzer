@@ -19,7 +19,7 @@ public class ExpressionTest {
 		assertTrue("Expression type is not Modifier", expressionTest.getType() == MODIFIER);
 		expressionTest = new Expression("field", configTest);
 		assertTrue("Expression type is not Field", expressionTest.getType() == FIELD);
-		expressionTest = new Expression("Property", configTest);
+		expressionTest = new Expression("property", configTest);
 		assertTrue("Expression type is not Property", expressionTest.getType() == FIELD_PROPERTY);
 	}
 

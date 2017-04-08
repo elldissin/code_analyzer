@@ -3,15 +3,17 @@ package code_analyzer.codeElements;
 import java.util.ArrayList;
 import java.util.List;
 
+import code_analyzer.Expression;
+
 public abstract class CodeElement {
 	protected String name;
-	protected String expressionString;
+	protected Expression expression;
 	protected CodeElementType type;
 	protected List<CodeElement> childList;
 
-	public CodeElement(String expression) {
+	public CodeElement(Expression expression) {
 		childList = new ArrayList<CodeElement>();
-		expressionString = expression;
+		this.expression = expression;
 	}
 
 	public void setType(CodeElementType type) {
@@ -19,7 +21,7 @@ public abstract class CodeElement {
 	}
 
 	public CodeElementType getType() {
-		return type;
+		return expression.getType();
 	}
 
 	public List<CodeElement> getChildList() {
@@ -30,8 +32,8 @@ public abstract class CodeElement {
 		childList.add(element);
 	}
 
-	public String getExpression() {
-		return expressionString;
+	public Expression getExpression() {
+		return expression;
 	}
 
 }

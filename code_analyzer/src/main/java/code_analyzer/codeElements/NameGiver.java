@@ -13,7 +13,7 @@ public class NameGiver {
 	private String giveNameToTable(CodeElement element) {
 		String result1[], result2[];
 		int i = 0;
-		result1 = element.getExpression().split("Table");
+		result1 = element.getExpression().toString().split("table");
 		result2 = result1[1].split(",");
 		for (i = 0; i < result2.length; i++) {
 			result2[i] = result2[i].trim();
