@@ -34,4 +34,8 @@ public class Expression {
 		}
 		return WRONGTYPE;
 	}
+
+	public CodeElementType getType() {
+		return type;
+	}
 }
