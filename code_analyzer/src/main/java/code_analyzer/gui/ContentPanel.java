@@ -54,6 +54,8 @@ public class ContentPanel extends JPanel {
 		tableJList = new JList(tableListSrting);
 		tableListPanel = new JScrollPane(tableJList);
 		this.add(tableListPanel);
+		// FIXME
+		System.out.println("ContentPanel.setNewTableList() - must figure out how to update existing panel, not add");
 	}
 
 }
