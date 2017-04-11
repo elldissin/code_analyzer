@@ -47,9 +47,7 @@ public class BrowseButtonListener implements ActionListener {
 			for (int i = 0; i < dBStructureMaker.getTableList().size(); i++) {
 				tableList.add(dBStructureMaker.getTableList().get(i).getName());
 			}
-			// contentPanel.setNewTableList(tableList);
-			// FIXME Fibana4i!
-
+			contentPanel.setNewTableList(tableList);
 		}
 
 	}

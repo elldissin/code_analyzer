@@ -34,6 +34,9 @@ public class MenuPanel extends JPanel {
 		// SearchButtonListener.addActionListener(searchButtonListener);
 		this.add(searchButton);
 
+	}
+
+	public void createBrowseButtonListener() {
 		BrowseButton browseButton = new BrowseButton();
 		BrowseButtonListener browseButtonListener = new BrowseButtonListener(this, windowPanel.getContentPanel());
 		browseButton.addActionListener(browseButtonListener);

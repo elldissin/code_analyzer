@@ -16,6 +16,7 @@ public class WindowPanel extends JPanel {
 		this.add(contentPanel);
 		statusPanel = new StatusPanel(this);
 		this.add(statusPanel);
+		menuPanel.createBrowseButtonListener();
 	}
 
 	public MenuPanel getMenuPanel() {

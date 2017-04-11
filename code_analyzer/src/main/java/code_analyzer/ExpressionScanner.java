@@ -8,7 +8,6 @@ public class ExpressionScanner {
 	public ExpressionScanner(final String fullString) {
 		this.fullString = fullString;
 		result = fullString.split(";");
-		System.out.println(result.length);
 	}
 
 	public Expression getNextExpression() {
