@@ -7,6 +7,11 @@ import code_analyzer.Expression;
 
 public abstract class CodeElement {
 	protected String name;
+
+	public String getName() {
+		return name;
+	}
+
 	protected Expression expression;
 	protected CodeElementType type;
 	protected List<CodeElement> childList;

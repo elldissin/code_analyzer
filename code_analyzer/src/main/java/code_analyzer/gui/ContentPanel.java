@@ -3,6 +3,7 @@ package code_analyzer.gui;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.util.List;
 
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -13,22 +14,24 @@ import javax.swing.SwingConstants;
 
 public class ContentPanel extends JPanel {
 	JScrollPane tableListPanel;
-	JList tableList;
+	JList tableJList;
 	JLabel fieldList;
 	JTree tree;
 	JScrollPane treePanel;
+	String tableListSrting[] = { "Tanble1", "Tanble2", "Tanble3" };
+	WindowPanel windowPanel;
 
-	ContentPanel() {
+	ContentPanel(WindowPanel windowPanel) {
+		this.windowPanel = windowPanel;
 		this.setLayout(new GridLayout(1, 3));
 		this.setPreferredSize(new Dimension(600, 600));
 
-		String TableListSrting[] = { "Tanble1", "Tanble2", "Tanble3" };
-		tableList = new JList(TableListSrting);
-		tableList.setForeground(Color.GREEN);
-		tableList.setBackground(Color.BLACK);
-		tableListPanel = new JScrollPane(tableList);
+		tableJList = new JList(tableListSrting);
+		tableJList.setForeground(Color.GREEN);
+		tableJList.setBackground(Color.BLACK);
+		tableListPanel = new JScrollPane(tableJList);
 		TableListSelectionListener tableListSelectionListener = new TableListSelectionListener(this);
-		tableList.addListSelectionListener(tableListSelectionListener);
+		tableJList.addListSelectionListener(tableListSelectionListener);
 		this.add(tableListPanel);
 
 		fieldList = new JLabel();
@@ -41,6 +44,16 @@ public class ContentPanel extends JPanel {
 		treePanel = new JScrollPane(tree);
 		this.add(treePanel);
 
+	}
+
+	void setNewTableList(List<String> tableList) {
+		tableListSrting = new String[tableList.size()];
+		for (int i = 0; i < tableList.size(); i++) {
+			tableListSrting[i] = tableList.get(i);
+		}
+		tableJList = new JList(tableListSrting);
+		tableListPanel = new JScrollPane(tableJList);
+		this.add(tableListPanel);
 	}
 
 }

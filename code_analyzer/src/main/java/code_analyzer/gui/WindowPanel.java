@@ -4,14 +4,30 @@ import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
 public class WindowPanel extends JPanel {
+	MenuPanel menuPanel;
+	ContentPanel contentPanel;
+	StatusPanel statusPanel;
+
 	WindowPanel() {
 		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-		MenuPanel menuPanel = new MenuPanel();
+		menuPanel = new MenuPanel(this);
 		this.add(menuPanel);
-		ContentPanel contentPanel = new ContentPanel();
+		contentPanel = new ContentPanel(this);
 		this.add(contentPanel);
-		StatusPanel statusPanel = new StatusPanel();
+		statusPanel = new StatusPanel(this);
 		this.add(statusPanel);
+	}
+
+	public MenuPanel getMenuPanel() {
+		return menuPanel;
+	}
+
+	public ContentPanel getContentPanel() {
+		return contentPanel;
+	}
+
+	public StatusPanel getStatusPanel() {
+		return statusPanel;
 	}
 
 }

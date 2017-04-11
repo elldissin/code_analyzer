@@ -12,7 +12,7 @@ public class TableListSelectionListener implements ListSelectionListener {
 
 	public void valueChanged(ListSelectionEvent e) {
 		{
-			String s = (String) contentPanel.tableList.getSelectedValue();
+			String s = (String) contentPanel.tableJList.getSelectedValue();
 			contentPanel.fieldList.setText(s + " Field list:");
 
 		}

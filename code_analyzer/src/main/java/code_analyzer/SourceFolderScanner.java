@@ -19,7 +19,9 @@ public class SourceFolderScanner {
 				scanFolder(fileEntry);
 			} else {
 				if (fileEntry.getName().toLowerCase().endsWith(".txt"))
-					foundFileList.add(fileEntry);
+					if (!fileEntry.getName().toLowerCase().endsWith("config.txt")) {
+						foundFileList.add(fileEntry);
+					}
 			}
 		}
 	}

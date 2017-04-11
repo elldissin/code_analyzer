@@ -1,16 +1,3 @@
-tableStart(Name, 0, " ");
-server use;
-fild 1;
-blabla bla for 1;
-fild2;
-blabla bla for 2;
-new blabla bla for 2;
-fild3;
-tableEnd;
+tableStart(Name1, 0, " ");
 tableStart(Name2, 1, " 11 ");
-fild 1;
-fild2;
-blabla bla for 2;
-fild3;
-new blabla bla for 3;
-tableEnd;
+tableStart(Name3Vivaldi, 1, " 11 ");

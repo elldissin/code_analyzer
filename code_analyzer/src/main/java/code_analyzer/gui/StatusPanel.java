@@ -6,7 +6,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class StatusPanel extends JPanel {
-	StatusPanel() {
+	WindowPanel windowPanel;
+
+	StatusPanel(WindowPanel windowPanel) {
+		this.windowPanel = windowPanel;
 		this.setPreferredSize(new Dimension(600, 30));
 		JLabel info1 = new JLabel();
 		info1.setText("Status:");

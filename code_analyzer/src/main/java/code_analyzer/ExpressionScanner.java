@@ -5,26 +5,30 @@ public class ExpressionScanner {
 	String result[];
 	int i = 0;
 
-	// FIXME rework to class hierarchy
-	ExpressionScanner(final String fullString) {
+	public ExpressionScanner(final String fullString) {
 		this.fullString = fullString;
 		result = fullString.split(";");
+		System.out.println(result.length);
 	}
 
-	public String getNextExpression() {
+	public Expression getNextExpression() {
 
-		String nextExpression = "";
-		if (i < result.length) {
-			nextExpression = result[i];
-			i++;
-			nextExpression = nextExpression.replaceAll("[\\s]+", " ");
-			nextExpression = nextExpression.trim();
-		}
+		String tempString = "";
+		tempString = result[i];
+		i++;
+		tempString = tempString.replaceAll("[\\s]+", " ");
+		tempString = tempString.trim();
+
+		Expression nextExpression = new Expression(tempString, new Configuration());
 		return nextExpression;
-		// for(int i = 0; i<result.length;i++){
-		// nextExpression=result[i];
-		// System.out.println(NextExpression);
-		// }
 
 	}
+
+	public boolean isEmpty() {
+		if (i < result.length) {
+			return false;
+		}
+		return true;
+	}
+
 }
