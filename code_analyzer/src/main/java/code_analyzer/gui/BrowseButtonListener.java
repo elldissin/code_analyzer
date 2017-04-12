@@ -41,7 +41,9 @@ public class BrowseButtonListener implements ActionListener {
 			DBStructureMaker dBStructureMaker = new DBStructureMaker();
 			while (!expressionScanner.isEmpty()) {
 				CodeElement codeElement = expressionAnalyzer.makeCodeElement(expressionScanner.getNextExpression());
-				dBStructureMaker.putCodeElement(codeElement);
+				if (codeElement != null) {
+					dBStructureMaker.putCodeElement(codeElement);
+				}
 			}
 			for (int i = 0; i < dBStructureMaker.getTableList().size(); i++) {
 				tableList.add(dBStructureMaker.getTableList().get(i).getName());

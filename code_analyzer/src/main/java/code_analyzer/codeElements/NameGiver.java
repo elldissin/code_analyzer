@@ -1,5 +1,7 @@
 package code_analyzer.codeElements;
 
+import code_analyzer.Configuration;
+
 public class NameGiver {
 
 	public String giveNameTo(CodeElement element) {
@@ -11,9 +13,11 @@ public class NameGiver {
 	}
 
 	private String giveNameToTable(CodeElement element) {
+		Configuration configuration = new Configuration();
+
 		String result1[], result2[];
 		int i = 0;
-		result1 = element.getExpression().toString().split("table");
+		result1 = element.getExpression().toString().split(configuration.getTableKeyword());
 		result2 = result1[1].split(",");
 		for (i = 0; i < result2.length; i++) {
 			result2[i] = result2[i].trim();
