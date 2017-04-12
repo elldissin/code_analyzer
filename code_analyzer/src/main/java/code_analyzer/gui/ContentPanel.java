@@ -50,7 +50,6 @@ public class ContentPanel extends JPanel {
 		tableListSrting = new String[tableList.size()];
 		for (int i = 0; i < tableList.size(); i++) {
 			tableListSrting[i] = tableList.get(i);
-			System.out.println(tableList.get(i));
 		}
 
 		this.removeAll();

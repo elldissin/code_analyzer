@@ -45,7 +45,6 @@ public class BrowseButtonListener implements ActionListener {
 			}
 			for (int i = 0; i < dBStructureMaker.getTableList().size(); i++) {
 				tableList.add(dBStructureMaker.getTableList().get(i).getName());
-				System.out.println(dBStructureMaker.getTableList().get(i).getName());
 			}
 			contentPanel.setNewTableList(tableList);
 
