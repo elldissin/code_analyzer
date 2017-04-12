@@ -36,7 +36,6 @@ public class BrowseButtonListener implements ActionListener {
 		if (returnVal == JFileChooser.APPROVE_OPTION) {
 			sourceFolderScanner = new SourceFolderScanner(chooser.getSelectedFile().getPath());
 			String result = batchFileReader.readFilesContent(sourceFolderScanner.getFileList());
-			// System.out.println(result);
 			ExpressionScanner expressionScanner = new ExpressionScanner(result);
 			ExpressionAnalyzer expressionAnalyzer = new ExpressionAnalyzer();
 			DBStructureMaker dBStructureMaker = new DBStructureMaker();

@@ -11,8 +11,9 @@ public class SourceFileReaderTest {
 		String result = new String();
 		String expected = new String();
 
-		expected = "MyCodeLine(hello);" + "MyCodeAnotherLine(bye);" + "ThirdLine(third);";
-		result = SourceFileReader.readFileContent("file.txt");
+		expected = "tableStart(Name1, 0, \" \");" + "tableStart(Name2, 1, \" 11 \");"
+				+ "tableStart(Name3Vivaldi, 1, \" 11 \");";
+		result = SourceFileReader.readFileContent("file3.txt");
 		assertTrue("Wrong string read from file:" + result, result.equals(expected));
 	}
 

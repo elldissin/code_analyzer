@@ -26,10 +26,6 @@ public class NameGiver {
 		stringBuffer = new StringBuffer(result2[2]);
 		stringBuffer.deleteCharAt(lastSymbol);
 		result2[2] = stringBuffer.toString();
-
-		for (i = 0; i < result2.length; i++) {
-			System.out.println(result2[i]);
-		}
 		return result2[0];
 	}
 

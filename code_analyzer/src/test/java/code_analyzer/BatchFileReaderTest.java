@@ -16,12 +16,12 @@ public class BatchFileReaderTest {
 		String result = new String();
 		String expected = new String();
 		List<File> fileListTest = new ArrayList<File>();
-		fileListTest.add(new File("file.txt"));
-		fileListTest.add(new File("file2.txt"));
-		expected = "MyCodeLine(hello);" + "MyCodeAnotherLine(bye);" + "ThirdLine(third);" + "LineFromFile2(hello);";
+		fileListTest.add(new File("file3.txt"));
+		expected = "tableStart(Name1, 0, \" \");" + "tableStart(Name2, 1, \" 11 \");"
+				+ "tableStart(Name3Vivaldi, 1, \" 11 \");";
 		result = testBatchReader.readFilesContent(fileListTest);
 
-		assertTrue("Wrong text read from one or several files", result.equals(expected));
+		assertTrue("Wrong text read by BatchFileReader:" + result, result.equals(expected));
 	}
 
 }
