@@ -50,12 +50,21 @@ public class ContentPanel extends JPanel {
 		tableListSrting = new String[tableList.size()];
 		for (int i = 0; i < tableList.size(); i++) {
 			tableListSrting[i] = tableList.get(i);
+			System.out.println(tableList.get(i));
 		}
+
+		this.removeAll();
 		tableJList = new JList(tableListSrting);
 		tableListPanel = new JScrollPane(tableJList);
+		TableListSelectionListener tableListSelectionListener = new TableListSelectionListener(this);
+		tableJList.addListSelectionListener(tableListSelectionListener);
+		tableJList.setForeground(Color.GREEN);
+		tableJList.setBackground(Color.BLACK);
 		this.add(tableListPanel);
-		// FIXME
-		System.out.println("ContentPanel.setNewTableList() - must figure out how to update existing panel, not add");
+		this.add(fieldList);
+		this.add(treePanel);
+		this.repaint();
+		this.revalidate();
 	}
 
 }

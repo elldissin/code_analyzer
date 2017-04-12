@@ -19,6 +19,8 @@ public abstract class CodeElement {
 	public CodeElement(Expression expression) {
 		childList = new ArrayList<CodeElement>();
 		this.expression = expression;
+		NameGiver nameGiver = new NameGiver();
+		name = nameGiver.giveNameTo(this);
 	}
 
 	public void setType(CodeElementType type) {

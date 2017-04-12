@@ -27,6 +27,7 @@ public class NameGiver {
 		stringBuffer.deleteCharAt(lastSymbol);
 		result2[2] = stringBuffer.toString();
 		return result2[0];
+		// FIXME wrong name
 	}
 
 }
