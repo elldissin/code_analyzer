@@ -4,17 +4,16 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 public class TableListSelectionListener implements ListSelectionListener {
-	ContentPanel contentPanel;
+	WindowPanel windowPanel;
 
-	TableListSelectionListener(ContentPanel contentPanel) {
-		this.contentPanel = contentPanel;
+	TableListSelectionListener(WindowPanel windowPanel) {
+		this.windowPanel = windowPanel;
 	}
 
 	public void valueChanged(ListSelectionEvent e) {
 		{
-			String s = (String) contentPanel.tableJList.getSelectedValue();
-			contentPanel.fieldList.setText(s + " Field list:");
-
+			String s = (String) windowPanel.contentPanel.tableJList.getSelectedValue();
+			windowPanel.contentPanel.fieldList.setText(s + " Field list:");
 		}
 
 	}

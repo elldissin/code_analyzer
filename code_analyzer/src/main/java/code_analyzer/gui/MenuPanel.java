@@ -11,6 +11,7 @@ public class MenuPanel extends JPanel {
 	JComboBox searchBox;
 	JTextField searchField;
 	WindowPanel windowPanel;
+	BrowseButtonListener browseButtonListener;
 
 	MenuPanel(WindowPanel windowPanel) {
 		this.windowPanel = windowPanel;
@@ -19,7 +20,7 @@ public class MenuPanel extends JPanel {
 		String[] variants = { "Table", "Field", "Window" };
 		// FIXME should take variants from config file
 		searchBox = new JComboBox(variants);
-		SearchBoxActionListener searchBoxActionListener = new SearchBoxActionListener(this);
+		SearchBoxActionListener searchBoxActionListener = new SearchBoxActionListener(windowPanel);
 		searchBox.addActionListener(searchBoxActionListener);
 		this.add(searchBox);
 
@@ -38,7 +39,7 @@ public class MenuPanel extends JPanel {
 
 	public void createBrowseButtonListener() {
 		BrowseButton browseButton = new BrowseButton();
-		BrowseButtonListener browseButtonListener = new BrowseButtonListener(this, windowPanel.getContentPanel());
+		browseButtonListener = new BrowseButtonListener(this, windowPanel.getContentPanel());
 		browseButton.addActionListener(browseButtonListener);
 		this.add(browseButton);
 	}

@@ -4,17 +4,20 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class SearchBoxActionListener implements ActionListener {
-	MenuPanel menuPanel;
+	WindowPanel windowPanel;
 
-	SearchBoxActionListener(MenuPanel menuPanel) {
-		this.menuPanel = menuPanel;
+	SearchBoxActionListener(WindowPanel windowPanel) {
+		this.windowPanel = windowPanel;
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		if (menuPanel.searchBox.getSelectedIndex() == 0)
-			menuPanel.searchField.setText("Type the name of table here");
-		if (menuPanel.searchBox.getSelectedIndex() == 1)
-			menuPanel.searchField.setText("Type the name of field here");
+		if (windowPanel.menuPanel.searchBox.getSelectedIndex() == 0) {
+			windowPanel.menuPanel.searchField.setText("Type the name of table here");
+			windowPanel.contentPanel.setNewTableList(windowPanel.menuPanel.browseButtonListener.getTableList());
+
+		}
+		if (windowPanel.menuPanel.searchBox.getSelectedIndex() == 1)
+			windowPanel.menuPanel.searchField.setText("Type the name of field here");
 
 	}
 

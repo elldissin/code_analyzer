@@ -20,6 +20,7 @@ public class ContentPanel extends JPanel {
 	JScrollPane treePanel;
 	String tableListSrting[] = { "Tanble1", "Tanble2", "Tanble3" };
 	WindowPanel windowPanel;
+	TableListSelectionListener tableListSelectionListener;
 
 	ContentPanel(WindowPanel windowPanel) {
 		this.windowPanel = windowPanel;
@@ -30,7 +31,7 @@ public class ContentPanel extends JPanel {
 		tableJList.setForeground(Color.GREEN);
 		tableJList.setBackground(Color.BLACK);
 		tableListPanel = new JScrollPane(tableJList);
-		TableListSelectionListener tableListSelectionListener = new TableListSelectionListener(this);
+		tableListSelectionListener = new TableListSelectionListener(windowPanel);
 		tableJList.addListSelectionListener(tableListSelectionListener);
 		this.add(tableListPanel);
 
@@ -55,7 +56,7 @@ public class ContentPanel extends JPanel {
 		this.removeAll();
 		tableJList = new JList(tableListSrting);
 		tableListPanel = new JScrollPane(tableJList);
-		TableListSelectionListener tableListSelectionListener = new TableListSelectionListener(this);
+		TableListSelectionListener tableListSelectionListener = new TableListSelectionListener(windowPanel);
 		tableJList.addListSelectionListener(tableListSelectionListener);
 		tableJList.setForeground(Color.GREEN);
 		tableJList.setBackground(Color.BLACK);

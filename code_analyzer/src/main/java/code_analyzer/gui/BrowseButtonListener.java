@@ -20,6 +20,7 @@ public class BrowseButtonListener implements ActionListener {
 	SourceFolderScanner sourceFolderScanner;
 	BatchFileReader batchFileReader = new BatchFileReader();
 	List<String> tableList = new ArrayList<String>();
+
 	ContentPanel contentPanel;
 
 	public BrowseButtonListener(MenuPanel menuPanel, ContentPanel contentPanel) {
@@ -48,10 +49,13 @@ public class BrowseButtonListener implements ActionListener {
 			for (int i = 0; i < dBStructureMaker.getTableList().size(); i++) {
 				tableList.add(dBStructureMaker.getTableList().get(i).getName());
 			}
-			contentPanel.setNewTableList(tableList);
 
 		}
 
+	}
+
+	public List<String> getTableList() {
+		return tableList;
 	}
 
 }
