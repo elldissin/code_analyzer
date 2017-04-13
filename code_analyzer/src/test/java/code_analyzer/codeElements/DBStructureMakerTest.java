@@ -20,19 +20,19 @@ public class DBStructureMakerTest {
 
 		List<CodeElement> tableList = dBStructureMaker.getTableList();
 		Configuration configTest = new Configuration();
-		Expression expressionTest = new Expression("table", configTest);
+		Expression expressionTest = new Expression(configTest.getTableKeyword()+"(Name,0,0)", configTest);
 		CodeElement codeElement = new Table(expressionTest);
 		dBStructureMaker.putCodeElement(codeElement);
 
-		expressionTest = new Expression("serverLink", configTest);
+		expressionTest = new Expression(configTest.getModifierKeyword(), configTest);
 		codeElement = new Modifier(expressionTest);
 		dBStructureMaker.putCodeElement(codeElement);
 
-		expressionTest = new Expression("field", configTest);
+		expressionTest = new Expression(configTest.getFieldKeyword(), configTest);
 		codeElement = new Field(expressionTest);
 		dBStructureMaker.putCodeElement(codeElement);
 
-		expressionTest = new Expression("property", configTest);
+		expressionTest = new Expression(configTest.getFieldPropertyKeyWord(), configTest);
 		codeElement = new FieldProperty(expressionTest);
 		dBStructureMaker.putCodeElement(codeElement);
 		assertTrue("Wrong DB structure: tables", testTables());

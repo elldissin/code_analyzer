@@ -17,22 +17,22 @@ public class ExpressionAnalyzerTest {
 		CodeElement codeElement;
 		Configuration configTest = new Configuration();
 		ExpressionAnalyzer expressionAnalyzer = new ExpressionAnalyzer();
-		Expression expressionTest = new Expression("table", configTest);
+		Expression expressionTest = new Expression(configTest.getTableKeyword()+"(Name,0,0)", configTest);
 		codeElement = expressionAnalyzer.makeCodeElement(expressionTest);
 		assertTrue("wrong class " + codeElement.getClass().getSimpleName(),
 				codeElement.getClass().getSimpleName().equals("Table"));
 
-		expressionTest = new Expression("serverLink", configTest);
+		expressionTest = new Expression(configTest.getModifierKeyword(), configTest);
 		codeElement = expressionAnalyzer.makeCodeElement(expressionTest);
 		assertTrue("wrong class " + codeElement.getClass().getSimpleName(),
 				codeElement.getClass().getSimpleName().equals("Modifier"));
 
-		expressionTest = new Expression("field", configTest);
+		expressionTest = new Expression(configTest.getFieldKeyword(), configTest);
 		codeElement = expressionAnalyzer.makeCodeElement(expressionTest);
 		assertTrue("wrong class " + codeElement.getClass().getSimpleName(),
 				codeElement.getClass().getSimpleName().equals("Field"));
 
-		expressionTest = new Expression("property", configTest);
+		expressionTest = new Expression(configTest.getFieldPropertyKeyWord(), configTest);
 		codeElement = expressionAnalyzer.makeCodeElement(expressionTest);
 		assertTrue("wrong class " + codeElement.getClass().getSimpleName(),
 				codeElement.getClass().getSimpleName().equals("FieldProperty"));

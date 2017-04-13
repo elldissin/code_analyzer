@@ -13,7 +13,7 @@ public class NameGiverTest {
 	public void giveNameTest() {
 		NameGiver nameGiverTest = new NameGiver();
 		Configuration configTest = new Configuration();
-		Expression expressionTest = new Expression("table(Name,0,\"\")", configTest);
+		Expression expressionTest = new Expression(configTest.getTableKeyword()+"(Name,0,0)", configTest);
 		String givenName;
 		CodeElement elementTest = new Table(expressionTest);
 		givenName = nameGiverTest.giveNameTo(elementTest);
