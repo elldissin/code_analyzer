@@ -5,7 +5,7 @@ import java.util.List;
 
 import code_analyzer.Expression;
 
-public abstract class CodeElement {
+public abstract class DBElement {
 	protected String name;
 
 	public String getName() {
@@ -14,10 +14,10 @@ public abstract class CodeElement {
 
 	protected Expression expression;
 	protected CodeElementType type;
-	protected List<CodeElement> childList;
+	protected List<DBElement> childList;
 
-	public CodeElement(Expression expression) {
-		childList = new ArrayList<CodeElement>();
+	public DBElement(Expression expression) {
+		childList = new ArrayList<DBElement>();
 		this.expression = expression;
 		NameGiver nameGiver = new NameGiver();
 		name = nameGiver.giveNameTo(this);
@@ -31,11 +31,11 @@ public abstract class CodeElement {
 		return expression.getType();
 	}
 
-	public List<CodeElement> getChildList() {
+	public List<DBElement> getChildList() {
 		return childList;
 	}
 
-	public void addChild(CodeElement element) {
+	public void addChild(DBElement element) {
 		childList.add(element);
 	}
 

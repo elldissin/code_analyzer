@@ -7,35 +7,35 @@ import java.util.List;
 
 import org.junit.Test;
 
-import code_analyzer.codeElements.CodeElement;
+import code_analyzer.codeElements.DBElement;
 
 public class ExpressionAnalyzerTest {
 	List<String> expressionList = new ArrayList<String>();
 
 	@Test
 	public void makeCodeElementTest() {
-		CodeElement codeElement;
+		DBElement dBElement;
 		Configuration configTest = new Configuration();
 		ExpressionAnalyzer expressionAnalyzer = new ExpressionAnalyzer();
 		Expression expressionTest = new Expression(configTest.getTableKeyword()+"(Name,0,0)", configTest);
-		codeElement = expressionAnalyzer.makeCodeElement(expressionTest);
-		assertTrue("wrong class " + codeElement.getClass().getSimpleName(),
-				codeElement.getClass().getSimpleName().equals("Table"));
+		dBElement = expressionAnalyzer.makeCodeElement(expressionTest);
+		assertTrue("wrong class " + dBElement.getClass().getSimpleName(),
+				dBElement.getClass().getSimpleName().equals("Table"));
 
 		expressionTest = new Expression(configTest.getModifierKeyword(), configTest);
-		codeElement = expressionAnalyzer.makeCodeElement(expressionTest);
-		assertTrue("wrong class " + codeElement.getClass().getSimpleName(),
-				codeElement.getClass().getSimpleName().equals("Modifier"));
+		dBElement = expressionAnalyzer.makeCodeElement(expressionTest);
+		assertTrue("wrong class " + dBElement.getClass().getSimpleName(),
+				dBElement.getClass().getSimpleName().equals("Modifier"));
 
 		expressionTest = new Expression(configTest.getFieldKeyword(), configTest);
-		codeElement = expressionAnalyzer.makeCodeElement(expressionTest);
-		assertTrue("wrong class " + codeElement.getClass().getSimpleName(),
-				codeElement.getClass().getSimpleName().equals("Field"));
+		dBElement = expressionAnalyzer.makeCodeElement(expressionTest);
+		assertTrue("wrong class " + dBElement.getClass().getSimpleName(),
+				dBElement.getClass().getSimpleName().equals("Field"));
 
 		expressionTest = new Expression(configTest.getFieldPropertyKeyWord(), configTest);
-		codeElement = expressionAnalyzer.makeCodeElement(expressionTest);
-		assertTrue("wrong class " + codeElement.getClass().getSimpleName(),
-				codeElement.getClass().getSimpleName().equals("FieldProperty"));
+		dBElement = expressionAnalyzer.makeCodeElement(expressionTest);
+		assertTrue("wrong class " + dBElement.getClass().getSimpleName(),
+				dBElement.getClass().getSimpleName().equals("FieldProperty"));
 
 	}
 

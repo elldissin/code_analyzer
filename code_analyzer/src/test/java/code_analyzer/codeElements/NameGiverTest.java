@@ -15,7 +15,7 @@ public class NameGiverTest {
 		Configuration configTest = new Configuration();
 		Expression expressionTest = new Expression(configTest.getTableKeyword()+"(Name,0,0)", configTest);
 		String givenName;
-		CodeElement elementTest = new Table(expressionTest);
+		DBElement elementTest = new Table(expressionTest);
 		givenName = nameGiverTest.giveNameTo(elementTest);
 		assertTrue("Expected name Name, got " + givenName, givenName.equals("Name"));
 	}

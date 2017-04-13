@@ -5,49 +5,49 @@ import java.util.List;
 import java.util.Stack;
 
 public class DBStructureMaker {
-	List<CodeElement> tableList = new ArrayList<CodeElement>();
-	List<CodeElement> fieldList = new ArrayList<CodeElement>();
-	List<CodeElement> modifierList = new ArrayList<CodeElement>();
-	List<CodeElement> fieldPropertyList = new ArrayList<CodeElement>();
-	Stack<CodeElement> processingTableStack = new Stack<CodeElement>();
-	Stack<CodeElement> processingFieldStack = new Stack<CodeElement>();
+	List<DBElement> tableList = new ArrayList<DBElement>();
+	List<DBElement> fieldList = new ArrayList<DBElement>();
+	List<DBElement> modifierList = new ArrayList<DBElement>();
+	List<DBElement> fieldPropertyList = new ArrayList<DBElement>();
+	Stack<DBElement> processingTableStack = new Stack<DBElement>();
+	Stack<DBElement> processingFieldStack = new Stack<DBElement>();
 
-	public void putCodeElement(CodeElement codeElement) {
-		switch (codeElement.getType()) {
+	public void putCodeElement(DBElement dBElement) {
+		switch (dBElement.getType()) {
 		case TABLE:
-			tableList.add(codeElement);
+			tableList.add(dBElement);
 			if (!processingTableStack.isEmpty()) {
 				processingTableStack.pop();
 			}
-			processingTableStack.push(codeElement);
+			processingTableStack.push(dBElement);
 			break;
 		case MODIFIER:
-			modifierList.add(codeElement);
+			modifierList.add(dBElement);
 			if (!processingTableStack.isEmpty()) {
-				processingTableStack.peek().addChild(codeElement);
+				processingTableStack.peek().addChild(dBElement);
 			}
 			break;
 		case FIELD:
-			fieldList.add(codeElement);
+			fieldList.add(dBElement);
 			if (!processingTableStack.isEmpty()) {
-				processingTableStack.peek().addChild(codeElement);
+				processingTableStack.peek().addChild(dBElement);
 			}
 			if (!processingFieldStack.isEmpty()) {
 				processingFieldStack.pop();
 			}
-			processingFieldStack.push(codeElement);
+			processingFieldStack.push(dBElement);
 			break;
 		case FIELD_PROPERTY:
-			fieldPropertyList.add(codeElement);
+			fieldPropertyList.add(dBElement);
 			if (!processingFieldStack.isEmpty()) {
-				processingFieldStack.peek().addChild(codeElement);
+				processingFieldStack.peek().addChild(dBElement);
 			}
 			break;
 		}
 
 	}
 
-	public List<CodeElement> getTableList() {
+	public List<DBElement> getTableList() {
 		return tableList;
 	}
 

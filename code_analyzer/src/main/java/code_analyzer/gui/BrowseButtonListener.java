@@ -12,7 +12,7 @@ import code_analyzer.BatchFileReader;
 import code_analyzer.ExpressionAnalyzer;
 import code_analyzer.ExpressionScanner;
 import code_analyzer.SourceFolderScanner;
-import code_analyzer.codeElements.CodeElement;
+import code_analyzer.codeElements.DBElement;
 import code_analyzer.codeElements.DBStructureMaker;
 
 public class BrowseButtonListener implements ActionListener {
@@ -40,9 +40,9 @@ public class BrowseButtonListener implements ActionListener {
 			ExpressionAnalyzer expressionAnalyzer = new ExpressionAnalyzer();
 			DBStructureMaker dBStructureMaker = new DBStructureMaker();
 			while (!expressionScanner.isEmpty()) {
-				CodeElement codeElement = expressionAnalyzer.makeCodeElement(expressionScanner.getNextExpression());
-				if (codeElement != null) {
-					dBStructureMaker.putCodeElement(codeElement);
+				DBElement dBElement = expressionAnalyzer.makeCodeElement(expressionScanner.getNextExpression());
+				if (dBElement != null) {
+					dBStructureMaker.putCodeElement(dBElement);
 				}
 			}
 			for (int i = 0; i < dBStructureMaker.getTableList().size(); i++) {

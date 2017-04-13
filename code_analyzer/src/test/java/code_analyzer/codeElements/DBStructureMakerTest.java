@@ -18,23 +18,23 @@ public class DBStructureMakerTest {
 	@Test
 	public void putCodeElementTest() {
 
-		List<CodeElement> tableList = dBStructureMaker.getTableList();
+		List<DBElement> tableList = dBStructureMaker.getTableList();
 		Configuration configTest = new Configuration();
 		Expression expressionTest = new Expression(configTest.getTableKeyword()+"(Name,0,0)", configTest);
-		CodeElement codeElement = new Table(expressionTest);
-		dBStructureMaker.putCodeElement(codeElement);
+		DBElement dBElement = new Table(expressionTest);
+		dBStructureMaker.putCodeElement(dBElement);
 
 		expressionTest = new Expression(configTest.getModifierKeyword(), configTest);
-		codeElement = new Modifier(expressionTest);
-		dBStructureMaker.putCodeElement(codeElement);
+		dBElement = new Modifier(expressionTest);
+		dBStructureMaker.putCodeElement(dBElement);
 
 		expressionTest = new Expression(configTest.getFieldKeyword(), configTest);
-		codeElement = new Field(expressionTest);
-		dBStructureMaker.putCodeElement(codeElement);
+		dBElement = new Field(expressionTest);
+		dBStructureMaker.putCodeElement(dBElement);
 
 		expressionTest = new Expression(configTest.getFieldPropertyKeyWord(), configTest);
-		codeElement = new FieldProperty(expressionTest);
-		dBStructureMaker.putCodeElement(codeElement);
+		dBElement = new FieldProperty(expressionTest);
+		dBStructureMaker.putCodeElement(dBElement);
 		assertTrue("Wrong DB structure: tables", testTables());
 		assertTrue("Wrong DB structure: modifiers", testModifiers());
 		assertTrue("Wrong DB structure: fields", testFields());
@@ -43,7 +43,7 @@ public class DBStructureMakerTest {
 	}
 
 	private boolean testPropertiesChild() {
-		CodeElement tableTest, fieldTest, fieldPropertyTest;
+		DBElement tableTest, fieldTest, fieldPropertyTest;
 		tableTest = dBStructureMaker.getTableList().get(0);
 		fieldTest = tableTest.getChildList().get(1);
 		fieldPropertyTest = fieldTest.getChildList().get(0);
@@ -54,7 +54,7 @@ public class DBStructureMakerTest {
 	}
 
 	private boolean testModifiers() {
-		CodeElement tableTest;
+		DBElement tableTest;
 		tableTest = dBStructureMaker.getTableList().get(0);
 		if (tableTest.getChildList().get(0).getType() != MODIFIER) {
 			return false;
@@ -64,7 +64,7 @@ public class DBStructureMakerTest {
 	}
 
 	private boolean testProperties() {
-		CodeElement tableTest, fieldTest;
+		DBElement tableTest, fieldTest;
 		tableTest = dBStructureMaker.getTableList().get(0);
 		fieldTest = tableTest.getChildList().get(1);
 		if (fieldTest.getChildList().get(0).getType() != FIELD_PROPERTY) {
@@ -74,7 +74,7 @@ public class DBStructureMakerTest {
 	}
 
 	private boolean testFields() {
-		CodeElement tableTest;
+		DBElement tableTest;
 		tableTest = dBStructureMaker.getTableList().get(0);
 		if (tableTest.getChildList().get(1).getType() != FIELD) {
 			return false;

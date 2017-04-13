@@ -1,6 +1,6 @@
 package code_analyzer;
 
-import code_analyzer.codeElements.CodeElement;
+import code_analyzer.codeElements.DBElement;
 import code_analyzer.codeElements.Field;
 import code_analyzer.codeElements.FieldProperty;
 import code_analyzer.codeElements.Modifier;
@@ -11,7 +11,7 @@ public class ExpressionAnalyzer {
 	public ExpressionAnalyzer() {
 	}
 
-	public CodeElement makeCodeElement(Expression expression) {
+	public DBElement makeCodeElement(Expression expression) {
 		switch (expression.getType()) {
 		case TABLE:
 			return new Table(expression);

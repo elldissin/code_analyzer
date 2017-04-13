@@ -4,7 +4,7 @@ import code_analyzer.Configuration;
 
 public class NameGiver {
 
-	public String giveNameTo(CodeElement element) {
+	public String giveNameTo(DBElement element) {
 		switch (element.getType()) {
 		case TABLE:
 			return giveNameToTable(element);
@@ -12,7 +12,7 @@ public class NameGiver {
 		return null;
 	}
 
-	private String giveNameToTable(CodeElement element) {
+	private String giveNameToTable(DBElement element) {
 		Configuration configuration = new Configuration();
 
 		String result1[], result2[];
