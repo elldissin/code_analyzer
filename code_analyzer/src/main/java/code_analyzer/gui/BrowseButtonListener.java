@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JFileChooser;
+import javax.swing.tree.DefaultMutableTreeNode;
 
 import code_analyzer.BatchFileReader;
 import code_analyzer.ExpressionAnalyzer;
@@ -50,6 +51,10 @@ public class BrowseButtonListener implements ActionListener {
 				tableList.add(dBStructureMaker.getTableList().get(i).getName());
 			}
 
+		}
+		for (int i = 0; i < tableList.size(); i++) {
+			DefaultMutableTreeNode lvl2node = new DefaultMutableTreeNode(tableList.get(i));
+			contentPanel.tree.lvl1node.add(lvl2node);
 		}
 
 	}

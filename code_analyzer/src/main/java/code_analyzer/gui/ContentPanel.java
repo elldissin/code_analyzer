@@ -9,14 +9,13 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTree;
 import javax.swing.SwingConstants;
 
 public class ContentPanel extends JPanel {
 	JScrollPane tableListPanel;
 	JList tableJList;
 	JLabel fieldList;
-	JTree tree;
+	MyTree tree;
 	JScrollPane treePanel;
 	String tableListSrting[] = { "Tanble1", "Tanble2", "Tanble3" };
 	WindowPanel windowPanel;
@@ -41,7 +40,7 @@ public class ContentPanel extends JPanel {
 		this.setBackground(Color.BLACK);
 		this.add(fieldList);
 
-		MyTree tree = new MyTree();
+		tree = new MyTree(windowPanel);
 		treePanel = new JScrollPane(tree);
 		this.add(treePanel);
 

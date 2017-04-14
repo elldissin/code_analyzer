@@ -1,4 +1,5 @@
 package code_analyzer.gui;
+
 import java.awt.Color;
 
 import javax.swing.JPanel;
@@ -6,19 +7,15 @@ import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 
 public class MyTree extends JPanel {
-	JTree tree; // наше дерево
+	JTree tree;
+	WindowPanel windowPanel;
+	public DefaultMutableTreeNode lvl1node;
 
-	public MyTree() {
+	public MyTree(WindowPanel windowPanel) {
+		this.windowPanel = windowPanel;
 		DefaultMutableTreeNode root = new DefaultMutableTreeNode("Data Base");
-		DefaultMutableTreeNode lvl1node1 = new DefaultMutableTreeNode("Table1");
-		DefaultMutableTreeNode lvl1node2 = new DefaultMutableTreeNode("Table2");
-		DefaultMutableTreeNode lvl1node3 = new DefaultMutableTreeNode("Table3");
-		root.add(lvl1node1);
-		root.add(lvl1node2);
-		root.add(lvl1node3);
-		lvl1node2.add(new DefaultMutableTreeNode("Field1"));
-		lvl1node2.add(new DefaultMutableTreeNode("Field2"));
-		lvl1node2.add(new DefaultMutableTreeNode("Field3"));
+		lvl1node = new DefaultMutableTreeNode("Tables:");
+		root.add(lvl1node);
 		tree = new JTree(root);
 		tree.setForeground(Color.GREEN);
 		tree.setBackground(Color.BLACK);
