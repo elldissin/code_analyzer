@@ -30,9 +30,8 @@ public class MenuPanel extends JPanel {
 
 		JButton searchButton = new JButton();
 		searchButton.setText("Search");
-		// SearchButtonListener searchButtonListener = new
-		// SearchButtonListener(this);
-		// SearchButtonListener.addActionListener(searchButtonListener);
+		SearchButtonListener searchButtonListener = new SearchButtonListener(windowPanel);
+		searchButton.addActionListener(searchButtonListener);
 		this.add(searchButton);
 
 	}
