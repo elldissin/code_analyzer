@@ -20,7 +20,7 @@ public class SearchButtonListener implements ActionListener {
 		if (windowPanel.menuPanel.searchBox.getSelectedIndex() == 0) {
 			searchList = windowPanel.menuPanel.browseButtonListener.getTableList();
 			for (int i = 0; i < searchList.size(); i++) {
-				if (searchList.get(i).matches(searchExpression) == true) {
+				if (searchList.get(i).toLowerCase().matches(searchExpression) == true) {
 					findedList.add(searchList.get(i));
 				}
 			}

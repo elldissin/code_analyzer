@@ -12,12 +12,11 @@ public class SearchBoxActionListener implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		if (windowPanel.menuPanel.searchBox.getSelectedIndex() == 0) {
-			windowPanel.menuPanel.searchField.setText("Type the name of table here");
 			windowPanel.contentPanel.setNewTableList(windowPanel.menuPanel.browseButtonListener.getTableList());
-
 		}
-		if (windowPanel.menuPanel.searchBox.getSelectedIndex() == 1)
-			windowPanel.menuPanel.searchField.setText("Type the name of field here");
+		if (windowPanel.menuPanel.searchBox.getSelectedIndex() == 1) {
+			// FIXME create all fields list
+		}
 
 	}
 
