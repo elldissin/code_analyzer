@@ -54,6 +54,7 @@ public class BrowseButtonListener implements ActionListener {
 			}
 
 		}
+		contentPanel.setNewTableList(this.getTableList());
 		for (int i = 0; i < tableList.size(); i++) {
 			DefaultMutableTreeNode lvl2node = new DefaultMutableTreeNode(tableList.get(i));
 			contentPanel.tree.lvl1node.add(lvl2node);
