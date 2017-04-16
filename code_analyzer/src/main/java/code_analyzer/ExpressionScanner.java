@@ -4,8 +4,10 @@ public class ExpressionScanner {
 	String fullString;
 	String result[];
 	int i = 0;
+	Configuration configuration;
 
-	public ExpressionScanner(final String fullString) {
+	public ExpressionScanner(final String fullString, Configuration configuration) {
+		this.configuration = configuration;
 		this.fullString = fullString;
 		result = fullString.split(";");
 	}
@@ -18,7 +20,7 @@ public class ExpressionScanner {
 		tempString = tempString.replaceAll("[\\s]+", " ");
 		tempString = tempString.trim();
 
-		Expression nextExpression = new Expression(tempString, new Configuration());
+		Expression nextExpression = new Expression(tempString, configuration);
 		return nextExpression;
 
 	}

@@ -5,16 +5,22 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+import code_analyzer.codeElements.NameGiver;
+
 public class Configuration {
 	private String tableKeyWord;
 	private String modifierKeyWord;
 	private String fieldKeyWord;
 	private String fieldPropertyKeyWord;
 	private BufferedReader configReader;
-	private boolean loaded;
+	private NameGiver nameGiver;
+
+	public NameGiver getNameGiver() {
+		return nameGiver;
+	}
 
 	public Configuration() {
-		loaded = false;
+		nameGiver = new NameGiver(this);
 		try {
 			configReader = new BufferedReader(new FileReader("config.txt"));
 		} catch (FileNotFoundException e) {
@@ -26,15 +32,11 @@ public class Configuration {
 			modifierKeyWord = configReader.readLine();
 			fieldKeyWord = configReader.readLine();
 			fieldPropertyKeyWord = configReader.readLine();
-			loaded = true;
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
-
-	public boolean isLoaded() {
-		return loaded;
 	}
 
 	public String getTableKeyword() {

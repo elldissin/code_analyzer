@@ -11,12 +11,12 @@ public class NameGiverTest {
 
 	@Test
 	public void giveNameTest() {
-		NameGiver nameGiverTest = new NameGiver();
 		Configuration configTest = new Configuration();
-		Expression expressionTest = new Expression(configTest.getTableKeyword()+"(Name,0,0)", configTest);
+		NameGiver nameGiverTest = new NameGiver(configTest);
+		Expression expressionTest = new Expression(configTest.getTableKeyword() + "(Name,0,0)", configTest);
 		String givenName;
 		DBElement elementTest = new Table(expressionTest);
-		givenName = nameGiverTest.giveNameTo(elementTest);
+		givenName = nameGiverTest.getNameFor(expressionTest);
 		assertTrue("Expected name Name, got " + givenName, givenName.equals("Name"));
 	}
 

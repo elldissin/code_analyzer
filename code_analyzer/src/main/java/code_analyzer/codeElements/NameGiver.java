@@ -1,23 +1,29 @@
 package code_analyzer.codeElements;
 
+import static code_analyzer.codeElements.CodeElementType.TABLE;
+
 import code_analyzer.Configuration;
+import code_analyzer.Expression;
 
 public class NameGiver {
+	Configuration configuration;
 
-	public String giveNameTo(DBElement element) {
-		switch (element.getType()) {
-		case TABLE:
-			return giveNameToTable(element);
-		}
-		return null;
+	public NameGiver(Configuration configuration) {
+		this.configuration = configuration;
 	}
 
-	private String giveNameToTable(DBElement element) {
-		Configuration configuration = new Configuration();
+	public String getNameFor(Expression expression) {
+		if (expression.getType() == TABLE)
+			return getNameForTable(expression);
+		else
+			return "";
 
+	}
+
+	private String getNameForTable(Expression expression) {
 		String result1[], result2[];
 		int i = 0;
-		result1 = element.getExpression().toString().split(configuration.getTableKeyword());
+		result1 = expression.toString().split(configuration.getTableKeyword());
 		result2 = result1[1].split(",");
 		for (i = 0; i < result2.length; i++) {
 			result2[i] = result2[i].trim();

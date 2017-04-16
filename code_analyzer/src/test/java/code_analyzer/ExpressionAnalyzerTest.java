@@ -16,8 +16,8 @@ public class ExpressionAnalyzerTest {
 	public void makeCodeElementTest() {
 		DBElement dBElement;
 		Configuration configTest = new Configuration();
-		ExpressionAnalyzer expressionAnalyzer = new ExpressionAnalyzer();
-		Expression expressionTest = new Expression(configTest.getTableKeyword()+"(Name,0,0)", configTest);
+		ExpressionAnalyzer expressionAnalyzer = new ExpressionAnalyzer(configTest);
+		Expression expressionTest = new Expression(configTest.getTableKeyword() + "(Name,0,0)", configTest);
 		dBElement = expressionAnalyzer.makeCodeElement(expressionTest);
 		assertTrue("wrong class " + dBElement.getClass().getSimpleName(),
 				dBElement.getClass().getSimpleName().equals("Table"));

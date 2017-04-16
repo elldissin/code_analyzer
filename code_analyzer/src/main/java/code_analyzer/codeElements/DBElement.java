@@ -19,8 +19,6 @@ public abstract class DBElement {
 	public DBElement(Expression expression) {
 		childList = new ArrayList<DBElement>();
 		this.expression = expression;
-		NameGiver nameGiver = new NameGiver();
-		name = nameGiver.giveNameTo(this);
 	}
 
 	public void setType(CodeElementType type) {
@@ -41,6 +39,10 @@ public abstract class DBElement {
 
 	public Expression getExpression() {
 		return expression;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }
