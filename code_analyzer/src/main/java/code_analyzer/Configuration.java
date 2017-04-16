@@ -14,6 +14,7 @@ public class Configuration {
 	private String fieldPropertyKeyWord;
 	private BufferedReader configReader;
 	private NameGiver nameGiver;
+	private ArgumentFinder argumentFinder;
 
 	public NameGiver getNameGiver() {
 		return nameGiver;
@@ -21,6 +22,7 @@ public class Configuration {
 
 	public Configuration() {
 		nameGiver = new NameGiver(this);
+		argumentFinder = new ArgumentFinder();
 		try {
 			configReader = new BufferedReader(new FileReader("config.txt"));
 		} catch (FileNotFoundException e) {
@@ -53,6 +55,10 @@ public class Configuration {
 
 	public String getFieldPropertyKeyWord() {
 		return fieldPropertyKeyWord;
+	}
+
+	public ArgumentFinder getArgumentFinder() {
+		return argumentFinder;
 	}
 
 }

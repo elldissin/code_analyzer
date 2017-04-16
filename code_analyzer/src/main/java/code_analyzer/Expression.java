@@ -6,10 +6,14 @@ import static code_analyzer.codeElements.CodeElementType.MODIFIER;
 import static code_analyzer.codeElements.CodeElementType.TABLE;
 import static code_analyzer.codeElements.CodeElementType.WRONGTYPE;
 
+import java.util.List;
+
 import code_analyzer.codeElements.CodeElementType;
 
 public class Expression {
+
 	private String expressionString;
+	private List<ExpressionArgument> argumentList;
 
 	private CodeElementType type;
 	private Configuration configuration;
@@ -18,6 +22,7 @@ public class Expression {
 		this.expressionString = expressionString;
 		this.configuration = configuration;
 		type = deduceType();
+		fillArgumentList();
 	}
 
 	private CodeElementType deduceType() {
@@ -42,5 +47,13 @@ public class Expression {
 
 	public String toString() {
 		return expressionString;
+	}
+
+	private void fillArgumentList() {
+		argumentList = configuration.getArgumentFinder().getArgumentListFor(expressionString);
+	}
+
+	public List<ExpressionArgument> getArgumentList() {
+		return argumentList;
 	}
 }
