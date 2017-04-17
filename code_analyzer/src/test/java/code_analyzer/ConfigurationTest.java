@@ -29,4 +29,10 @@ public class ConfigurationTest {
 				!(configurationTest.getFieldPropertyKeyWord().equals("")));
 	}
 
+	@Test
+	public void testGetArgumentFinderRegex() {
+		assertTrue("ArgumentFinder regex was not loaded by Configuration",
+				!(configurationTest.getArgumentFinderRegex().equals("")));
+	}
+
 }

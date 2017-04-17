@@ -12,13 +12,10 @@ public class Configuration {
 	private String modifierKeyWord;
 	private String fieldKeyWord;
 	private String fieldPropertyKeyWord;
+	private String argumentFinderRegex;
 	private BufferedReader configReader;
 	private NameGiver nameGiver;
 	private ArgumentFinder argumentFinder;
-
-	public NameGiver getNameGiver() {
-		return nameGiver;
-	}
 
 	public Configuration() {
 		nameGiver = new NameGiver(this);
@@ -34,11 +31,16 @@ public class Configuration {
 			modifierKeyWord = configReader.readLine();
 			fieldKeyWord = configReader.readLine();
 			fieldPropertyKeyWord = configReader.readLine();
+			argumentFinderRegex = configReader.readLine();
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	public String getArgumentFinderRegex() {
+		return argumentFinderRegex;
 	}
 
 	public String getTableKeyword() {
@@ -59,6 +61,10 @@ public class Configuration {
 
 	public ArgumentFinder getArgumentFinder() {
 		return argumentFinder;
+	}
+
+	public NameGiver getNameGiver() {
+		return nameGiver;
 	}
 
 }
