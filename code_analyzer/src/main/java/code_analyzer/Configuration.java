@@ -19,7 +19,6 @@ public class Configuration {
 
 	public Configuration() {
 		nameGiver = new NameGiver(this);
-		argumentFinder = new ArgumentFinder();
 		try {
 			configReader = new BufferedReader(new FileReader("config.txt"));
 		} catch (FileNotFoundException e) {
@@ -37,6 +36,7 @@ public class Configuration {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		argumentFinder = new ArgumentFinder(argumentFinderRegex);
 	}
 
 	public String getArgumentFinderRegex() {
