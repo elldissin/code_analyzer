@@ -35,4 +35,10 @@ public class ConfigurationTest {
 				!(configurationTest.getArgumentFinderRegex().equals("")));
 	}
 
+	@Test
+	public void testGetFunctionNameFinderRegex() {
+		assertTrue("ArgumentFinder regex was not loaded by Configuration",
+				!(configurationTest.getFunctionNameFinderRegex().equals("")));
+	}
+
 }
