@@ -9,4 +9,12 @@ public class Modifier extends DBElement {
 		super(expression);
 		type = MODIFIER;
 	}
+
+	@Override
+	public void putSelfToDB(DBStructureMaker dbMaker) {
+		dbMaker.getModifierList().add(this);
+		if (!(dbMaker.getProcessingTableStack().isEmpty())) {
+			dbMaker.getProcessingTableStack().peek().addChild(this);
+		}
+	}
 }

@@ -9,4 +9,17 @@ public class Field extends DBElement {
 		super(expression);
 		type = FIELD;
 	}
+
+	@Override
+	public void putSelfToDB(DBStructureMaker dbMaker) {
+		dbMaker.getFieldList().add(this);
+		if (!(dbMaker.getProcessingTableStack().isEmpty())) {
+			dbMaker.getProcessingTableStack().peek().addChild(this);
+		}
+		if (!(dbMaker.getProcessingFieldStack().isEmpty())) {
+			dbMaker.getProcessingFieldStack().pop();
+		}
+		dbMaker.getProcessingFieldStack().push(this);
+	}
+
 }

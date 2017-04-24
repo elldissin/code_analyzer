@@ -13,42 +13,31 @@ public class DBStructureMaker {
 	Stack<DBElement> processingFieldStack = new Stack<DBElement>();
 
 	public void putCodeElement(DBElement dBElement) {
-		switch (dBElement.getType()) {
-		case TABLE:
-			tableList.add(dBElement);
-			if (!processingTableStack.isEmpty()) {
-				processingTableStack.pop();
-			}
-			processingTableStack.push(dBElement);
-			break;
-		case MODIFIER:
-			modifierList.add(dBElement);
-			if (!processingTableStack.isEmpty()) {
-				processingTableStack.peek().addChild(dBElement);
-			}
-			break;
-		case FIELD:
-			fieldList.add(dBElement);
-			if (!processingTableStack.isEmpty()) {
-				processingTableStack.peek().addChild(dBElement);
-			}
-			if (!processingFieldStack.isEmpty()) {
-				processingFieldStack.pop();
-			}
-			processingFieldStack.push(dBElement);
-			break;
-		case FIELD_PROPERTY:
-			fieldPropertyList.add(dBElement);
-			if (!processingFieldStack.isEmpty()) {
-				processingFieldStack.peek().addChild(dBElement);
-			}
-			break;
-		}
+		dBElement.putSelfToDB(this);
+	}
 
+	public List<DBElement> getFieldList() {
+		return fieldList;
+	}
+
+	public List<DBElement> getModifierList() {
+		return modifierList;
+	}
+
+	public List<DBElement> getFieldPropertyList() {
+		return fieldPropertyList;
 	}
 
 	public List<DBElement> getTableList() {
 		return tableList;
+	}
+
+	public Stack<DBElement> getProcessingTableStack() {
+		return processingTableStack;
+	}
+
+	public Stack<DBElement> getProcessingFieldStack() {
+		return processingFieldStack;
 	}
 
 }

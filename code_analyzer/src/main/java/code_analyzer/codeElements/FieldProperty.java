@@ -9,4 +9,12 @@ public class FieldProperty extends DBElement {
 		super(expression);
 		type = FIELD_PROPERTY;
 	}
+
+	@Override
+	public void putSelfToDB(DBStructureMaker dbMaker) {
+		dbMaker.getFieldPropertyList().add(this);
+		if (!(dbMaker.processingFieldStack.isEmpty())) {
+			dbMaker.processingFieldStack.peek().addChild(this);
+		}
+	}
 }

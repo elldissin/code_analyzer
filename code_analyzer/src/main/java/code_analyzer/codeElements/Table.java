@@ -10,4 +10,13 @@ public class Table extends DBElement {
 		type = TABLE;
 	}
 
+	@Override
+	public void putSelfToDB(DBStructureMaker dbMaker) {
+		dbMaker.getTableList().add(this);
+		if (!(dbMaker.getProcessingTableStack().isEmpty())) {
+			dbMaker.getProcessingTableStack().pop();
+		}
+		dbMaker.getProcessingTableStack().push(this);
+	}
+
 }

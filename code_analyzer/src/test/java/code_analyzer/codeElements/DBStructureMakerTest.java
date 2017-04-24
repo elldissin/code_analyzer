@@ -20,7 +20,7 @@ public class DBStructureMakerTest {
 
 		List<DBElement> tableList = dBStructureMaker.getTableList();
 		Configuration configTest = new Configuration();
-		Expression expressionTest = new Expression(configTest.getTableKeyword()+"(Name,0,0)", configTest);
+		Expression expressionTest = new Expression(configTest.getTableKeyword() + "(Name,0,0)", configTest);
 		DBElement dBElement = new Table(expressionTest);
 		dBStructureMaker.putCodeElement(dBElement);
 
