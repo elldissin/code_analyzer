@@ -12,7 +12,7 @@ import org.junit.Test;
 import code_analyzer.Configuration;
 import code_analyzer.Expression;
 
-public class DBStructureMakerTest {
+public class DBStructureTest {
 	private DBStructure dBStructure = new DBStructure();
 
 	@Test
