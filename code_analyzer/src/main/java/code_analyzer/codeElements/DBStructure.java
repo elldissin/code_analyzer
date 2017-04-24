@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-public class DBStructureMaker {
+public class DBStructure {
 	List<DBElement> tableList = new ArrayList<DBElement>();
 	List<DBElement> fieldList = new ArrayList<DBElement>();
 	List<DBElement> modifierList = new ArrayList<DBElement>();

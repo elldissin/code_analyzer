@@ -11,7 +11,7 @@ public class Table extends DBElement {
 	}
 
 	@Override
-	public void putSelfToDB(DBStructureMaker dbMaker) {
+	public void putSelfToDB(DBStructure dbMaker) {
 		dbMaker.getTableList().add(this);
 		if (!(dbMaker.getProcessingTableStack().isEmpty())) {
 			dbMaker.getProcessingTableStack().pop();

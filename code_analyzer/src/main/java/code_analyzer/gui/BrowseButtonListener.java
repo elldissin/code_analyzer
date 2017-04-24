@@ -15,7 +15,7 @@ import code_analyzer.ExpressionAnalyzer;
 import code_analyzer.ExpressionScanner;
 import code_analyzer.SourceFolderScanner;
 import code_analyzer.codeElements.DBElement;
-import code_analyzer.codeElements.DBStructureMaker;
+import code_analyzer.codeElements.DBStructure;
 
 public class BrowseButtonListener implements ActionListener {
 	MenuPanel menuPanel;
@@ -42,15 +42,15 @@ public class BrowseButtonListener implements ActionListener {
 			String result = batchFileReader.readFilesContent(sourceFolderScanner.getFileList());
 			ExpressionScanner expressionScanner = new ExpressionScanner(result, configuration);
 			ExpressionAnalyzer expressionAnalyzer = new ExpressionAnalyzer(configuration);
-			DBStructureMaker dBStructureMaker = new DBStructureMaker();
+			DBStructure dBStructure = new DBStructure();
 			while (!expressionScanner.isEmpty()) {
 				DBElement dBElement = expressionAnalyzer.makeCodeElement(expressionScanner.getNextExpression());
 				if (dBElement != null) {
-					dBStructureMaker.putCodeElement(dBElement);
+					dBStructure.putCodeElement(dBElement);
 				}
 			}
-			for (int i = 0; i < dBStructureMaker.getTableList().size(); i++) {
-				tableList.add(dBStructureMaker.getTableList().get(i).getName());
+			for (int i = 0; i < dBStructure.getTableList().size(); i++) {
+				tableList.add(dBStructure.getTableList().get(i).getName());
 			}
 
 		}

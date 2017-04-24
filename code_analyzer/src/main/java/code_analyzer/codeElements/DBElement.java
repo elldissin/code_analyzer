@@ -21,7 +21,7 @@ public abstract class DBElement {
 		this.expression = expression;
 	}
 
-	public abstract void putSelfToDB(DBStructureMaker dbMaker);
+	public abstract void putSelfToDB(DBStructure dbMaker);
 
 	public void setType(CodeElementType type) {
 		this.type = type;

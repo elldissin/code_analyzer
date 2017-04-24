@@ -11,7 +11,7 @@ public class Modifier extends DBElement {
 	}
 
 	@Override
-	public void putSelfToDB(DBStructureMaker dbMaker) {
+	public void putSelfToDB(DBStructure dbMaker) {
 		dbMaker.getModifierList().add(this);
 		if (!(dbMaker.getProcessingTableStack().isEmpty())) {
 			dbMaker.getProcessingTableStack().peek().addChild(this);

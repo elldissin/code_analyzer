@@ -11,7 +11,7 @@ public class Field extends DBElement {
 	}
 
 	@Override
-	public void putSelfToDB(DBStructureMaker dbMaker) {
+	public void putSelfToDB(DBStructure dbMaker) {
 		dbMaker.getFieldList().add(this);
 		if (!(dbMaker.getProcessingTableStack().isEmpty())) {
 			dbMaker.getProcessingTableStack().peek().addChild(this);

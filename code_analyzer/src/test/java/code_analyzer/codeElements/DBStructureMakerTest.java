@@ -13,28 +13,28 @@ import code_analyzer.Configuration;
 import code_analyzer.Expression;
 
 public class DBStructureMakerTest {
-	private DBStructureMaker dBStructureMaker = new DBStructureMaker();
+	private DBStructure dBStructure = new DBStructure();
 
 	@Test
 	public void putCodeElementTest() {
 
-		List<DBElement> tableList = dBStructureMaker.getTableList();
+		List<DBElement> tableList = dBStructure.getTableList();
 		Configuration configTest = new Configuration();
 		Expression expressionTest = new Expression(configTest.getTableKeyword() + "(Name,0,0)", configTest);
 		DBElement dBElement = new Table(expressionTest);
-		dBStructureMaker.putCodeElement(dBElement);
+		dBStructure.putCodeElement(dBElement);
 
 		expressionTest = new Expression(configTest.getModifierKeyword(), configTest);
 		dBElement = new Modifier(expressionTest);
-		dBStructureMaker.putCodeElement(dBElement);
+		dBStructure.putCodeElement(dBElement);
 
 		expressionTest = new Expression(configTest.getFieldKeyword(), configTest);
 		dBElement = new Field(expressionTest);
-		dBStructureMaker.putCodeElement(dBElement);
+		dBStructure.putCodeElement(dBElement);
 
 		expressionTest = new Expression(configTest.getFieldPropertyKeyWord(), configTest);
 		dBElement = new FieldProperty(expressionTest);
-		dBStructureMaker.putCodeElement(dBElement);
+		dBStructure.putCodeElement(dBElement);
 		assertTrue("Wrong DB structure: tables", testTables());
 		assertTrue("Wrong DB structure: modifiers", testModifiers());
 		assertTrue("Wrong DB structure: fields", testFields());
@@ -44,7 +44,7 @@ public class DBStructureMakerTest {
 
 	private boolean testPropertiesChild() {
 		DBElement tableTest, fieldTest, fieldPropertyTest;
-		tableTest = dBStructureMaker.getTableList().get(0);
+		tableTest = dBStructure.getTableList().get(0);
 		fieldTest = tableTest.getChildList().get(1);
 		fieldPropertyTest = fieldTest.getChildList().get(0);
 		if (fieldPropertyTest.getChildList().size() > 0) {
@@ -55,7 +55,7 @@ public class DBStructureMakerTest {
 
 	private boolean testModifiers() {
 		DBElement tableTest;
-		tableTest = dBStructureMaker.getTableList().get(0);
+		tableTest = dBStructure.getTableList().get(0);
 		if (tableTest.getChildList().get(0).getType() != MODIFIER) {
 			return false;
 		}
@@ -65,7 +65,7 @@ public class DBStructureMakerTest {
 
 	private boolean testProperties() {
 		DBElement tableTest, fieldTest;
-		tableTest = dBStructureMaker.getTableList().get(0);
+		tableTest = dBStructure.getTableList().get(0);
 		fieldTest = tableTest.getChildList().get(1);
 		if (fieldTest.getChildList().get(0).getType() != FIELD_PROPERTY) {
 			return false;
@@ -75,7 +75,7 @@ public class DBStructureMakerTest {
 
 	private boolean testFields() {
 		DBElement tableTest;
-		tableTest = dBStructureMaker.getTableList().get(0);
+		tableTest = dBStructure.getTableList().get(0);
 		if (tableTest.getChildList().get(1).getType() != FIELD) {
 			return false;
 		}
@@ -83,7 +83,7 @@ public class DBStructureMakerTest {
 	}
 
 	private boolean testTables() {
-		if (dBStructureMaker.getTableList().size() != 1) {
+		if (dBStructure.getTableList().size() != 1) {
 			return false;
 		}
 		return true;
