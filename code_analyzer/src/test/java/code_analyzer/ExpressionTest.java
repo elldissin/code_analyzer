@@ -23,4 +23,12 @@ public class ExpressionTest {
 		assertTrue("Expression type is not Property", expressionTest.getType() == FIELD_PROPERTY);
 	}
 
+	@Test
+	public void testGetFunctionName() {
+		Configuration configTest = new Configuration();
+		Expression expressionTest = new Expression("tableStart(some,arguments,here)", configTest);
+		String result = expressionTest.getFunctionName();
+		assertTrue("Wrong function name in expression" + result, result.equals("tableStart"));
+	}
+
 }

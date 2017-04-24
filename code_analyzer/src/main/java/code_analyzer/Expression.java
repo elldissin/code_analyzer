@@ -17,12 +17,18 @@ public class Expression {
 
 	private CodeElementType type;
 	private Configuration configuration;
+	private String functionName;
 
 	public Expression(String expressionString, Configuration configuration) {
 		this.expressionString = expressionString;
 		this.configuration = configuration;
 		type = deduceType();
+		this.functionName = deduceFunctionName();
 		fillArgumentList();
+	}
+
+	private String deduceFunctionName() {
+		return configuration.getFunctionNameFinder().getFunctionNameFor(expressionString);
 	}
 
 	private CodeElementType deduceType() {
@@ -56,4 +62,9 @@ public class Expression {
 	public List<ExpressionArgument> getArgumentList() {
 		return argumentList;
 	}
+
+	public String getFunctionName() {
+		return functionName;
+	}
+
 }

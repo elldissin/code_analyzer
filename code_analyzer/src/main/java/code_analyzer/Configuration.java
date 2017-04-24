@@ -75,4 +75,8 @@ public class Configuration {
 		return nameGiver;
 	}
 
+	public FunctionNameFinder getFunctionNameFinder() {
+		return functionNameFinder;
+	}
+
 }
