@@ -15,6 +15,7 @@ public abstract class DBElement {
 	public DBElement(Expression expression) {
 		childList = new ArrayList<DBElement>();
 		this.expression = expression;
+		type = expression.getType();
 	}
 
 	public abstract void putSelfToDB(DBStructure dbMaker);
@@ -24,7 +25,7 @@ public abstract class DBElement {
 	}
 
 	public CodeElementType getType() {
-		return expression.getType();
+		return type;
 	}
 
 	public List<DBElement> getChildList() {
