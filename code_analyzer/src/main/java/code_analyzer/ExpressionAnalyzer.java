@@ -18,7 +18,7 @@ public class ExpressionAnalyzer {
 		switch (expression.getType()) {
 		case TABLE:
 			Table table = new Table(expression);
-			table.setName(name);
+			// table.setName(name);//TODO remove if talbe knows its name
 			return table;
 		case MODIFIER:
 			Modifier modifier = new Modifier(expression);

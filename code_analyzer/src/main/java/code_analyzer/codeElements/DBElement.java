@@ -8,10 +8,6 @@ import code_analyzer.Expression;
 public abstract class DBElement {
 	protected String name;
 
-	public String getName() {
-		return name;
-	}
-
 	protected Expression expression;
 	protected CodeElementType type;
 	protected List<DBElement> childList;
@@ -47,4 +43,7 @@ public abstract class DBElement {
 		this.name = name;
 	}
 
+	public String getName() {
+		return name;
+	}
 }
