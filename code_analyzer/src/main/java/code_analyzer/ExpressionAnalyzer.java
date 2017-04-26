@@ -4,7 +4,6 @@ import code_analyzer.codeElements.DBElement;
 import code_analyzer.codeElements.Field;
 import code_analyzer.codeElements.FieldProperty;
 import code_analyzer.codeElements.Modifier;
-import code_analyzer.codeElements.NameGiver;
 import code_analyzer.codeElements.Table;
 
 public class ExpressionAnalyzer {
@@ -15,7 +14,6 @@ public class ExpressionAnalyzer {
 	}
 
 	public DBElement makeCodeElement(Expression expression) {
-		NameGiver nameGiver = configuration.getNameGiver();
 		String name = configuration.getNameGiver().getNameFor(expression);
 		switch (expression.getType()) {
 		case TABLE:

@@ -22,8 +22,8 @@ public class Expression {
 	public Expression(String expressionString, Configuration configuration) {
 		this.expressionString = expressionString;
 		this.configuration = configuration;
-		type = deduceType();
 		this.functionName = deduceFunctionName();
+		type = deduceType();
 		fillArgumentList();
 	}
 
@@ -32,16 +32,16 @@ public class Expression {
 	}
 
 	private CodeElementType deduceType() {
-		if (expressionString.indexOf(configuration.getTableKeyword()) != -1) {
+		if (functionName.equals(configuration.getTableKeyword())) {
 			return TABLE;
 		}
-		if (expressionString.indexOf(configuration.getModifierKeyword()) != -1) {
+		if (functionName.equals(configuration.getModifierKeyword())) {
 			return MODIFIER;
 		}
-		if (expressionString.indexOf(configuration.getFieldKeyword()) != -1) {
+		if (functionName.equals(configuration.getFieldKeyword())) {
 			return FIELD;
 		}
-		if (expressionString.indexOf(configuration.getFieldPropertyKeyWord()) != -1) {
+		if (functionName.equals(configuration.getFieldPropertyKeyWord())) {
 			return FIELD_PROPERTY;
 		}
 		return WRONGTYPE;
