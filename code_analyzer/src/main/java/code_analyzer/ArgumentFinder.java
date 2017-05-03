@@ -38,7 +38,7 @@ public class ArgumentFinder {
 	}
 
 	private String deduceArgumentValue(String group) {
-		return group;
+		return group.trim();
 	}
 
 	private String deduceArgumentType(String group) {
