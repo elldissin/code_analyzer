@@ -16,14 +16,20 @@ public class ArgumentFinder {
 	}
 
 	public List<ExpressionArgument> getArgumentListFor(String expressionString) {
+		// expressionString = "MyTable(1,2,3)";
+		String onlyArguments = "";
 		ArrayList<ExpressionArgument> result = new ArrayList<ExpressionArgument>();
-		Matcher matcher = compiledPattern.matcher(expressionString);
-		// group 0 is whole pattern, therefore start with 1
-		while (matcher.find()) {
-			for (int i = 1; i <= matcher.groupCount(); i++) {
+		Pattern onlyArgumentsPattern = Pattern.compile("\\((.*)\\)$");
+		Matcher onlyArgumentsMatcher = onlyArgumentsPattern.matcher(expressionString);
+		if (onlyArgumentsMatcher.find()) {
+			onlyArguments = onlyArgumentsMatcher.group(1);
+			Matcher singleArgumentMatcher = compiledPattern.matcher(onlyArguments);
+			int i = 0;
+			while (singleArgumentMatcher.find()) {
+				i++;
 				String name = "argument" + i;
-				String type = deduceArgumentType(matcher.group(i));
-				String value = deduceArgumentValue(matcher.group(i));
+				String type = deduceArgumentType(singleArgumentMatcher.group());
+				String value = deduceArgumentValue(singleArgumentMatcher.group());
 				ExpressionArgument argument = new ExpressionArgument(name, type, value);
 				result.add(argument);
 			}

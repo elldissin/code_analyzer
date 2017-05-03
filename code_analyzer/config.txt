@@ -2,5 +2,5 @@ tableStart
 serverLink
 field
 property
-\((.+),(.+),(.+)\)
+([^,]+\(.+?\))|([^,]+)
 ([^\(\)]+)(\(.+\))*
