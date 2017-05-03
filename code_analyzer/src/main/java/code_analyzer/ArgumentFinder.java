@@ -21,7 +21,7 @@ public class ArgumentFinder {
 		// group 0 is whole pattern, therefore start with 1
 		while (matcher.find()) {
 			for (int i = 1; i <= matcher.groupCount(); i++) {
-				String name = deduceArgumentName(matcher.group(i));
+				String name = "argument" + i;
 				String type = deduceArgumentType(matcher.group(i));
 				String value = deduceArgumentValue(matcher.group(i));
 				ExpressionArgument argument = new ExpressionArgument(name, type, value);
@@ -38,11 +38,6 @@ public class ArgumentFinder {
 	private String deduceArgumentType(String group) {
 		// TODO Auto-generated method stub
 		return "StubType";
-	}
-
-	private String deduceArgumentName(String group) {
-		// TODO Auto-generated method stub
-		return "StubName";
 	}
 
 }

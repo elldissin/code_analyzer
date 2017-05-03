@@ -29,15 +29,15 @@ public class ArgumentFinderTest {
 		thirdArgumentName = argumentListTest.get(2).getName();
 		thirdArgumentValue = argumentListTest.get(2).getValue();
 		thirdArgumentType = argumentListTest.get(2).getType();
-		assertTrue("Wrong argument 1 name:" + firstArgumentName, firstArgumentName.equals("StubName"));
+		assertTrue("Wrong argument 1 name:" + firstArgumentName, firstArgumentName.equals("argument1"));
 		assertTrue("Wrong argument 1 type:" + firstArgumentType, firstArgumentType.equals("StubType"));
 		assertTrue("Wrong argument 1 value:" + firstArgumentValue, firstArgumentValue.equals("\"aa\""));
 
-		assertTrue("Wrong argument 2 name:" + secondArgumentName, secondArgumentName.equals("StubName"));
+		assertTrue("Wrong argument 2 name:" + secondArgumentName, secondArgumentName.equals("argument2"));
 		assertTrue("Wrong argument 2 type:" + secondArgumentType, secondArgumentType.equals("StubType"));
 		assertTrue("Wrong argument 2 value:" + secondArgumentValue, secondArgumentValue.equals("0"));
 
-		assertTrue("Wrong argument 3 name:" + thirdArgumentName, thirdArgumentName.equals("StubName"));
+		assertTrue("Wrong argument 3 name:" + thirdArgumentName, thirdArgumentName.equals("argument3"));
 		assertTrue("Wrong argument 3 type:" + thirdArgumentType, thirdArgumentType.equals("StubType"));
 		assertTrue("Wrong argument 3 value:" + thirdArgumentValue, thirdArgumentValue.equals("\"dd\""));
 	}
