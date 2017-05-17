@@ -32,16 +32,16 @@ public class Expression {
 	}
 
 	private CodeElementType deduceType() {
-		if (functionName.equals(configuration.getTableKeyword())) {
+		if (functionName.equals(configuration.getProperty("tableKeyword"))) {
 			return TABLE;
 		}
-		if (functionName.equals(configuration.getModifierKeyword())) {
+		if (functionName.equals(configuration.getProperty("modifierKeyword"))) {
 			return MODIFIER;
 		}
-		if (functionName.equals(configuration.getFieldKeyword())) {
+		if (functionName.equals(configuration.getProperty("fieldKeyword"))) {
 			return FIELD;
 		}
-		if (functionName.equals(configuration.getFieldPropertyKeyWord())) {
+		if (functionName.equals(configuration.getProperty("fieldPropertyKeyword"))) {
 			return FIELD_PROPERTY;
 		}
 		return WRONGTYPE;

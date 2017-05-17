@@ -9,36 +9,38 @@ public class ConfigurationTest {
 
 	@Test
 	public void testGetTableKeyword() {
-		assertTrue("Table keyword was not loaded by Configuration", !(configurationTest.getTableKeyword().equals("")));
+		assertTrue("Table keyword was not loaded by Configuration",
+				!(configurationTest.getProperty("tableKeyword").equals("No such property")));
 	}
 
 	@Test
 	public void testGetFieldKeyword() {
-		assertTrue("Field keyword was not loaded by Configuration", !(configurationTest.getFieldKeyword().equals("")));
+		assertTrue("Field keyword was not loaded by Configuration",
+				!(configurationTest.getProperty("fieldKeyword").equals("No such property")));
 	}
 
 	@Test
 	public void testGetModifierKeyword() {
 		assertTrue("Modifier keyword was not loaded by Configuration",
-				!(configurationTest.getModifierKeyword().equals("")));
+				!(configurationTest.getProperty("modifierKeyword").equals("No such property")));
 	}
 
 	@Test
 	public void testGetFieldPropertyKeyWord() {
 		assertTrue("Field property keyword was not loaded by Configuration",
-				!(configurationTest.getFieldPropertyKeyWord().equals("")));
+				!(configurationTest.getProperty("fieldPropertyKeyword").equals("No such property")));
 	}
 
 	@Test
 	public void testGetArgumentFinderRegex() {
 		assertTrue("ArgumentFinder regex was not loaded by Configuration",
-				!(configurationTest.getArgumentFinderRegex().equals("")));
+				!(configurationTest.getProperty("argumentFinderRegex").equals("No such property")));
 	}
 
 	@Test
 	public void testGetFunctionNameFinderRegex() {
 		assertTrue("ArgumentFinder regex was not loaded by Configuration",
-				!(configurationTest.getFunctionNameFinderRegex().equals("")));
+				!(configurationTest.getProperty("functionNameFinderRegex").equals("No such property")));
 	}
 
 }

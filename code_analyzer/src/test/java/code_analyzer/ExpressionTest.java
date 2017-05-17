@@ -13,13 +13,13 @@ public class ExpressionTest {
 	@Test
 	public void getTypeTest() {
 		Configuration configTest = new Configuration();
-		Expression expressionTest = new Expression(configTest.getTableKeyword(), configTest);
+		Expression expressionTest = new Expression(configTest.getProperty("tableKeyword"), configTest);
 		assertTrue("Expression type is not Table", expressionTest.getType() == TABLE);
-		expressionTest = new Expression(configTest.getModifierKeyword(), configTest);
+		expressionTest = new Expression(configTest.getProperty("modifierKeyword"), configTest);
 		assertTrue("Expression type is not Modifier", expressionTest.getType() == MODIFIER);
-		expressionTest = new Expression(configTest.getFieldKeyword(), configTest);
+		expressionTest = new Expression(configTest.getProperty("fieldKeyword"), configTest);
 		assertTrue("Expression type is not Field", expressionTest.getType() == FIELD);
-		expressionTest = new Expression(configTest.getFieldPropertyKeyWord(), configTest);
+		expressionTest = new Expression(configTest.getProperty("fieldPropertyKeyword"), configTest);
 		assertTrue("Expression type is not Property", expressionTest.getType() == FIELD_PROPERTY);
 	}
 

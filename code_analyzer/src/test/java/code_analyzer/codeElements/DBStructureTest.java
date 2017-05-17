@@ -20,19 +20,19 @@ public class DBStructureTest {
 
 		List<DBElement> tableList = dBStructure.getTableList();
 		Configuration configTest = new Configuration();
-		Expression expressionTest = new Expression(configTest.getTableKeyword() + "(Name,0,0)", configTest);
+		Expression expressionTest = new Expression(configTest.getProperty("tableKeyword") + "(Name,0,0)", configTest);
 		DBElement dBElement = new Table(expressionTest);
 		dBStructure.putCodeElement(dBElement);
 
-		expressionTest = new Expression(configTest.getModifierKeyword(), configTest);
+		expressionTest = new Expression(configTest.getProperty("modifierKeyword"), configTest);
 		dBElement = new Modifier(expressionTest);
 		dBStructure.putCodeElement(dBElement);
 
-		expressionTest = new Expression(configTest.getFieldKeyword(), configTest);
+		expressionTest = new Expression(configTest.getProperty("fieldKeyword"), configTest);
 		dBElement = new Field(expressionTest);
 		dBStructure.putCodeElement(dBElement);
 
-		expressionTest = new Expression(configTest.getFieldPropertyKeyWord(), configTest);
+		expressionTest = new Expression(configTest.getProperty("fieldPropertyKeyword"), configTest);
 		dBElement = new FieldProperty(expressionTest);
 		dBStructure.putCodeElement(dBElement);
 		assertTrue("Wrong DB structure: tables", testTables());

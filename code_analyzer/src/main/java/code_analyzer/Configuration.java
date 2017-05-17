@@ -42,28 +42,54 @@ public class Configuration {
 		argumentFinder = new ArgumentFinder(argumentFinderRegex);
 		functionNameFinder = new FunctionNameFinder(functionNameFinderRegex);
 	}
+	
+	public String getProperty(String name) {
+		if (name.toLowerCase().equals("tablekeyword")) {
+			return getTableKeyword();
+		}
+		if (name.toLowerCase().equals("fieldkeyword")) {
+			return getFieldKeyword();
+		}
+		if (name.toLowerCase().equals("modifierkeyword")) {
+			return getModifierKeyword();
+		}
+		if (name.toLowerCase().equals("fieldpropertykeyword")) {
+			return getFieldPropertyKeyword();
+		}
+		if (name.toLowerCase().equals("argumentfinderregex")) {
+			return getArgumentFinderRegex();
+		}
+		if (name.toLowerCase().equals("functionnamefinderregex")) {
+			return getFunctionNameFinderRegex();
+		}
+		if (name.toLowerCase().equals("functionnamefinderregex")) {
+			return getFunctionNameFinderRegex();
+		}
+		return "No such property";
+		
+	}
 
-	public String getArgumentFinderRegex() {
+	private String getArgumentFinderRegex() {
 		return argumentFinderRegex;
 	}
 
-	public String getFunctionNameFinderRegex() {
+	private String getFunctionNameFinderRegex() {
 		return functionNameFinderRegex;
 	}
 
-	public String getTableKeyword() {
+	private String getTableKeyword() {
 		return tableKeyWord;
 	}
 
-	public String getFieldKeyword() {
+	private String getFieldKeyword() {
 		return fieldKeyWord;
 	}
 
-	public String getModifierKeyword() {
+	private String getModifierKeyword() {
 		return modifierKeyWord;
 	}
 
-	public String getFieldPropertyKeyWord() {
+	private String getFieldPropertyKeyword() {
 		return fieldPropertyKeyWord;
 	}
 

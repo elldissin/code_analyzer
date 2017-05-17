@@ -12,7 +12,7 @@ public class DBElementTest {
 	@Test
 	public void testGetName() {
 		Configuration configTest = new Configuration();
-		Expression exprTest = new Expression(configTest.getTableKeyword() + "(MyTable,0,\"\")", configTest);
+		Expression exprTest = new Expression(configTest.getProperty("tableKeyword") + "(MyTable,0,\"\")", configTest);
 		DBElement dbElementTest = new Table(exprTest);
 		String assignedName = dbElementTest.getName();
 		assertTrue("Table name incorrect:" + assignedName, assignedName.equals("MyTable"));

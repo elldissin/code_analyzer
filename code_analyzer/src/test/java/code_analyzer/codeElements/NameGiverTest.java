@@ -13,7 +13,7 @@ public class NameGiverTest {
 	public void giveNameTest() {
 		Configuration configTest = new Configuration();
 		NameGiver nameGiverTest = new NameGiver(configTest);
-		Expression expressionTest = new Expression(configTest.getTableKeyword() + "(Name,0,0)", configTest);
+		Expression expressionTest = new Expression(configTest.getProperty("tableKeyword") + "(Name,0,0)", configTest);
 		String givenName;
 		DBElement elementTest = new Table(expressionTest);
 		givenName = nameGiverTest.getNameFor(expressionTest);

@@ -23,7 +23,7 @@ public class NameGiver {
 	private String getNameForTable(Expression expression) {
 		String result1[], result2[];
 		int i = 0;
-		result1 = expression.toString().split(configuration.getTableKeyword());
+		result1 = expression.toString().split(configuration.getProperty("tableKeyword"));
 		result2 = result1[1].split(",");
 		for (i = 0; i < result2.length; i++) {
 			result2[i] = result2[i].trim();
