@@ -16,7 +16,21 @@ public class DBElementTest {
 		DBElement dbElementTest = new Table(exprTest);
 		String assignedName = dbElementTest.getName();
 		assertTrue("Table name incorrect:" + assignedName, assignedName.equals("MyTable"));
-		// TODO add tests for each of DBELement children
+
+		exprTest = new Expression(configTest.getProperty("fieldKeyword") + "(MyField,0,\"\")", configTest);
+		dbElementTest = new Field(exprTest);
+		assignedName = dbElementTest.getName();
+		assertTrue("Field name incorrect:" + assignedName, assignedName.equals("MyField"));
+
+		exprTest = new Expression(configTest.getProperty("modifierKeyword"), configTest);
+		dbElementTest = new Modifier(exprTest);
+		assignedName = dbElementTest.getName();
+		assertTrue("Modifier name incorrect:" + assignedName, assignedName.equals(exprTest.getFunctionName()));
+
+		exprTest = new Expression(configTest.getProperty("fieldPropertyKeyword"), configTest);
+		dbElementTest = new FieldProperty(exprTest);
+		assignedName = dbElementTest.getName();
+		assertTrue("Field name incorrect:" + assignedName, assignedName.equals(exprTest.getFunctionName()));
 	}
 
 }

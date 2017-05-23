@@ -5,7 +5,7 @@ import code_analyzer.Expression;
 public class Modifier extends DBElement {
 	public Modifier(Expression expression) {
 		super(expression);
-		name = expression.getFunctionName(); // may have no other special name
+		name = expression.getFunctionName();
 	}
 
 	@Override
