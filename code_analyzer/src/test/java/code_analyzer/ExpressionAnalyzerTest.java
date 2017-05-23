@@ -18,22 +18,22 @@ public class ExpressionAnalyzerTest {
 		Configuration configTest = new Configuration();
 		ExpressionAnalyzer expressionAnalyzer = new ExpressionAnalyzer(configTest);
 		Expression expressionTest = new Expression(configTest.getProperty("tableKeyword") + "(Name,0,0)", configTest);
-		dBElement = expressionAnalyzer.makeCodeElement(expressionTest);
+		dBElement = expressionAnalyzer.makeDBElement(expressionTest);
 		assertTrue("wrong class " + dBElement.getClass().getSimpleName(),
 				dBElement.getClass().getSimpleName().equals("Table"));
 
 		expressionTest = new Expression(configTest.getProperty("modifierKeyword"), configTest);
-		dBElement = expressionAnalyzer.makeCodeElement(expressionTest);
+		dBElement = expressionAnalyzer.makeDBElement(expressionTest);
 		assertTrue("wrong class " + dBElement.getClass().getSimpleName(),
 				dBElement.getClass().getSimpleName().equals("Modifier"));
 
-		expressionTest = new Expression(configTest.getProperty("fieldKeyword"), configTest);
-		dBElement = expressionAnalyzer.makeCodeElement(expressionTest);
+		expressionTest = new Expression(configTest.getProperty("fieldKeyword" + "(Name,0,0)"), configTest);
+		dBElement = expressionAnalyzer.makeDBElement(expressionTest);
 		assertTrue("wrong class " + dBElement.getClass().getSimpleName(),
 				dBElement.getClass().getSimpleName().equals("Field"));
 
 		expressionTest = new Expression(configTest.getProperty("fieldPropertyKeyword"), configTest);
-		dBElement = expressionAnalyzer.makeCodeElement(expressionTest);
+		dBElement = expressionAnalyzer.makeDBElement(expressionTest);
 		assertTrue("wrong class " + dBElement.getClass().getSimpleName(),
 				dBElement.getClass().getSimpleName().equals("FieldProperty"));
 

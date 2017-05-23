@@ -5,6 +5,8 @@ import code_analyzer.Expression;
 public class Field extends DBElement {
 	public Field(Expression expression) {
 		super(expression);
+		// TODO set proper argument number when known
+		name = expression.getArgumentList().get(0).getValue();
 	}
 
 	@Override

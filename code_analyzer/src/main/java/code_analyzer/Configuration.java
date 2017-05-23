@@ -5,8 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-import code_analyzer.codeElements.NameGiver;
-
 public class Configuration {
 	private String tableKeyWord;
 	private String modifierKeyWord;
@@ -15,12 +13,10 @@ public class Configuration {
 	private String argumentFinderRegex;
 	private String functionNameFinderRegex;
 	private BufferedReader configReader;
-	private NameGiver nameGiver;
 	private ArgumentFinder argumentFinder;
 	private FunctionNameFinder functionNameFinder;
 
 	public Configuration() {
-		nameGiver = new NameGiver(this);
 		try {
 			configReader = new BufferedReader(new FileReader("config.txt"));
 		} catch (FileNotFoundException e) {
@@ -42,12 +38,12 @@ public class Configuration {
 		argumentFinder = new ArgumentFinder(argumentFinderRegex);
 		functionNameFinder = new FunctionNameFinder(functionNameFinderRegex);
 	}
-	
+
 	public String getProperty(String name) {
 		if (name.toLowerCase().equals("tablekeyword")) {
 			return getTableKeyword();
 		}
-		if (name.toLowerCase().equals("fieldkeyword")) {
+		if (name.toLowerCase().equals("fieldKeyword")) {
 			return getFieldKeyword();
 		}
 		if (name.toLowerCase().equals("modifierkeyword")) {
@@ -65,8 +61,7 @@ public class Configuration {
 		if (name.toLowerCase().equals("functionnamefinderregex")) {
 			return getFunctionNameFinderRegex();
 		}
-		return "No such property";
-		
+		return "No such property: " + name;
 	}
 
 	private String getArgumentFinderRegex() {
@@ -95,10 +90,6 @@ public class Configuration {
 
 	public ArgumentFinder getArgumentFinder() {
 		return argumentFinder;
-	}
-
-	public NameGiver getNameGiver() {
-		return nameGiver;
 	}
 
 	public FunctionNameFinder getFunctionNameFinder() {

@@ -44,7 +44,7 @@ public class BrowseButtonListener implements ActionListener {
 			ExpressionAnalyzer expressionAnalyzer = new ExpressionAnalyzer(configuration);
 			DBStructure dBStructure = new DBStructure();
 			while (!expressionScanner.isEmpty()) {
-				DBElement dBElement = expressionAnalyzer.makeCodeElement(expressionScanner.getNextExpression());
+				DBElement dBElement = expressionAnalyzer.makeDBElement(expressionScanner.getNextExpression());
 				if (dBElement != null) {
 					dBStructure.putCodeElement(dBElement);
 				}

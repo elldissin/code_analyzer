@@ -28,7 +28,7 @@ public class DBStructureTest {
 		dBElement = new Modifier(expressionTest);
 		dBStructure.putCodeElement(dBElement);
 
-		expressionTest = new Expression(configTest.getProperty("fieldKeyword"), configTest);
+		expressionTest = new Expression(configTest.getProperty("fieldKeyword") + "(Name,0,0)", configTest);
 		dBElement = new Field(expressionTest);
 		dBStructure.putCodeElement(dBElement);
 

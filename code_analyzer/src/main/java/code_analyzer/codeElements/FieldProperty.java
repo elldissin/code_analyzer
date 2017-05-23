@@ -5,6 +5,7 @@ import code_analyzer.Expression;
 public class FieldProperty extends DBElement {
 	public FieldProperty(Expression expression) {
 		super(expression);
+		name = expression.getFunctionName(); // may have no other special name
 	}
 
 	@Override
