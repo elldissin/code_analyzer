@@ -43,7 +43,7 @@ public class Configuration {
 		if (name.toLowerCase().equals("tablekeyword")) {
 			return getTableKeyword();
 		}
-		if (name.toLowerCase().equals("fieldKeyword")) {
+		if (name.toLowerCase().equals("fieldkeyword")) {
 			return getFieldKeyword();
 		}
 		if (name.toLowerCase().equals("modifierkeyword")) {
@@ -61,7 +61,7 @@ public class Configuration {
 		if (name.toLowerCase().equals("functionnamefinderregex")) {
 			return getFunctionNameFinderRegex();
 		}
-		return "No such property: " + name;
+		return "No such property";
 	}
 
 	private String getArgumentFinderRegex() {

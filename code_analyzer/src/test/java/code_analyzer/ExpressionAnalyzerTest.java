@@ -27,7 +27,7 @@ public class ExpressionAnalyzerTest {
 		assertTrue("wrong class " + dBElement.getClass().getSimpleName(),
 				dBElement.getClass().getSimpleName().equals("Modifier"));
 
-		expressionTest = new Expression(configTest.getProperty("fieldKeyword" + "(Name,0,0)"), configTest);
+		expressionTest = new Expression(configTest.getProperty("fieldKeyword") + "(Name,0,0)", configTest);
 		dBElement = expressionAnalyzer.makeDBElement(expressionTest);
 		assertTrue("wrong class " + dBElement.getClass().getSimpleName(),
 				dBElement.getClass().getSimpleName().equals("Field"));
