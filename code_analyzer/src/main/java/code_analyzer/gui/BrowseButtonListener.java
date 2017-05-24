@@ -10,7 +10,6 @@ import javax.swing.JFileChooser;
 import javax.swing.tree.DefaultMutableTreeNode;
 
 import code_analyzer.BatchFileReader;
-import code_analyzer.Configuration;
 import code_analyzer.ExpressionAnalyzer;
 import code_analyzer.ExpressionScanner;
 import code_analyzer.SourceFolderScanner;
@@ -30,7 +29,6 @@ public class BrowseButtonListener implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		Configuration configuration = new Configuration();
 		JFileChooser chooser = new JFileChooser();
 		chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 		chooser.setCurrentDirectory(new File("."));
@@ -40,8 +38,8 @@ public class BrowseButtonListener implements ActionListener {
 
 			sourceFolderScanner = new SourceFolderScanner(chooser.getSelectedFile().getPath());
 			String result = batchFileReader.readFilesContent(sourceFolderScanner.getFileList());
-			ExpressionScanner expressionScanner = new ExpressionScanner(result, configuration);
-			ExpressionAnalyzer expressionAnalyzer = new ExpressionAnalyzer(configuration);
+			ExpressionScanner expressionScanner = new ExpressionScanner(result);
+			ExpressionAnalyzer expressionAnalyzer = new ExpressionAnalyzer();
 			DBStructure dBStructure = new DBStructure();
 			while (!expressionScanner.isEmpty()) {
 				DBElement dBElement = expressionAnalyzer.makeDBElement(expressionScanner.getNextExpression());

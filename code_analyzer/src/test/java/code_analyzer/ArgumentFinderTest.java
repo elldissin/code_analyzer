@@ -11,8 +11,7 @@ public class ArgumentFinderTest {
 
 	@Test
 	public void testGetArgumentListFor() {
-		Configuration configTest = new Configuration();
-		ArgumentFinder argumentFinderTest = new ArgumentFinder(configTest.getProperty("ArgumentFinderRegex"));
+		ArgumentFinder argumentFinderTest = new ArgumentFinder(Configuration.getProperty("ArgumentFinderRegex"));
 		List<ExpressionArgument> argumentListTest = new ArrayList<ExpressionArgument>();
 		// test for no parameters
 		argumentListTest = argumentFinderTest.getArgumentListFor("Something");

@@ -6,40 +6,47 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class Configuration {
-	private String tableKeyWord;
-	private String modifierKeyWord;
-	private String fieldKeyWord;
-	private String fieldPropertyKeyWord;
-	private String argumentFinderRegex;
-	private String functionNameFinderRegex;
-	private BufferedReader configReader;
-	private ArgumentFinder argumentFinder;
-	private FunctionNameFinder functionNameFinder;
+	private static String tableKeyWord;
+	private static String modifierKeyWord;
+	private static String fieldKeyWord;
+	private static String fieldPropertyKeyWord;
+	private static String argumentFinderRegex;
+	private static String functionNameFinderRegex;
+	private static ArgumentFinder argumentFinder;
+	private static FunctionNameFinder functionNameFinder;
+	private static boolean isLoaded = false;
 
-	public Configuration() {
-		try {
-			configReader = new BufferedReader(new FileReader("config.txt"));
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			tableKeyWord = configReader.readLine();
-			modifierKeyWord = configReader.readLine();
-			fieldKeyWord = configReader.readLine();
-			fieldPropertyKeyWord = configReader.readLine();
-			argumentFinderRegex = configReader.readLine();
-			functionNameFinderRegex = configReader.readLine();
-
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		argumentFinder = new ArgumentFinder(argumentFinderRegex);
-		functionNameFinder = new FunctionNameFinder(functionNameFinderRegex);
+	private Configuration() {
+		// intentionally empty and private
 	}
 
-	public String getProperty(String name) {
+	private static void init() {
+		if (!isLoaded) {
+			try {
+				BufferedReader configReader;
+				configReader = new BufferedReader(new FileReader("config.txt"));
+				tableKeyWord = configReader.readLine();
+				modifierKeyWord = configReader.readLine();
+				fieldKeyWord = configReader.readLine();
+				fieldPropertyKeyWord = configReader.readLine();
+				argumentFinderRegex = configReader.readLine();
+				functionNameFinderRegex = configReader.readLine();
+				configReader.close();
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			argumentFinder = new ArgumentFinder(argumentFinderRegex);
+			functionNameFinder = new FunctionNameFinder(functionNameFinderRegex);
+			isLoaded = true;
+		}
+	}
+
+	public static String getProperty(String name) {
+		init();
 		if (name.toLowerCase().equals("tablekeyword")) {
 			return getTableKeyword();
 		}
@@ -64,35 +71,35 @@ public class Configuration {
 		return "No such property";
 	}
 
-	private String getArgumentFinderRegex() {
+	private static String getArgumentFinderRegex() {
 		return argumentFinderRegex;
 	}
 
-	private String getFunctionNameFinderRegex() {
+	private static String getFunctionNameFinderRegex() {
 		return functionNameFinderRegex;
 	}
 
-	private String getTableKeyword() {
+	private static String getTableKeyword() {
 		return tableKeyWord;
 	}
 
-	private String getFieldKeyword() {
+	private static String getFieldKeyword() {
 		return fieldKeyWord;
 	}
 
-	private String getModifierKeyword() {
+	private static String getModifierKeyword() {
 		return modifierKeyWord;
 	}
 
-	private String getFieldPropertyKeyword() {
+	private static String getFieldPropertyKeyword() {
 		return fieldPropertyKeyWord;
 	}
 
-	public ArgumentFinder getArgumentFinder() {
+	public static ArgumentFinder getArgumentFinder() {
 		return argumentFinder;
 	}
 
-	public FunctionNameFinder getFunctionNameFinder() {
+	public static FunctionNameFinder getFunctionNameFinder() {
 		return functionNameFinder;
 	}
 

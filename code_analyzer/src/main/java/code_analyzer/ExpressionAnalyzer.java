@@ -8,10 +8,8 @@ import code_analyzer.codeElements.Table;
 import code_analyzer.codeElements.UnknownElement;
 
 public class ExpressionAnalyzer {
-	Configuration configuration;
 
-	public ExpressionAnalyzer(Configuration configuration) {
-		this.configuration = configuration;
+	public ExpressionAnalyzer() {
 	}
 
 	public DBElement makeDBElement(Expression expression) {

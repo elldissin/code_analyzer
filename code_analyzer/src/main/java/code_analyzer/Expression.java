@@ -16,32 +16,30 @@ public class Expression {
 	private List<ExpressionArgument> argumentList;
 
 	private CodeElementType type;
-	private Configuration configuration;
 	private String functionName;
 
-	public Expression(String expressionString, Configuration configuration) {
+	public Expression(String expressionString) {
 		this.expressionString = expressionString;
-		this.configuration = configuration;
 		this.functionName = deduceFunctionName();
 		type = deduceType();
 		fillArgumentList();
 	}
 
 	private String deduceFunctionName() {
-		return configuration.getFunctionNameFinder().getFunctionNameFor(expressionString);
+		return Configuration.getFunctionNameFinder().getFunctionNameFor(expressionString);
 	}
 
 	private CodeElementType deduceType() {
-		if (functionName.equals(configuration.getProperty("tableKeyword"))) {
+		if (functionName.equals(Configuration.getProperty("tableKeyword"))) {
 			return TABLE;
 		}
-		if (functionName.equals(configuration.getProperty("modifierKeyword"))) {
+		if (functionName.equals(Configuration.getProperty("modifierKeyword"))) {
 			return MODIFIER;
 		}
-		if (functionName.equals(configuration.getProperty("fieldKeyword"))) {
+		if (functionName.equals(Configuration.getProperty("fieldKeyword"))) {
 			return FIELD;
 		}
-		if (functionName.equals(configuration.getProperty("fieldPropertyKeyword"))) {
+		if (functionName.equals(Configuration.getProperty("fieldPropertyKeyword"))) {
 			return FIELD_PROPERTY;
 		}
 		return WRONGTYPE;
@@ -56,7 +54,7 @@ public class Expression {
 	}
 
 	private void fillArgumentList() {
-		argumentList = configuration.getArgumentFinder().getArgumentListFor(expressionString);
+		argumentList = Configuration.getArgumentFinder().getArgumentListFor(expressionString);
 	}
 
 	public List<ExpressionArgument> getArgumentList() {

@@ -11,23 +11,22 @@ public class DBElementTest {
 
 	@Test
 	public void testGetName() {
-		Configuration configTest = new Configuration();
-		Expression exprTest = new Expression(configTest.getProperty("tableKeyword") + "(MyTable,0,\"\")", configTest);
+		Expression exprTest = new Expression(Configuration.getProperty("tableKeyword") + "(MyTable,0,\"\")");
 		DBElement dbElementTest = new Table(exprTest);
 		String assignedName = dbElementTest.getName();
 		assertTrue("Table name incorrect:" + assignedName, assignedName.equals("MyTable"));
 
-		exprTest = new Expression(configTest.getProperty("fieldKeyword") + "(MyField,0,\"\")", configTest);
+		exprTest = new Expression(Configuration.getProperty("fieldKeyword") + "(MyField,0,\"\")");
 		dbElementTest = new Field(exprTest);
 		assignedName = dbElementTest.getName();
 		assertTrue("Field name incorrect:" + assignedName, assignedName.equals("MyField"));
 
-		exprTest = new Expression(configTest.getProperty("modifierKeyword"), configTest);
+		exprTest = new Expression(Configuration.getProperty("modifierKeyword"));
 		dbElementTest = new Modifier(exprTest);
 		assignedName = dbElementTest.getName();
 		assertTrue("Modifier name incorrect:" + assignedName, assignedName.equals(exprTest.getFunctionName()));
 
-		exprTest = new Expression(configTest.getProperty("fieldPropertyKeyword"), configTest);
+		exprTest = new Expression(Configuration.getProperty("fieldPropertyKeyword"));
 		dbElementTest = new FieldProperty(exprTest);
 		assignedName = dbElementTest.getName();
 		assertTrue("Field name incorrect:" + assignedName, assignedName.equals(exprTest.getFunctionName()));
