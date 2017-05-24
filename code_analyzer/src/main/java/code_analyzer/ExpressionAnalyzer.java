@@ -5,6 +5,7 @@ import code_analyzer.codeElements.Field;
 import code_analyzer.codeElements.FieldProperty;
 import code_analyzer.codeElements.Modifier;
 import code_analyzer.codeElements.Table;
+import code_analyzer.codeElements.UnknownElement;
 
 public class ExpressionAnalyzer {
 	Configuration configuration;
@@ -28,7 +29,7 @@ public class ExpressionAnalyzer {
 			FieldProperty fieldProperty = new FieldProperty(expression);
 			return fieldProperty;
 		}
-		return null;
+		return new UnknownElement(expression);
 	}
 
 }
