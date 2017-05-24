@@ -96,10 +96,12 @@ public class Configuration {
 	}
 
 	public static ArgumentFinder getArgumentFinder() {
+		init();
 		return argumentFinder;
 	}
 
 	public static FunctionNameFinder getFunctionNameFinder() {
+		init();
 		return functionNameFinder;
 	}
 
