@@ -49,22 +49,22 @@ public class Configuration {
 
 	public static String getProperty(String name) {
 		init();
-		if (name.equals("tablekeyword")) {
+		if (name.toLowerCase().equals("tablekeyword")) {
 			return tableKeyWord;
 		}
-		if (name.equals("fieldkeyword")) {
+		if (name.toLowerCase().equals("fieldkeyword")) {
 			return fieldKeyWord;
 		}
-		if (name.equals("modifierkeyword")) {
+		if (name.toLowerCase().equals("modifierkeyword")) {
 			return modifierKeyWord;
 		}
-		if (name.equals("fieldpropertykeyword")) {
+		if (name.toLowerCase().equals("fieldpropertykeyword")) {
 			return fieldPropertyKeyWord;
 		}
-		if (name.equals("argumentfinderregex")) {
+		if (name.toLowerCase().equals("argumentfinderregex")) {
 			return argumentFinderRegex;
 		}
-		if (name.equals("functionnamefinderregex")) {
+		if (name.toLowerCase().equals("functionnamefinderregex")) {
 			return functionNameFinderRegex;
 		}
 		return "No such property";

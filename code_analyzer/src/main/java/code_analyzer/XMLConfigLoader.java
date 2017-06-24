@@ -43,16 +43,12 @@ public class XMLConfigLoader {
 		}
 	}
 
-	public Document getDoc() {
-		return doc;
-	}
-
 	public String getProperty(String name) {
 		Element root;
-		root = getDoc().getDocumentElement();
+		root = doc.getDocumentElement();
 		NodeList NodeList = root.getChildNodes();
 		for (int i = 0; i < NodeList.getLength(); i++) {
-			if (NodeList.item(i).getNodeName() == name) {
+			if (NodeList.item(i).getNodeName().toLowerCase().equals(name.toLowerCase())) {
 				return NodeList.item(i).getTextContent();
 			}
 		}
