@@ -3,6 +3,7 @@ package code_analyzer;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
+import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
 public class XMLConfigLoaderTest {
@@ -10,15 +11,17 @@ public class XMLConfigLoaderTest {
 	@Test
 	public void testGetDoc() {
 		XMLConfigLoader xMLConfigLoader = new XMLConfigLoader();
-		NodeList NodeList = xMLConfigLoader.getDoc().getElementsByTagName("tablestart");
+		Element root;
+		root = xMLConfigLoader.getDoc().getDocumentElement();
+		System.out.println(root.getNodeName());
+		System.out.println(root.getTagName());
+		NodeList NodeList = root.getChildNodes();
+		System.out.println(NodeList.getLength() + "  " + NodeList.item(3).getNodeName());
 		for (int i = 0; i < NodeList.getLength(); i++) {
-			assertTrue("Wrong XML node name", NodeList.item(i).getNodeName().equals("tablestart"));
-			if (i == 0) {
-				assertTrue("Wrong XML node name", NodeList.item(i).getTextContent().equals("one"));
-			}
-			if (i == 1) {
-				assertTrue("Wrong XML node name", NodeList.item(i).getTextContent().equals("two"));
-			}
+			if (NodeList.item(i).getNodeName() == "tablekeyword")
+				assertTrue("Wrong XML node name", NodeList.item(i).getTextContent().equals("tableStart"));
+			if (NodeList.item(i).getNodeName() == "fieldkeyword")
+				assertTrue("Wrong XML node name", NodeList.item(i).getTextContent().equals("field"));
 		}
 	}
 

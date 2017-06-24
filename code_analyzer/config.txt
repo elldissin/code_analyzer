@@ -1,5 +1,5 @@
 tableStart
-serverLink
+modifier
 field
 property
 ([^,]+\(.+?\))|([^,]+)

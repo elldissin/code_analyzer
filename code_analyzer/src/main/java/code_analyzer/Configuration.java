@@ -15,6 +15,7 @@ public class Configuration {
 	private static ArgumentFinder argumentFinder;
 	private static FunctionNameFinder functionNameFinder;
 	private static boolean isLoaded = false;
+	private static XMLConfigLoader xmlConfig;
 
 	private Configuration() {
 		// intentionally empty and private
@@ -24,13 +25,14 @@ public class Configuration {
 		if (!isLoaded) {
 			try {
 				BufferedReader configReader;
+				xmlConfig = new XMLConfigLoader();
 				configReader = new BufferedReader(new FileReader("config.txt"));
-				tableKeyWord = configReader.readLine();
-				modifierKeyWord = configReader.readLine();
-				fieldKeyWord = configReader.readLine();
-				fieldPropertyKeyWord = configReader.readLine();
-				argumentFinderRegex = configReader.readLine();
-				functionNameFinderRegex = configReader.readLine();
+				tableKeyWord = xmlConfig.getProperty("tablekeyword");
+				modifierKeyWord = xmlConfig.getProperty("fieldkeyword");
+				fieldKeyWord = xmlConfig.getProperty("modifierkeyword");
+				fieldPropertyKeyWord = xmlConfig.getProperty("fieldpropertykeyword");
+				argumentFinderRegex = xmlConfig.getProperty("argumentfinderregex");
+				functionNameFinderRegex = xmlConfig.getProperty("functionnamefinderregex");
 				configReader.close();
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
@@ -47,26 +49,23 @@ public class Configuration {
 
 	public static String getProperty(String name) {
 		init();
-		if (name.toLowerCase().equals("tablekeyword")) {
-			return getTableKeyword();
+		if (name.equals("tablekeyword")) {
+			return tableKeyWord;
 		}
-		if (name.toLowerCase().equals("fieldkeyword")) {
-			return getFieldKeyword();
+		if (name.equals("fieldkeyword")) {
+			return fieldKeyWord;
 		}
-		if (name.toLowerCase().equals("modifierkeyword")) {
-			return getModifierKeyword();
+		if (name.equals("modifierkeyword")) {
+			return modifierKeyWord;
 		}
-		if (name.toLowerCase().equals("fieldpropertykeyword")) {
-			return getFieldPropertyKeyword();
+		if (name.equals("fieldpropertykeyword")) {
+			return fieldPropertyKeyWord;
 		}
-		if (name.toLowerCase().equals("argumentfinderregex")) {
-			return getArgumentFinderRegex();
+		if (name.equals("argumentfinderregex")) {
+			return argumentFinderRegex;
 		}
-		if (name.toLowerCase().equals("functionnamefinderregex")) {
-			return getFunctionNameFinderRegex();
-		}
-		if (name.toLowerCase().equals("functionnamefinderregex")) {
-			return getFunctionNameFinderRegex();
+		if (name.equals("functionnamefinderregex")) {
+			return functionNameFinderRegex;
 		}
 		return "No such property";
 	}

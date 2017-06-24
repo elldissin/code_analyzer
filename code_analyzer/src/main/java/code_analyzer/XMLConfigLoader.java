@@ -10,6 +10,7 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 public class XMLConfigLoader {
@@ -26,8 +27,7 @@ public class XMLConfigLoader {
 			// ByteArrayInputStream input = new
 			// ByteArrayInputStream(xmlStringBuilder.toString().getBytes("UTF-8"));
 			doc = builder.parse(inputFile);
-			Element root = doc.getDocumentElement();
-			System.out.println("Root element :" + root.getNodeName());
+
 		} catch (ParserConfigurationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -47,4 +47,15 @@ public class XMLConfigLoader {
 		return doc;
 	}
 
+	public String getProperty(String name) {
+		Element root;
+		root = getDoc().getDocumentElement();
+		NodeList NodeList = root.getChildNodes();
+		for (int i = 0; i < NodeList.getLength(); i++) {
+			if (NodeList.item(i).getNodeName() == name) {
+				return NodeList.item(i).getTextContent();
+			}
+		}
+		return "No such property";
+	}
 }

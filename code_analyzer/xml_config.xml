@@ -1,6 +1,10 @@
 <?xml version="1.0"?> 
 	<config>
-		<tablestart>one</tablestart>
-		<tablestart>two</tablestart>
+		<tablekeyword>tableStart</tablekeyword>
+		<fieldkeyword>field</fieldkeyword>
+		<modifierkeyword>modifier</modifierkeyword>
+		<fieldpropertykeyword>property</fieldpropertykeyword>
+		<argumentfinderregex>([^,]+\(.+?\))|([^,]+)</argumentfinderregex>
+		<functionnamefinderregex>([^\(\)]+)(\(.+\))*</functionnamefinderregex>
 	</config>
 	
