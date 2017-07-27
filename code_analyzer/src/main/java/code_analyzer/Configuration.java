@@ -12,6 +12,7 @@ public class Configuration {
 	private static String fieldPropertyKeyWord;
 	private static String argumentFinderRegex;
 	private static String functionNameFinderRegex;
+	private static String targetFileType;
 	private static ArgumentFinder argumentFinder;
 	private static FunctionNameFinder functionNameFinder;
 	private static boolean isLoaded = false;
@@ -33,6 +34,7 @@ public class Configuration {
 				fieldPropertyKeyWord = xmlConfig.getProperty("fieldpropertykeyword");
 				argumentFinderRegex = xmlConfig.getProperty("argumentfinderregex");
 				functionNameFinderRegex = xmlConfig.getProperty("functionnamefinderregex");
+				targetFileType = xmlConfig.getProperty("targetfiletype");
 				configReader.close();
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
@@ -66,6 +68,9 @@ public class Configuration {
 		}
 		if (name.toLowerCase().equals("functionnamefinderregex")) {
 			return functionNameFinderRegex;
+		}
+		if (name.toLowerCase().equals("targetfiletype")) {
+			return targetFileType;
 		}
 		return "No such property";
 	}

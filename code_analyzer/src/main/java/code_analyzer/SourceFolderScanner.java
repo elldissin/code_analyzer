@@ -18,7 +18,7 @@ public class SourceFolderScanner {
 			if (fileEntry.isDirectory()) {
 				scanFolder(fileEntry);
 			} else {
-				if (fileEntry.getName().toLowerCase().endsWith(".txt"))
+				if (fileEntry.getName().toLowerCase().endsWith(Configuration.getProperty("targetfiletype")))
 					if (!fileEntry.getName().toLowerCase().endsWith("config.txt")) {
 						foundFileList.add(fileEntry);
 					}
