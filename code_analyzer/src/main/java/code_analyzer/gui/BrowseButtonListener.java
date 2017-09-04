@@ -7,14 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JFileChooser;
-import javax.swing.tree.DefaultMutableTreeNode;
 
-import code_analyzer.BatchFileReader;
-import code_analyzer.ExpressionAnalyzer;
-import code_analyzer.ExpressionScanner;
-import code_analyzer.SourceFolderScanner;
-import code_analyzer.codeElements.DBElement;
-import code_analyzer.codeElements.DBStructure;
+import code_analyzer.db_elements.DBElement;
+import code_analyzer.db_elements.DBStructure;
+import code_analyzer.source_analyze.BatchFileReader;
+import code_analyzer.source_analyze.ExpressionAnalyzer;
+import code_analyzer.source_analyze.ExpressionScanner;
+import code_analyzer.source_analyze.SourceFolderScanner;
 
 public class BrowseButtonListener implements ActionListener {
 	MenuPanel menuPanel;
@@ -34,13 +33,13 @@ public class BrowseButtonListener implements ActionListener {
 		chooser.setCurrentDirectory(new File("."));
 		chooser.setAcceptAllFileFilterUsed(false);
 		int returnVal = chooser.showOpenDialog(menuPanel);
+		DBStructure dBStructure = new DBStructure();
 		if (returnVal == JFileChooser.APPROVE_OPTION) {
 
 			sourceFolderScanner = new SourceFolderScanner(chooser.getSelectedFile().getPath());
 			String result = batchFileReader.readFilesContent(sourceFolderScanner.getFileList());
 			ExpressionScanner expressionScanner = new ExpressionScanner(result);
 			ExpressionAnalyzer expressionAnalyzer = new ExpressionAnalyzer();
-			DBStructure dBStructure = new DBStructure();
 			while (!expressionScanner.isEmpty()) {
 				DBElement dBElement = expressionAnalyzer.makeDBElement(expressionScanner.getNextExpression());
 				if (dBElement != null) {
@@ -53,10 +52,7 @@ public class BrowseButtonListener implements ActionListener {
 
 		}
 		contentPanel.setNewTableList(this.getTableList());
-		for (int i = 0; i < tableList.size(); i++) {
-			DefaultMutableTreeNode lvl2node = new DefaultMutableTreeNode(tableList.get(i));
-			contentPanel.tree.lvl1node.add(lvl2node);
-		}
+		contentPanel.tree.setDB(dBStructure);
 
 	}
 

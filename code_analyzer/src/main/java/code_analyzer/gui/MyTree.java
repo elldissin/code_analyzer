@@ -6,6 +6,8 @@ import javax.swing.JPanel;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 
+import code_analyzer.db_elements.DBStructure;
+
 public class MyTree extends JPanel {
 	JTree tree;
 	WindowPanel windowPanel;
@@ -22,5 +24,17 @@ public class MyTree extends JPanel {
 		this.add(tree);
 		this.setForeground(Color.GREEN);
 		this.setBackground(Color.BLACK);
+	}
+
+	public void setDB(DBStructure dBStructure) {
+		for (int i = 0; i < dBStructure.getTableList().size(); i++) {
+			DefaultMutableTreeNode lvl2node = new DefaultMutableTreeNode(dBStructure.getTableList().get(i).getName());
+			lvl1node.add(lvl2node);
+			for (int j = 0; j < dBStructure.getTableList().get(i).getChildList().size(); j++) {
+				DefaultMutableTreeNode lvl3node = new DefaultMutableTreeNode(
+						dBStructure.getTableList().get(i).getChildList().get(i).getName());
+				lvl2node.add(lvl3node);
+			}
+		}
 	}
 }

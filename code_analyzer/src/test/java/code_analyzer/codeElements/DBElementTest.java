@@ -4,8 +4,13 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import code_analyzer.Configuration;
-import code_analyzer.Expression;
+import code_analyzer.db_elements.DBElement;
+import code_analyzer.db_elements.Field;
+import code_analyzer.db_elements.FieldProperty;
+import code_analyzer.db_elements.Modifier;
+import code_analyzer.db_elements.Table;
+import code_analyzer.source_analyze.Configuration;
+import code_analyzer.source_analyze.Expression;
 
 public class DBElementTest {
 

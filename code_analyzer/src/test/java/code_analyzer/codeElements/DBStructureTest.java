@@ -1,16 +1,22 @@
 package code_analyzer.codeElements;
 
-import static code_analyzer.codeElements.CodeElementType.FIELD;
-import static code_analyzer.codeElements.CodeElementType.FIELD_PROPERTY;
-import static code_analyzer.codeElements.CodeElementType.MODIFIER;
+import static code_analyzer.db_elements.DBElementType.FIELD;
+import static code_analyzer.db_elements.DBElementType.FIELD_PROPERTY;
+import static code_analyzer.db_elements.DBElementType.MODIFIER;
 import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
 import org.junit.Test;
 
-import code_analyzer.Configuration;
-import code_analyzer.Expression;
+import code_analyzer.db_elements.DBElement;
+import code_analyzer.db_elements.DBStructure;
+import code_analyzer.db_elements.Field;
+import code_analyzer.db_elements.FieldProperty;
+import code_analyzer.db_elements.Modifier;
+import code_analyzer.db_elements.Table;
+import code_analyzer.source_analyze.Configuration;
+import code_analyzer.source_analyze.Expression;
 
 public class DBStructureTest {
 	private DBStructure dBStructure = new DBStructure();
