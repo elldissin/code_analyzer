@@ -21,10 +21,12 @@ public class BrowseButtonListener implements ActionListener {
 	BatchFileReader batchFileReader = new BatchFileReader();
 	List<String> tableList = new ArrayList<String>();
 	ContentPanel contentPanel;
+	DBStructure dBStructure;
 
 	public BrowseButtonListener(MenuPanel menuPanel, ContentPanel contentPanel) {
 		this.contentPanel = contentPanel;
 		this.menuPanel = menuPanel;
+		this.dBStructure = contentPanel.dBStructure;
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -33,7 +35,7 @@ public class BrowseButtonListener implements ActionListener {
 		chooser.setCurrentDirectory(new File("."));
 		chooser.setAcceptAllFileFilterUsed(false);
 		int returnVal = chooser.showOpenDialog(menuPanel);
-		DBStructure dBStructure = new DBStructure();
+		// DBStructure dBStructure = new DBStructure();
 		if (returnVal == JFileChooser.APPROVE_OPTION) {
 
 			sourceFolderScanner = new SourceFolderScanner(chooser.getSelectedFile().getPath());

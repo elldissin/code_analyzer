@@ -11,6 +11,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 
+import code_analyzer.db_elements.DBStructure;
+
 public class ContentPanel extends JPanel {
 	JScrollPane tableListPanel;
 	JList tableJList;
@@ -20,8 +22,10 @@ public class ContentPanel extends JPanel {
 	String tableListSrting[] = { "Tanble1", "Tanble2", "Tanble3" };
 	WindowPanel windowPanel;
 	TableListSelectionListener tableListSelectionListener;
+	DBStructure dBStructure = new DBStructure();
 
 	ContentPanel(WindowPanel windowPanel) {
+
 		this.windowPanel = windowPanel;
 		this.setLayout(new GridLayout(1, 3));
 		this.setPreferredSize(new Dimension(600, 600));
@@ -30,7 +34,7 @@ public class ContentPanel extends JPanel {
 		tableJList.setForeground(Color.GREEN);
 		tableJList.setBackground(Color.BLACK);
 		tableListPanel = new JScrollPane(tableJList);
-		tableListSelectionListener = new TableListSelectionListener(windowPanel);
+		tableListSelectionListener = new TableListSelectionListener(this);
 		tableJList.addListSelectionListener(tableListSelectionListener);
 		this.add(tableListPanel);
 
@@ -55,7 +59,7 @@ public class ContentPanel extends JPanel {
 		this.removeAll();
 		tableJList = new JList(tableListSrting);
 		tableListPanel = new JScrollPane(tableJList);
-		TableListSelectionListener tableListSelectionListener = new TableListSelectionListener(windowPanel);
+		TableListSelectionListener tableListSelectionListener = new TableListSelectionListener(this);
 		tableJList.addListSelectionListener(tableListSelectionListener);
 		tableJList.setForeground(Color.GREEN);
 		tableJList.setBackground(Color.BLACK);
