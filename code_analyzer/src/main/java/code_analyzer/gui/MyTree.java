@@ -32,7 +32,7 @@ public class MyTree extends JPanel {
 			lvl1node.add(lvl2node);
 			for (int j = 0; j < dBStructure.getTableList().get(i).getChildList().size(); j++) {
 				DefaultMutableTreeNode lvl3node = new DefaultMutableTreeNode(
-						dBStructure.getTableList().get(i).getChildList().get(i).getName());
+						dBStructure.getTableList().get(i).getChildList().get(j).getName());
 				lvl2node.add(lvl3node);
 			}
 		}
