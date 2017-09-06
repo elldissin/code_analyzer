@@ -19,7 +19,7 @@ public class ContentPanel extends JPanel {
 	JLabel fieldList;
 	MyTree tree;
 	JScrollPane treePanel;
-	String tableListSrting[] = { "Tanble1", "Tanble2", "Tanble3" };
+	String tableListSrting[] = { "Table list:" };
 	WindowPanel windowPanel;
 	TableListSelectionListener tableListSelectionListener;
 	DBStructure dBStructure = new DBStructure();
@@ -39,6 +39,7 @@ public class ContentPanel extends JPanel {
 		this.add(tableListPanel);
 
 		fieldList = new JLabel();
+		fieldList.setText("Field list:");
 		fieldList.setVerticalAlignment(SwingConstants.TOP);
 		fieldList.setForeground(Color.GREEN);
 		this.setBackground(Color.BLACK);

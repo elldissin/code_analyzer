@@ -15,15 +15,15 @@ public class TableListSelectionListener implements ListSelectionListener {
 	public void valueChanged(ListSelectionEvent e) {
 		{
 			String s = (String) windowPanel.contentPanel.tableJList.getSelectedValue();
-			// FIXME needed to make new lines
 			int i = windowPanel.contentPanel.tableJList.getSelectedIndex();
-
-			String FieldNames = " ";
+			windowPanel.contentPanel.fieldList.setText("<html>");
+			String FieldNames;
 			for (int j = 0; j < contentPanel.dBStructure.getTableList().get(i).getChildList().size(); j++) {
-				FieldNames = FieldNames + "   "
-						+ contentPanel.dBStructure.getTableList().get(i).getChildList().get(j).getName();
+				FieldNames = contentPanel.dBStructure.getTableList().get(i).getChildList().get(j).getName();
+				windowPanel.contentPanel.fieldList
+						.setText(windowPanel.contentPanel.fieldList.getText() + FieldNames + "<br>");
 			}
-			windowPanel.contentPanel.fieldList.setText(FieldNames);
+
 		}
 
 	}
