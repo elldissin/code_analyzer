@@ -42,8 +42,12 @@ public class ContentPanel extends JPanel {
 		fieldList.setText("Field list:");
 		fieldList.setVerticalAlignment(SwingConstants.TOP);
 		fieldList.setForeground(Color.GREEN);
-		this.setBackground(Color.BLACK);
-		this.add(fieldList);
+		fieldList.setOpaque(true);
+		fieldList.setBackground(Color.BLACK);
+		JScrollPane fieldListScroller = new JScrollPane(fieldList, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+				JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		// FIXME scroll disappeared
+		this.add(fieldListScroller);
 
 		tree = new MyTree(windowPanel);
 		treePanel = new JScrollPane(tree);
