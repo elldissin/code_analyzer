@@ -38,7 +38,6 @@ public class BrowseButtonListener implements ActionListener {
 		chooser.setCurrentDirectory(new File("."));
 		chooser.setAcceptAllFileFilterUsed(false);
 		int returnVal = chooser.showOpenDialog(menuPanel);
-		// DBStructure dBStructure = new DBStructure();
 		if (returnVal == JFileChooser.APPROVE_OPTION) {
 
 			sourceFolderScanner = new SourceFolderScanner(chooser.getSelectedFile().getPath());
@@ -58,7 +57,6 @@ public class BrowseButtonListener implements ActionListener {
 			for (int j = 0; j < dBStructure.getTableList().size(); j++) {
 				tableList.add(dBStructure.getTableList().get(j).getName());
 			}
-			System.out.println(tableList.size());
 		}
 		contentPanel.setNewTableList(getTableList());
 		contentPanel.tree.setDB(dBStructure);
