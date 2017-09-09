@@ -17,6 +17,7 @@ public class ContentPanel extends JPanel {
 	JScrollPane tableListPanel;
 	JList tableJList;
 	JLabel fieldList;
+	JScrollPane fieldListScroller;
 	MyTree tree;
 	JScrollPane treePanel;
 	String tableListSrting[] = { "Table list:" };
@@ -44,8 +45,7 @@ public class ContentPanel extends JPanel {
 		fieldList.setForeground(Color.GREEN);
 		fieldList.setOpaque(true);
 		fieldList.setBackground(Color.BLACK);
-		JScrollPane fieldListScroller = new JScrollPane(fieldList, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
-				JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		JScrollPane fieldListScroller = new JScrollPane(fieldList);
 		// FIXME scroll disappeared
 		this.add(fieldListScroller);
 
@@ -64,12 +64,13 @@ public class ContentPanel extends JPanel {
 		this.removeAll();
 		tableJList = new JList(tableListSrting);
 		tableListPanel = new JScrollPane(tableJList);
+		fieldListScroller = new JScrollPane(fieldList);
 		TableListSelectionListener tableListSelectionListener = new TableListSelectionListener(this);
 		tableJList.addListSelectionListener(tableListSelectionListener);
 		tableJList.setForeground(Color.GREEN);
 		tableJList.setBackground(Color.BLACK);
 		this.add(tableListPanel);
-		this.add(fieldList);
+		this.add(fieldListScroller);
 		this.add(treePanel);
 		this.repaint();
 		this.revalidate();
