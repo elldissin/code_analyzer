@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 
 public class StatusPanel extends JPanel {
 	WindowPanel windowPanel;
+	JLabel info3;
 
 	StatusPanel(WindowPanel windowPanel) {
 		this.windowPanel = windowPanel;
@@ -19,7 +20,7 @@ public class StatusPanel extends JPanel {
 		info2.setText("Info:");
 		this.add(info2);
 
-		JLabel info3 = new JLabel();
+		info3 = new JLabel();
 		info3.setText("Path:");
 		this.add(info3);
 	}

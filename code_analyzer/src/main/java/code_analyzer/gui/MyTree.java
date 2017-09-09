@@ -27,6 +27,7 @@ public class MyTree extends JPanel {
 	}
 
 	public void setDB(DBStructure dBStructure) {
+		lvl1node.removeAllChildren();
 		for (int i = 0; i < dBStructure.getTableList().size(); i++) {
 			DefaultMutableTreeNode lvl2node = new DefaultMutableTreeNode(dBStructure.getTableList().get(i).getName());
 			lvl1node.add(lvl2node);

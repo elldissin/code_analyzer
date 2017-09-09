@@ -40,4 +40,14 @@ public class DBStructure {
 		return processingFieldStack;
 	}
 
+	public void clear() {
+		tableList.clear();
+		fieldList.clear();
+		modifierList.clear();
+		fieldPropertyList.clear();
+		processingTableStack.clear();
+		processingFieldStack.clear();
+		return;
+	}
+
 }

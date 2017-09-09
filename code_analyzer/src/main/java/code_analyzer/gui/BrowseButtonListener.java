@@ -30,6 +30,9 @@ public class BrowseButtonListener implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		batchFileReader.setFileIndex(0);
+		dBStructure.clear();
+		tableList.clear();
 		JFileChooser chooser = new JFileChooser();
 		chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 		chooser.setCurrentDirectory(new File("."));
@@ -39,21 +42,25 @@ public class BrowseButtonListener implements ActionListener {
 		if (returnVal == JFileChooser.APPROVE_OPTION) {
 
 			sourceFolderScanner = new SourceFolderScanner(chooser.getSelectedFile().getPath());
-			String result = batchFileReader.readFilesContent(sourceFolderScanner.getFileList());
-			ExpressionScanner expressionScanner = new ExpressionScanner(result);
 			ExpressionAnalyzer expressionAnalyzer = new ExpressionAnalyzer();
-			while (!expressionScanner.isEmpty()) {
-				DBElement dBElement = expressionAnalyzer.makeDBElement(expressionScanner.getNextExpression());
-				if (dBElement != null) {
-					dBStructure.putCodeElement(dBElement);
+			List<File> tempFileList = sourceFolderScanner.getFileList();
+			for (int i = 0; i < tempFileList.size(); i++) {
+				String result = batchFileReader.readFilesContent(tempFileList);
+				ExpressionScanner expressionScanner = new ExpressionScanner(result);
+				while (!expressionScanner.isEmpty()) {
+					DBElement dBElement = expressionAnalyzer.makeDBElement(expressionScanner.getNextExpression());
+					dBElement.setfileName(batchFileReader.getCurrentFileName(i));
+					if (dBElement != null) {
+						dBStructure.putCodeElement(dBElement);
+					}
 				}
 			}
-			for (int i = 0; i < dBStructure.getTableList().size(); i++) {
-				tableList.add(dBStructure.getTableList().get(i).getName());
+			for (int j = 0; j < dBStructure.getTableList().size(); j++) {
+				tableList.add(dBStructure.getTableList().get(j).getName());
 			}
-
+			System.out.println(tableList.size());
 		}
-		contentPanel.setNewTableList(this.getTableList());
+		contentPanel.setNewTableList(getTableList());
 		contentPanel.tree.setDB(dBStructure);
 
 	}

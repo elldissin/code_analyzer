@@ -7,7 +7,7 @@ import code_analyzer.source_analyze.Expression;
 
 public abstract class DBElement {
 	protected String name;
-
+	protected String fileName;
 	protected Expression expression;
 	protected DBElementType type;
 	protected List<DBElement> childList;
@@ -42,5 +42,14 @@ public abstract class DBElement {
 
 	public String getName() {
 		return name;
+	}
+
+	public String getfileName() {
+		return fileName;
+	}
+
+	public void setfileName(String fileName) {
+		this.fileName = fileName;
+		return;
 	}
 }

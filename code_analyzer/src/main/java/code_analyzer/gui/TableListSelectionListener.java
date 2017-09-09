@@ -23,7 +23,8 @@ public class TableListSelectionListener implements ListSelectionListener {
 				windowPanel.contentPanel.fieldList
 						.setText(windowPanel.contentPanel.fieldList.getText() + FieldNames + "<br>");
 			}
-
+			windowPanel.statusPanel.info3
+					.setText("Path:" + contentPanel.dBStructure.getTableList().get(i).getfileName());
 		}
 
 	}
