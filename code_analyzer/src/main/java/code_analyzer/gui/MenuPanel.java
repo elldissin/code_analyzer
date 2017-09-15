@@ -12,6 +12,7 @@ public class MenuPanel extends JPanel {
 	JTextField searchField;
 	WindowPanel windowPanel;
 	BrowseButtonListener browseButtonListener;
+	JButton searchButton;
 
 	MenuPanel(WindowPanel windowPanel) {
 		this.windowPanel = windowPanel;
@@ -25,10 +26,12 @@ public class MenuPanel extends JPanel {
 		this.add(searchBox);
 
 		searchField = new JTextField();
+		searchField.addKeyListener(new SearchFieldListener(this));
 		searchField.setPreferredSize(new Dimension(300, 27));
+		searchField.setText("ghyj");
 		this.add(searchField);
 
-		JButton searchButton = new JButton();
+		searchButton = new JButton();
 		searchButton.setText("Search");
 		SearchButtonListener searchButtonListener = new SearchButtonListener(windowPanel);
 		searchButton.addActionListener(searchButtonListener);

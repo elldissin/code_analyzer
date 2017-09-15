@@ -50,4 +50,13 @@ public class DBStructure {
 		return;
 	}
 
+	public int getIndexByName(String name) {
+		int index = -1;
+		for (int i = 0; i < tableList.size(); i++) {
+			if (name == tableList.get(i).getName()) {
+				index = i;
+			}
+		}
+		return index;
+	}
 }

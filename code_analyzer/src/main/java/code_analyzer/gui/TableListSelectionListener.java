@@ -14,8 +14,9 @@ public class TableListSelectionListener implements ListSelectionListener {
 
 	public void valueChanged(ListSelectionEvent e) {
 		{
-			String s = (String) windowPanel.contentPanel.tableJList.getSelectedValue();
-			int i = windowPanel.contentPanel.tableJList.getSelectedIndex();
+			String name = (String) windowPanel.contentPanel.tableJList.getSelectedValue();
+			// int i = windowPanel.contentPanel.tableJList.getSelectedIndex();
+			int i = contentPanel.dBStructure.getIndexByName(name);
 			windowPanel.contentPanel.fieldList.setText("<html>");
 			String FieldNames;
 			for (int j = 0; j < contentPanel.dBStructure.getTableList().get(i).getChildList().size(); j++) {
