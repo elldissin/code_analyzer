@@ -28,7 +28,6 @@ public class MenuPanel extends JPanel {
 		searchField = new JTextField();
 		searchField.addKeyListener(new SearchFieldListener(this));
 		searchField.setPreferredSize(new Dimension(300, 27));
-		searchField.setText("ghyj");
 		this.add(searchField);
 
 		searchButton = new JButton();
