@@ -14,15 +14,15 @@ import javax.swing.SwingConstants;
 import code_analyzer.db_elements.DBStructure;
 
 public class ContentPanel extends JPanel {
-	JScrollPane tableListPanel;
-	JList tableJList;
+	JScrollPane leftPanel;
+	JList leftPanelJList;
 	JLabel fieldList;
 	JScrollPane fieldListScroller;
 	MyTree tree;
 	JScrollPane treePanel;
-	String tableListSrting[] = { "Table list:" };
+	String leftPanelSrting[] = {};
 	WindowPanel windowPanel;
-	TableListSelectionListener tableListSelectionListener;
+	LeftPanelSelectionListener leftPanelSelectionListener;
 	DBStructure dBStructure = new DBStructure();
 
 	ContentPanel(WindowPanel windowPanel) {
@@ -31,13 +31,13 @@ public class ContentPanel extends JPanel {
 		this.setLayout(new GridLayout(1, 3));
 		this.setPreferredSize(new Dimension(600, 600));
 
-		tableJList = new JList(tableListSrting);
-		tableJList.setForeground(Color.GREEN);
-		tableJList.setBackground(Color.BLACK);
-		tableListPanel = new JScrollPane(tableJList);
-		tableListSelectionListener = new TableListSelectionListener(this);
-		tableJList.addListSelectionListener(tableListSelectionListener);
-		this.add(tableListPanel);
+		leftPanelJList = new JList(leftPanelSrting);
+		leftPanelJList.setForeground(Color.GREEN);
+		leftPanelJList.setBackground(Color.BLACK);
+		leftPanel = new JScrollPane(leftPanelJList);
+		leftPanelSelectionListener = new LeftPanelSelectionListener(this);
+		leftPanelJList.addListSelectionListener(leftPanelSelectionListener);
+		this.add(leftPanel);
 
 		fieldList = new JLabel();
 		fieldList.setText("Field list:");
@@ -55,21 +55,21 @@ public class ContentPanel extends JPanel {
 
 	}
 
-	void setNewTableList(List<String> tableList) {
-		tableListSrting = new String[tableList.size()];
+	void setNewLeftPanelList(List<String> tableList) {
+		leftPanelSrting = new String[tableList.size()];
 		for (int i = 0; i < tableList.size(); i++) {
-			tableListSrting[i] = tableList.get(i);
+			leftPanelSrting[i] = tableList.get(i);
 		}
 
 		this.removeAll();
-		tableJList = new JList(tableListSrting);
-		tableListPanel = new JScrollPane(tableJList);
+		leftPanelJList = new JList(leftPanelSrting);
+		leftPanel = new JScrollPane(leftPanelJList);
 		fieldListScroller = new JScrollPane(fieldList);
-		TableListSelectionListener tableListSelectionListener = new TableListSelectionListener(this);
-		tableJList.addListSelectionListener(tableListSelectionListener);
-		tableJList.setForeground(Color.GREEN);
-		tableJList.setBackground(Color.BLACK);
-		this.add(tableListPanel);
+		LeftPanelSelectionListener leftPanelSelectionListener = new LeftPanelSelectionListener(this);
+		leftPanelJList.addListSelectionListener(leftPanelSelectionListener);
+		leftPanelJList.setForeground(Color.GREEN);
+		leftPanelJList.setBackground(Color.BLACK);
+		this.add(leftPanel);
 		this.add(fieldListScroller);
 		this.add(treePanel);
 		this.repaint();

@@ -19,7 +19,8 @@ public class BrowseButtonListener implements ActionListener {
 	MenuPanel menuPanel;
 	SourceFolderScanner sourceFolderScanner;
 	BatchFileReader batchFileReader = new BatchFileReader();
-	List<String> tableList = new ArrayList<String>();
+	private List<String> tableList = new ArrayList<String>();
+	private List<String> fieldList = new ArrayList<String>();
 	ContentPanel contentPanel;
 	DBStructure dBStructure;
 
@@ -54,11 +55,14 @@ public class BrowseButtonListener implements ActionListener {
 					}
 				}
 			}
-			for (int j = 0; j < dBStructure.getTableList().size(); j++) {
-				tableList.add(dBStructure.getTableList().get(j).getName());
+			for (int i = 0; i < dBStructure.getTableList().size(); i++) {
+				tableList.add(dBStructure.getTableList().get(i).getName());
+			}
+			for (int i = 0; i < dBStructure.getFieldList().size(); i++) {
+				fieldList.add(dBStructure.getFieldList().get(i).getName());
 			}
 		}
-		contentPanel.setNewTableList(getTableList());
+		contentPanel.setNewLeftPanelList(getTableList());
 		contentPanel.tree.setDB(dBStructure);
 
 	}
@@ -67,4 +71,7 @@ public class BrowseButtonListener implements ActionListener {
 		return tableList;
 	}
 
+	public List<String> getFieldList() {
+		return fieldList;
+	}
 }

@@ -59,4 +59,15 @@ public class DBStructure {
 		}
 		return index;
 	}
+
+	public List<String> getTablesByFieldName(String name) {
+		List<String> list = new ArrayList<String>();
+		for (int i = 0; i < tableList.size(); i++) {
+			for (int j = 0; j < tableList.get(i).getChildList().size(); j++)
+				if (name == tableList.get(i).getChildList().get(j).getName()) {
+					list.add(tableList.get(i).getName());
+				}
+		}
+		return list;
+	}
 }

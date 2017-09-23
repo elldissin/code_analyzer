@@ -19,13 +19,15 @@ public class SearchButtonListener implements ActionListener {
 
 		if (windowPanel.menuPanel.searchBox.getSelectedIndex() == 0) {
 			searchList = windowPanel.menuPanel.browseButtonListener.getTableList();
-			for (int i = 0; i < searchList.size(); i++) {
-				if (searchList.get(i).toLowerCase().matches(searchExpression) == true) {
-					findedList.add(searchList.get(i));
-				}
-			}
-			windowPanel.contentPanel.setNewTableList(findedList);
 		}
-
+		if (windowPanel.menuPanel.searchBox.getSelectedIndex() == 1) {
+			searchList = windowPanel.menuPanel.browseButtonListener.getFieldList();
+		}
+		for (int i = 0; i < searchList.size(); i++) {
+			if (searchList.get(i).toLowerCase().matches(searchExpression) == true) {
+				findedList.add(searchList.get(i));
+			}
+		}
+		windowPanel.contentPanel.setNewLeftPanelList(findedList);
 	}
 }

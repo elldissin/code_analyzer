@@ -11,6 +11,7 @@ public abstract class DBElement {
 	protected Expression expression;
 	protected DBElementType type;
 	protected List<DBElement> childList;
+	protected DBElement parent;
 
 	public DBElement(Expression expression) {
 		childList = new ArrayList<DBElement>();
@@ -30,6 +31,15 @@ public abstract class DBElement {
 
 	public List<DBElement> getChildList() {
 		return childList;
+	}
+
+	public DBElement getParent() {
+		return parent;
+	}
+
+	public void setParent(DBElement parent) {
+		this.parent = parent;
+		return;
 	}
 
 	public void addChild(DBElement element) {

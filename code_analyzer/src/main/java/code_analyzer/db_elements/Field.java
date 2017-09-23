@@ -14,6 +14,7 @@ public class Field extends DBElement {
 		dbMaker.getFieldList().add(this);
 		if (!(dbMaker.getProcessingTableStack().isEmpty())) {
 			dbMaker.getProcessingTableStack().peek().addChild(this);
+			this.setParent(dbMaker.getProcessingTableStack().peek());
 		}
 		if (!(dbMaker.getProcessingFieldStack().isEmpty())) {
 			dbMaker.getProcessingFieldStack().pop();
