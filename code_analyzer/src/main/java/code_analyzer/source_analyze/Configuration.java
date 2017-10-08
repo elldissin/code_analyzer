@@ -1,10 +1,5 @@
 package code_analyzer.source_analyze;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-
 public class Configuration {
 	private static String tableKeyWord;
 	private static String modifierKeyWord;
@@ -24,25 +19,15 @@ public class Configuration {
 
 	private static void init() {
 		if (!isLoaded) {
-			try {
-				BufferedReader configReader;
-				xmlConfig = new XMLConfigLoader();
-				configReader = new BufferedReader(new FileReader("config.txt"));
-				tableKeyWord = xmlConfig.getProperty("tablekeyword");
-				modifierKeyWord = xmlConfig.getProperty("modifierkeyword");
-				fieldKeyWord = xmlConfig.getProperty("fieldkeyword");
-				fieldPropertyKeyWord = xmlConfig.getProperty("fieldpropertykeyword");
-				argumentFinderRegex = xmlConfig.getProperty("argumentfinderregex");
-				functionNameFinderRegex = xmlConfig.getProperty("functionnamefinderregex");
-				targetFileType = xmlConfig.getProperty("targetfiletype");
-				configReader.close();
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+
+			xmlConfig = new XMLConfigLoader();
+			tableKeyWord = xmlConfig.getProperty("tablekeyword");
+			modifierKeyWord = xmlConfig.getProperty("modifierkeyword");
+			fieldKeyWord = xmlConfig.getProperty("fieldkeyword");
+			fieldPropertyKeyWord = xmlConfig.getProperty("fieldpropertykeyword");
+			argumentFinderRegex = xmlConfig.getProperty("argumentfinderregex");
+			functionNameFinderRegex = xmlConfig.getProperty("functionnamefinderregex");
+			targetFileType = xmlConfig.getProperty("targetfiletype");
 			argumentFinder = new ArgumentFinder(argumentFinderRegex);
 			functionNameFinder = new FunctionNameFinder(functionNameFinderRegex);
 			isLoaded = true;
