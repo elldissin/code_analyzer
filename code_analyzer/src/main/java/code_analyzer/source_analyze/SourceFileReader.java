@@ -6,6 +6,13 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class SourceFileReader {
+	private BufferedReader reader;
+	private int lastReadChar;
+
+	public SourceFileReader(BufferedReader reader) {
+		this.reader = reader;
+	}
+
 	public static String readFileContent(String fileName) {
 		String lastReadLine = new String();
 		String wholeFile = new String();
@@ -24,5 +31,23 @@ public class SourceFileReader {
 			e.printStackTrace();
 		}
 		return wholeFile;
+	}
+
+	public char getNextChar() {
+		return (char) (lastReadChar);
+	}
+
+	public boolean isEmpty() {
+		lastReadChar = -1;
+		try {
+			lastReadChar = reader.read();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if (lastReadChar == -1) {
+			return true;
+		}
+		return false;
 	}
 }
