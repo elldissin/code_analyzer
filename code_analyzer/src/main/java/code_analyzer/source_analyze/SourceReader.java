@@ -19,18 +19,15 @@ public class SourceReader {
 	}
 
 	public char getNextChar() {
-		return sourceFileReaderList.get(currentFileIndex).getNextChar();
-
-	}
-
-	public boolean isEmpty() {
-		if (currentFileIndex >= sourceFilesList.size()) {
-			return true;
-		}
-		if (sourceFileReaderList.get(currentFileIndex).isEmpty()) {
+		char achar;
+		achar = sourceFileReaderList.get(currentFileIndex).getNextChar();
+		if ((int) (achar) == -1) {
 			currentFileIndex++;
-			return isEmpty();// recursively skip all empty files
+			if (currentFileIndex >= sourceFilesList.size()) {
+				return (char) (-1);
+			}
+			return getNextChar();
 		}
-		return false;
+		return achar;
 	}
 }

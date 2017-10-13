@@ -34,20 +34,12 @@ public class SourceFileReader {
 	}
 
 	public char getNextChar() {
-		return (char) (lastReadChar);
-	}
-
-	public boolean isEmpty() {
-		lastReadChar = -1;
 		try {
 			lastReadChar = reader.read();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		if (lastReadChar == -1) {
-			return true;
-		}
-		return false;
+		return (char) (lastReadChar);
 	}
 }
