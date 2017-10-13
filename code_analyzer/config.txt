@@ -1,6 +1,0 @@
-tableStart
-modifier
-field
-property
-([^,]+\(.+?\))|([^,]+)
-([^\(\)]+)(\(.+\))*
