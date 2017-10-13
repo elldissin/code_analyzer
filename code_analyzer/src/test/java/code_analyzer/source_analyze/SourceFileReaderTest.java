@@ -15,7 +15,7 @@ public class SourceFileReaderTest {
 		SourceFileReader sourceFileReader = new SourceFileReader(new BufferedReader(new StringReader("abcdef")));
 		boolean res = false;
 		int charCount = 5;
-		char achar = 0;
+		int achar = -1;
 		for (int i = 0; i < charCount; i++) {
 			achar = sourceFileReader.getNextChar();
 		}

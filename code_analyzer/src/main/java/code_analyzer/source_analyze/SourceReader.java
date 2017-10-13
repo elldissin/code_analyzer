@@ -1,29 +1,31 @@
 package code_analyzer.source_analyze;
 
 import java.io.BufferedReader;
-import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 public class SourceReader {
-	private SourceFolderScanner sourceFolderScanner;
 	private List<SourceFileReader> sourceFileReaderList;
-	private List<File> sourceFilesList;
 	private int currentFileIndex;
 
 	public SourceReader(List<BufferedReader> bufferedReadersList) {
+		sourceFileReaderList = new ArrayList<SourceFileReader>();
 		for (int i = 0; i < bufferedReadersList.size(); i++) {
 			SourceFileReader sourceFileReader;
-			sourceFileReader = new SourceFileReader(bufferedReadersList.get(currentFileIndex));
+			sourceFileReader = new SourceFileReader(bufferedReadersList.get(i));
 			sourceFileReaderList.add(sourceFileReader);
 		}
 	}
 
-	public char getNextChar() {
-		char achar;
+	public int getNextChar() {
+		int achar;
+		if (currentFileIndex >= sourceFileReaderList.size()) {
+			return (char) (-1);
+		}
 		achar = sourceFileReaderList.get(currentFileIndex).getNextChar();
-		if ((int) (achar) == -1) {
+		if (achar == -1) {
 			currentFileIndex++;
-			if (currentFileIndex >= sourceFilesList.size()) {
+			if (currentFileIndex >= sourceFileReaderList.size()) {
 				return (char) (-1);
 			}
 			return getNextChar();
