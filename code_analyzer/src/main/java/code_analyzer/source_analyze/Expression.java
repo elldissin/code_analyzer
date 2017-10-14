@@ -13,8 +13,8 @@ public class Expression {
 
 	private String expressionString;
 	private List<ExpressionArgument> argumentList;
-
 	private String functionName;
+	private String locationInfo;
 
 	public Expression(String expressionString) {
 		this.expressionString = expressionString;
@@ -56,6 +56,14 @@ public class Expression {
 			return new FieldProperty(this);
 		}
 		return new UnknownElement(this);
+	}
+
+	public String getLocationInfo() {
+		return locationInfo;
+	}
+
+	public void setLocationInfo(String locationInfo) {
+		this.locationInfo = locationInfo;
 	}
 
 }

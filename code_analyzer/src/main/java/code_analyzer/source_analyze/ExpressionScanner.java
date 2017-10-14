@@ -13,6 +13,7 @@ public class ExpressionScanner {
 
 	public Expression getNextExpression() {
 		String expressionString = "";
+		Expression expression;
 		int achar = sourceReader.getNextChar();
 		while (achar != ';') {
 			if (achar == -1) {
@@ -22,7 +23,10 @@ public class ExpressionScanner {
 			expressionString = expressionString + (char) achar;
 			achar = sourceReader.getNextChar();
 		}
-		return new Expression(expressionString.trim());
+		expression = new Expression(expressionString.trim());
+		expression.setLocationInfo(
+				"File: " + sourceReader.getCurFileString() + ", Line: " + sourceReader.getCurLineString());
+		return expression;
 	}
 
 	public boolean isEmpty() {

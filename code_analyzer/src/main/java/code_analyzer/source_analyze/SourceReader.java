@@ -32,4 +32,12 @@ public class SourceReader {
 		}
 		return achar;
 	}
+
+	public String getCurLineString() {
+		return String.valueOf(sourceFileReaderList.get(currentFileIndex).getCurLineNum());
+	}
+
+	public String getCurFileString() {
+		return String.valueOf(currentFileIndex + 1);
+	}
 }

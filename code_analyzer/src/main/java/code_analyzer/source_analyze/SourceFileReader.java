@@ -5,6 +5,7 @@ import java.io.IOException;
 
 public class SourceFileReader {
 	private BufferedReader reader;
+	private int currentLine;
 
 	public SourceFileReader(BufferedReader reader) {
 		this.reader = reader;
@@ -15,6 +16,9 @@ public class SourceFileReader {
 		try {
 			lastReadChar = reader.read();
 			while (lastReadChar == '\r' || lastReadChar == '\n') {
+				if (lastReadChar == '\n') {
+					currentLine++;
+				}
 				lastReadChar = reader.read();
 			}
 		} catch (IOException e) {
@@ -22,5 +26,9 @@ public class SourceFileReader {
 			e.printStackTrace();
 		}
 		return lastReadChar;
+	}
+
+	public int getCurLineNum() {
+		return currentLine + 1;
 	}
 }

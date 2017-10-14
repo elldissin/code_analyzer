@@ -42,7 +42,7 @@ public class BrowseButtonListener implements ActionListener {
 			Expression expression = expressionScanner.getNextExpression();
 			while (!expressionScanner.isEmpty()) {
 				DBElement dBElement = expression.toDBElement();
-				// dBElement.setfileName(batchFileReader.getCurrentFileName(i));
+				dBElement.setfileName(expression.getLocationInfo());
 				if (dBElement != null) {
 					dBStructure.addDBElement(dBElement);
 				}
