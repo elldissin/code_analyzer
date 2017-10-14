@@ -1,6 +1,5 @@
 package code_analyzer.source_analyze;
 
-import java.io.BufferedReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,11 +7,11 @@ public class SourceReader {
 	private List<SourceFileReader> sourceFileReaderList;
 	private int currentFileIndex;
 
-	public SourceReader(List<BufferedReader> bufferedReadersList) {
+	public SourceReader(List<CodeSource> codeSourcesList) {
 		sourceFileReaderList = new ArrayList<SourceFileReader>();
-		for (int i = 0; i < bufferedReadersList.size(); i++) {
+		for (int i = 0; i < codeSourcesList.size(); i++) {
 			SourceFileReader sourceFileReader;
-			sourceFileReader = new SourceFileReader(bufferedReadersList.get(i));
+			sourceFileReader = new SourceFileReader(codeSourcesList.get(i));
 			sourceFileReaderList.add(sourceFileReader);
 		}
 	}
@@ -38,6 +37,6 @@ public class SourceReader {
 	}
 
 	public String getCurFileString() {
-		return String.valueOf(currentFileIndex + 1);
+		return sourceFileReaderList.get(currentFileIndex).getCurFileName();
 	}
 }

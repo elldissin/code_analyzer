@@ -20,7 +20,7 @@ public class SourceFolderScanner {
 	private void scanFolder(final File folder) {
 		for (final File fileEntry : folder.listFiles()) {
 			if (fileEntry.isDirectory()) {
-				scanFolder(fileEntry);
+				// scanFolder(fileEntry);
 			} else {
 				if (fileEntry.getName().toLowerCase().endsWith(Configuration.getProperty("targetfiletype")))
 					if (!fileEntry.getName().toLowerCase().endsWith("config.txt")) {
@@ -34,16 +34,19 @@ public class SourceFolderScanner {
 		return foundFileList;
 	}
 
-	public List<BufferedReader> getBufferedReadersList() {
-		List<BufferedReader> bufferedReadersList = new ArrayList<BufferedReader>();
+	public List<CodeSource> getCodeSourcesList() {
+		List<CodeSource> codeSourcesList = new ArrayList<CodeSource>();
+		CodeSource codeSource;
 		for (int i = 0; i < foundFileList.size(); i++) {
 			try {
-				bufferedReadersList.add(new BufferedReader(new FileReader(foundFileList.get(i))));
+				codeSource = new CodeSource(new BufferedReader(new FileReader(foundFileList.get(i))),
+						foundFileList.get(i).getName());
+				codeSourcesList.add(codeSource);
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-		return bufferedReadersList;
+		return codeSourcesList;
 	}
 }

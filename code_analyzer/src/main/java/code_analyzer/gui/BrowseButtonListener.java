@@ -38,7 +38,7 @@ public class BrowseButtonListener implements ActionListener {
 		int returnVal = chooser.showOpenDialog(menuPanel);
 		if (returnVal == JFileChooser.APPROVE_OPTION) {
 			SourceFolderScanner sourceFolderScanner = new SourceFolderScanner(chooser.getSelectedFile().getPath());
-			ExpressionScanner expressionScanner = new ExpressionScanner(sourceFolderScanner.getBufferedReadersList());
+			ExpressionScanner expressionScanner = new ExpressionScanner(sourceFolderScanner.getCodeSourcesList());
 			Expression expression = expressionScanner.getNextExpression();
 			while (!expressionScanner.isEmpty()) {
 				DBElement dBElement = expression.toDBElement();

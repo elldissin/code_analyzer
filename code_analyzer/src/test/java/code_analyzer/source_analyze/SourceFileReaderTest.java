@@ -12,7 +12,8 @@ public class SourceFileReaderTest {
 
 	@Test
 	public void getNextCharTest() throws FileNotFoundException {
-		SourceFileReader sourceFileReader = new SourceFileReader(new BufferedReader(new StringReader("abcdef")));
+		SourceFileReader sourceFileReader = new SourceFileReader(
+				new CodeSource(new BufferedReader(new StringReader("abcdef")), "teststream"));
 		boolean res = false;
 		int charCount = 5;
 		int achar = -1;

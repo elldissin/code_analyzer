@@ -14,12 +14,12 @@ public class SourceReaderTest {
 	@Test
 	public void getNextCharTest() {
 		int achar = -1;
-		List<BufferedReader> bufferedReadersList = new ArrayList<BufferedReader>();
-		bufferedReadersList.add(new BufferedReader(new StringReader("abcdef")));
-		bufferedReadersList.add(new BufferedReader(new StringReader("ghijkl")));
-		bufferedReadersList.add(new BufferedReader(new StringReader("mnhp")));
-		bufferedReadersList.add(new BufferedReader(new StringReader("rstuf")));
-		SourceReader sourceReader = new SourceReader(bufferedReadersList);
+		List<CodeSource> codeSourceList = new ArrayList<CodeSource>();
+		codeSourceList.add(new CodeSource(new BufferedReader(new StringReader("abcdef")), "testsource"));
+		codeSourceList.add(new CodeSource(new BufferedReader(new StringReader("ghijkl")), "testsource"));
+		codeSourceList.add(new CodeSource(new BufferedReader(new StringReader("mnhp")), "testsource"));
+		codeSourceList.add(new CodeSource(new BufferedReader(new StringReader("rstuf")), "testsource"));
+		SourceReader sourceReader = new SourceReader(codeSourceList);
 		for (int i = 0; i < 12; i++) {
 			achar = sourceReader.getNextChar();
 		}
