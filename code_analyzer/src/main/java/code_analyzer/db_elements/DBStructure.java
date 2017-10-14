@@ -12,7 +12,7 @@ public class DBStructure {
 	Stack<DBElement> processingTableStack = new Stack<DBElement>();
 	Stack<DBElement> processingFieldStack = new Stack<DBElement>();
 
-	public void putCodeElement(DBElement dBElement) {
+	public void addDBElement(DBElement dBElement) {
 		dBElement.putSelfToDB(this);
 	}
 

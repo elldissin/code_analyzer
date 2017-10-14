@@ -1,52 +1,29 @@
 package code_analyzer.source_analyze;
 
-import static code_analyzer.db_elements.DBElementType.FIELD;
-import static code_analyzer.db_elements.DBElementType.FIELD_PROPERTY;
-import static code_analyzer.db_elements.DBElementType.MODIFIER;
-import static code_analyzer.db_elements.DBElementType.TABLE;
-import static code_analyzer.db_elements.DBElementType.WRONGTYPE;
-
 import java.util.List;
 
-import code_analyzer.db_elements.DBElementType;
+import code_analyzer.db_elements.DBElement;
+import code_analyzer.db_elements.Field;
+import code_analyzer.db_elements.FieldProperty;
+import code_analyzer.db_elements.Modifier;
+import code_analyzer.db_elements.Table;
+import code_analyzer.db_elements.UnknownElement;
 
 public class Expression {
 
 	private String expressionString;
 	private List<ExpressionArgument> argumentList;
 
-	private DBElementType type;
 	private String functionName;
 
 	public Expression(String expressionString) {
 		this.expressionString = expressionString;
 		this.functionName = deduceFunctionName();
-		type = deduceType();
 		fillArgumentList();
 	}
 
 	private String deduceFunctionName() {
 		return Configuration.getFunctionNameFinder().getFunctionNameFor(expressionString);
-	}
-
-	private DBElementType deduceType() {
-		if (functionName.equals(Configuration.getProperty("tableKeyword"))) {
-			return TABLE;
-		}
-		if (functionName.equals(Configuration.getProperty("modifierKeyword"))) {
-			return MODIFIER;
-		}
-		if (functionName.equals(Configuration.getProperty("fieldKeyword"))) {
-			return FIELD;
-		}
-		if (functionName.equals(Configuration.getProperty("fieldPropertyKeyword"))) {
-			return FIELD_PROPERTY;
-		}
-		return WRONGTYPE;
-	}
-
-	public DBElementType getType() {
-		return type;
 	}
 
 	public String toString() {
@@ -63,6 +40,22 @@ public class Expression {
 
 	public String getFunctionName() {
 		return functionName;
+	}
+
+	public DBElement toDBElement() {
+		if (functionName.equals(Configuration.getProperty("tableKeyword"))) {
+			return new Table(this);
+		}
+		if (functionName.equals(Configuration.getProperty("modifierKeyword"))) {
+			return new Modifier(this);
+		}
+		if (functionName.equals(Configuration.getProperty("fieldKeyword"))) {
+			return new Field(this);
+		}
+		if (functionName.equals(Configuration.getProperty("fieldPropertyKeyword"))) {
+			return new FieldProperty(this);
+		}
+		return new UnknownElement(this);
 	}
 
 }

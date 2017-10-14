@@ -1,6 +1,5 @@
 package code_analyzer.source_analyze;
 
-import static code_analyzer.db_elements.DBElementType.WRONGTYPE;
 import static org.junit.Assert.assertTrue;
 
 import java.io.BufferedReader;
@@ -35,7 +34,7 @@ public class ExpressionScannerTest {
 		assertTrue("expected expr8(3,4,5) but got " + expression.toString(),
 				expression.toString().equals("expr8(3,4,5)"));
 		expression = expressionScanner.getNextExpression();
-		assertTrue("expected WRONGTYPE but got " + expression.getType(), expression.getType() == WRONGTYPE);
+		assertTrue("expected empty string but got " + expression.toString(), expression.toString().equals(""));
 	}
 
 }

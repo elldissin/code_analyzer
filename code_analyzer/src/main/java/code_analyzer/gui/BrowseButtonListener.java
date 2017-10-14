@@ -1,7 +1,5 @@
 package code_analyzer.gui;
 
-import static code_analyzer.db_elements.DBElementType.WRONGTYPE;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -13,7 +11,6 @@ import javax.swing.JFileChooser;
 import code_analyzer.db_elements.DBElement;
 import code_analyzer.db_elements.DBStructure;
 import code_analyzer.source_analyze.Expression;
-import code_analyzer.source_analyze.ExpressionAnalyzer;
 import code_analyzer.source_analyze.ExpressionScanner;
 import code_analyzer.source_analyze.SourceFolderScanner;
 
@@ -41,14 +38,13 @@ public class BrowseButtonListener implements ActionListener {
 		int returnVal = chooser.showOpenDialog(menuPanel);
 		if (returnVal == JFileChooser.APPROVE_OPTION) {
 			SourceFolderScanner sourceFolderScanner = new SourceFolderScanner(chooser.getSelectedFile().getPath());
-			ExpressionAnalyzer expressionAnalyzer = new ExpressionAnalyzer();
 			ExpressionScanner expressionScanner = new ExpressionScanner(sourceFolderScanner.getBufferedReadersList());
 			Expression expression = expressionScanner.getNextExpression();
-			while (expression.getType() != WRONGTYPE) {
-				DBElement dBElement = expressionAnalyzer.makeDBElement(expression);
+			while (!expressionScanner.isEmpty()) {
+				DBElement dBElement = expression.toDBElement();
 				// dBElement.setfileName(batchFileReader.getCurrentFileName(i));
 				if (dBElement != null) {
-					dBStructure.putCodeElement(dBElement);
+					dBStructure.addDBElement(dBElement);
 				}
 				expression = expressionScanner.getNextExpression();
 			}

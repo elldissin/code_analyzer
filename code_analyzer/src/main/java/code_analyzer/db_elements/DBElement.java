@@ -9,25 +9,15 @@ public abstract class DBElement {
 	protected String name;
 	protected String fileName;
 	protected Expression expression;
-	protected DBElementType type;
 	protected List<DBElement> childList;
 	protected DBElement parent;
 
 	public DBElement(Expression expression) {
 		childList = new ArrayList<DBElement>();
 		this.expression = expression;
-		type = expression.getType();
 	}
 
 	public abstract void putSelfToDB(DBStructure dbMaker);
-
-	public void setType(DBElementType type) {
-		this.type = type;
-	}
-
-	public DBElementType getType() {
-		return type;
-	}
 
 	public List<DBElement> getChildList() {
 		return childList;

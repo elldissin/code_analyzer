@@ -1,8 +1,5 @@
 package code_analyzer.codeElements;
 
-import static code_analyzer.db_elements.DBElementType.FIELD;
-import static code_analyzer.db_elements.DBElementType.FIELD_PROPERTY;
-import static code_analyzer.db_elements.DBElementType.MODIFIER;
 import static org.junit.Assert.assertTrue;
 
 import java.util.List;
@@ -25,21 +22,21 @@ public class DBStructureTest {
 	public void putCodeElementTest() {
 
 		List<DBElement> tableList = dBStructure.getTableList();
-		Expression expressionTest = new Expression(Configuration.getProperty("tableKeyword") + "(Name,0,0)");
+		Expression expressionTest = new Expression(Configuration.getProperty("tableKeyword") + "(TableName,0,0)");
 		DBElement dBElement = new Table(expressionTest);
-		dBStructure.putCodeElement(dBElement);
+		dBStructure.addDBElement(dBElement);
 
 		expressionTest = new Expression(Configuration.getProperty("modifierKeyword"));
 		dBElement = new Modifier(expressionTest);
-		dBStructure.putCodeElement(dBElement);
+		dBStructure.addDBElement(dBElement);
 
-		expressionTest = new Expression(Configuration.getProperty("fieldKeyword") + "(Name,0,0)");
+		expressionTest = new Expression(Configuration.getProperty("fieldKeyword") + "(FieldName,0,0)");
 		dBElement = new Field(expressionTest);
-		dBStructure.putCodeElement(dBElement);
+		dBStructure.addDBElement(dBElement);
 
 		expressionTest = new Expression(Configuration.getProperty("fieldPropertyKeyword"));
 		dBElement = new FieldProperty(expressionTest);
-		dBStructure.putCodeElement(dBElement);
+		dBStructure.addDBElement(dBElement);
 		assertTrue("Wrong DB structure: tables", testTables());
 		assertTrue("Wrong DB structure: modifiers", testModifiers());
 		assertTrue("Wrong DB structure: fields", testFields());
@@ -61,7 +58,7 @@ public class DBStructureTest {
 	private boolean testModifiers() {
 		DBElement tableTest;
 		tableTest = dBStructure.getTableList().get(0);
-		if (tableTest.getChildList().get(0).getType() != MODIFIER) {
+		if (!(tableTest.getChildList().get(0).getName().equals("modifier"))) {
 			return false;
 		}
 
@@ -72,7 +69,8 @@ public class DBStructureTest {
 		DBElement tableTest, fieldTest;
 		tableTest = dBStructure.getTableList().get(0);
 		fieldTest = tableTest.getChildList().get(1);
-		if (fieldTest.getChildList().get(0).getType() != FIELD_PROPERTY) {
+		if (!(fieldTest.getChildList().get(0).getName().equals("property"))) {
+			System.out.println(fieldTest.getChildList().get(0).getName());
 			return false;
 		}
 		return true;
@@ -81,7 +79,7 @@ public class DBStructureTest {
 	private boolean testFields() {
 		DBElement tableTest;
 		tableTest = dBStructure.getTableList().get(0);
-		if (tableTest.getChildList().get(1).getType() != FIELD) {
+		if (!(tableTest.getChildList().get(1).getName().equals("FieldName"))) {
 			return false;
 		}
 		return true;
@@ -89,7 +87,8 @@ public class DBStructureTest {
 
 	private boolean testTables() {
 		if (dBStructure.getTableList().size() != 1) {
-			return false;
+			if (!(dBStructure.getTableList().get(0).getName().equals("TableName")))
+				return false;
 		}
 		return true;
 	}
