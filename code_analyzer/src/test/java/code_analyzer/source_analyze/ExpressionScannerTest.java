@@ -15,9 +15,9 @@ public class ExpressionScannerTest {
 	@Test
 	public void getNextExpressionTest() {
 		List<BufferedReader> bufferedReadersList = new ArrayList<BufferedReader>();
-		bufferedReadersList.add(new BufferedReader(new StringReader("expr1;expr2();expr3;")));
-		bufferedReadersList.add(new BufferedReader(new StringReader("expr4(0,1,2);expr5();")));
-		bufferedReadersList.add(new BufferedReader(new StringReader("expr6;expr7();expr8(3,4,5);")));
+		bufferedReadersList.add(new BufferedReader(new StringReader("expr1;expr2();\n\rexpr3;")));
+		bufferedReadersList.add(new BufferedReader(new StringReader("expr4(0,1,2);\n\rexpr5();")));
+		bufferedReadersList.add(new BufferedReader(new StringReader("expr6;\r\nexpr7();expr8(3,4,5);")));
 		ExpressionScanner expressionScanner = new ExpressionScanner(bufferedReadersList);
 
 		Expression expression = expressionScanner.getNextExpression();
