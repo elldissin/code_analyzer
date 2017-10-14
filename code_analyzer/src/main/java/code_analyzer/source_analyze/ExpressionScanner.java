@@ -22,7 +22,7 @@ public class ExpressionScanner {
 			expressionString = expressionString + (char) achar;
 			achar = sourceReader.getNextChar();
 		}
-		return new Expression(expressionString);
+		return new Expression(expressionString.trim());
 	}
 
 	public boolean isEmpty() {
