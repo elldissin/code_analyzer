@@ -14,7 +14,7 @@ public class SourceFileReader {
 		int lastReadChar = -1;
 		try {
 			lastReadChar = reader.read();
-			while (lastReadChar == 13 || lastReadChar == 10) {
+			while (lastReadChar == '\r' || lastReadChar == '\n') {
 				lastReadChar = reader.read();
 			}
 		} catch (IOException e) {
