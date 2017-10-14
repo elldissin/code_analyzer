@@ -20,13 +20,13 @@ public class SourceReader {
 	public int getNextChar() {
 		int achar;
 		if (currentFileIndex >= sourceFileReaderList.size()) {
-			return (char) (-1);
+			return -1;
 		}
 		achar = sourceFileReaderList.get(currentFileIndex).getNextChar();
 		if (achar == -1) {
 			currentFileIndex++;
 			if (currentFileIndex >= sourceFileReaderList.size()) {
-				return (char) (-1);
+				return -1;
 			}
 			return getNextChar();
 		}

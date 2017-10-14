@@ -33,7 +33,7 @@ public class SourceReaderTest {
 		}
 		assertTrue("expected 'f', but got " + achar, achar == 'f');
 		achar = sourceReader.getNextChar();
-		assertTrue("expected '0xFFFF', but got " + achar, achar == 0xFFFF);
+		assertTrue("expected '-1', but got " + achar, achar == -1);
 
 	}
 

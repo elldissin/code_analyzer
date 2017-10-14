@@ -1,26 +1,41 @@
 package code_analyzer.source_analyze;
 
+import static code_analyzer.db_elements.DBElementType.WRONGTYPE;
 import static org.junit.Assert.assertTrue;
 
-import org.junit.Test;
+import java.io.BufferedReader;
+import java.io.StringReader;
+import java.util.ArrayList;
+import java.util.List;
 
-import code_analyzer.source_analyze.Expression;
-import code_analyzer.source_analyze.ExpressionScanner;
+import org.junit.Test;
 
 public class ExpressionScannerTest {
 
 	@Test
 	public void getNextExpressionTest() {
-		// BatchFileReader batchFileReader = new BatchFileReader();
-		// String testString = batchFileReader.readFilesContent(new
-		// SourceFolderScanner().getFileList());
-		String testString = "dgaht  erfg   // %f ;  \\srthgrhy: ";
-		ExpressionScanner expressionScanner = new ExpressionScanner(testString);
-		Expression result = expressionScanner.getNextExpression();
-		assertTrue("wrong result: " + result.toString(), result.toString().equals("dgaht erfg // %f"));
-		result = expressionScanner.getNextExpression();
-		assertTrue("wrong result: " + result.toString(), result.toString().equals("\\srthgrhy:"));
-		assertTrue("expressionScanner must be empty already", expressionScanner.isEmpty());
+		List<BufferedReader> bufferedReadersList = new ArrayList<BufferedReader>();
+		bufferedReadersList.add(new BufferedReader(new StringReader("expr1;expr2();expr3;")));
+		bufferedReadersList.add(new BufferedReader(new StringReader("expr4(0,1,2);expr5();")));
+		bufferedReadersList.add(new BufferedReader(new StringReader("expr6;expr7();expr8(3,4,5);")));
+		ExpressionScanner expressionScanner = new ExpressionScanner(bufferedReadersList);
+
+		Expression expression = expressionScanner.getNextExpression();
+		assertTrue("expected expr1 but got " + expression.toString(), expression.toString().equals("expr1"));
+		expression = expressionScanner.getNextExpression();
+		assertTrue("expected expr2() but got " + expression.toString(), expression.toString().equals("expr2()"));
+		for (int i = 0; i < 2; i++) {
+			expression = expressionScanner.getNextExpression();
+		}
+		assertTrue("expected expr4(0,1,2) but got " + expression.toString(),
+				expression.toString().equals("expr4(0,1,2)"));
+		for (int i = 0; i < 4; i++) {
+			expression = expressionScanner.getNextExpression();
+		}
+		assertTrue("expected expr8(3,4,5) but got " + expression.toString(),
+				expression.toString().equals("expr8(3,4,5)"));
+		expression = expressionScanner.getNextExpression();
+		assertTrue("expected WRONGTYPE but got " + expression.getType(), expression.getType() == WRONGTYPE);
 	}
 
 }

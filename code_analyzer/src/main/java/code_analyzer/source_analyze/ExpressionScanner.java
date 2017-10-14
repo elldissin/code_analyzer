@@ -1,33 +1,25 @@
 package code_analyzer.source_analyze;
 
-public class ExpressionScanner {
-	String fullString;
-	String result[];
-	int i = 0;
+import java.io.BufferedReader;
+import java.util.List;
 
-	public ExpressionScanner(final String fullString) {
-		this.fullString = fullString;
-		result = fullString.split(";");
+public class ExpressionScanner {
+	private SourceReader sourceReader;
+
+	public ExpressionScanner(List<BufferedReader> bufferedReadersList) {
+		sourceReader = new SourceReader(bufferedReadersList);
 	}
 
 	public Expression getNextExpression() {
-
-		String tempString = "";
-		tempString = result[i];
-		i++;
-		tempString = tempString.replaceAll("[\\s]+", " ");
-		tempString = tempString.trim();
-
-		Expression nextExpression = new Expression(tempString);
-		return nextExpression;
-
-	}
-
-	public boolean isEmpty() {
-		if (i < result.length) {
-			return false;
+		String expressionString = "";
+		int achar = sourceReader.getNextChar();
+		while (achar != ';') {
+			if (achar == -1) {
+				return new Expression("");
+			}
+			expressionString = expressionString + (char) achar;
+			achar = sourceReader.getNextChar();
 		}
-		return true;
+		return new Expression(expressionString);
 	}
-
 }
