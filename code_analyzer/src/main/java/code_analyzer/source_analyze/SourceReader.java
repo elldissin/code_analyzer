@@ -3,6 +3,11 @@ package code_analyzer.source_analyze;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Represents the continuous source of characters from several source files,
+ * which can be read just as one single stream.
+ *
+ */
 public class SourceReader {
 	private List<SourceFileReader> sourceFileReaderList;
 	private int currentFileIndex;

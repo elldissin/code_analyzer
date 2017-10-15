@@ -23,9 +23,8 @@ public class ExpressionScanner {
 			achar = sourceReader.getNextChar();
 		}
 		expression = new Expression(expressionString.trim());
-		expression.setLocationInfo(
-				"File: " + sourceReader.getCurFileString() + ", Line: " + sourceReader.getCurLineString());
-		System.out.println(expression.toString());
+		String locationInfo = "File: " + sourceReader.getCurFileString() + ", Line: " + sourceReader.getCurLineString();
+		expression.setLocationInfo(locationInfo);
 		return expression;
 	}
 

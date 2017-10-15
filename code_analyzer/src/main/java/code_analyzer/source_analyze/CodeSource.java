@@ -3,6 +3,11 @@ package code_analyzer.source_analyze;
 import java.io.IOException;
 import java.io.Reader;
 
+/**
+ * Represents a single code source, which can be either file or another source
+ * extending the Reader class. It also stores the detailed information about the
+ * source.
+ */
 public class CodeSource {
 
 	private Reader reader;

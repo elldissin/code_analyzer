@@ -4,9 +4,15 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Scans the folder for existing source files and can transform them into higher
+ * level representation class for more convenient use
+ *
+ */
 public class SourceFolderScanner {
 	final File folder;
 	private List<File> foundFileList;
@@ -23,9 +29,7 @@ public class SourceFolderScanner {
 				// scanFolder(fileEntry);
 			} else {
 				if (fileEntry.getName().toLowerCase().endsWith(Configuration.getProperty("targetfiletype")))
-					if (!fileEntry.getName().toLowerCase().endsWith("config.txt")) {
-						foundFileList.add(fileEntry);
-					}
+					foundFileList.add(fileEntry);
 			}
 		}
 	}
@@ -37,10 +41,13 @@ public class SourceFolderScanner {
 	public List<CodeSource> getCodeSourcesList() {
 		List<CodeSource> codeSourcesList = new ArrayList<CodeSource>();
 		CodeSource codeSource;
+		FileReader fileReader;
+		Reader reader;
 		for (int i = 0; i < foundFileList.size(); i++) {
 			try {
-				codeSource = new CodeSource(new BufferedReader(new FileReader(foundFileList.get(i))),
-						foundFileList.get(i).getName());
+				fileReader = new FileReader(foundFileList.get(i));
+				reader = new BufferedReader(fileReader);
+				codeSource = new CodeSource(reader, foundFileList.get(i).getName());
 				codeSourcesList.add(codeSource);
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
