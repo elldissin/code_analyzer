@@ -5,22 +5,21 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.List;
 
-import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.SwingConstants;
 
 import code_analyzer.db_elements.DBStructure;
 
 public class ContentPanel extends JPanel {
 	JScrollPane leftPanel;
 	JList leftPanelJList;
-	JLabel fieldList;
-	JScrollPane fieldListScroller;
+	JScrollPane middlePanel;
+	JList middlePanelJList;
 	MyTree tree;
-	JScrollPane treePanel;
-	String leftPanelSrting[] = {};
+	JScrollPane rightPanel;
+	String leftPanelString[] = {};
+	String middlePanelString[] = {};
 	WindowPanel windowPanel;
 	LeftPanelSelectionListener leftPanelSelectionListener;
 	DBStructure dBStructure = new DBStructure();
@@ -31,7 +30,7 @@ public class ContentPanel extends JPanel {
 		this.setLayout(new GridLayout(1, 3));
 		this.setPreferredSize(new Dimension(600, 600));
 
-		leftPanelJList = new JList(leftPanelSrting);
+		leftPanelJList = new JList(leftPanelString);
 		leftPanelJList.setForeground(Color.GREEN);
 		leftPanelJList.setBackground(Color.BLACK);
 		leftPanel = new JScrollPane(leftPanelJList);
@@ -39,39 +38,34 @@ public class ContentPanel extends JPanel {
 		leftPanelJList.addListSelectionListener(leftPanelSelectionListener);
 		this.add(leftPanel);
 
-		fieldList = new JLabel();
-		fieldList.setText("Field list:");
-		fieldList.setVerticalAlignment(SwingConstants.TOP);
-		fieldList.setForeground(Color.GREEN);
-		fieldList.setOpaque(true);
-		fieldList.setBackground(Color.BLACK);
-		JScrollPane fieldListScroller = new JScrollPane(fieldList);
-		// FIXME scroll disappeared
-		this.add(fieldListScroller);
+		middlePanelJList = new JList(middlePanelString);
+		middlePanelJList.setForeground(Color.GREEN);
+		middlePanelJList.setBackground(Color.BLACK);
+		middlePanel = new JScrollPane(middlePanelJList);
+		this.add(middlePanel);
 
 		tree = new MyTree(windowPanel);
-		treePanel = new JScrollPane(tree);
-		this.add(treePanel);
+		rightPanel = new JScrollPane(tree);
+		this.add(rightPanel);
 
 	}
 
 	void setNewLeftPanelList(List<String> tableList) {
-		leftPanelSrting = new String[tableList.size()];
+		leftPanelString = new String[tableList.size()];
 		for (int i = 0; i < tableList.size(); i++) {
-			leftPanelSrting[i] = tableList.get(i);
+			leftPanelString[i] = tableList.get(i);
 		}
 
 		this.removeAll();
-		leftPanelJList = new JList(leftPanelSrting);
+		leftPanelJList = new JList(leftPanelString);
 		leftPanel = new JScrollPane(leftPanelJList);
-		fieldListScroller = new JScrollPane(fieldList);
 		LeftPanelSelectionListener leftPanelSelectionListener = new LeftPanelSelectionListener(this);
 		leftPanelJList.addListSelectionListener(leftPanelSelectionListener);
 		leftPanelJList.setForeground(Color.GREEN);
 		leftPanelJList.setBackground(Color.BLACK);
 		this.add(leftPanel);
-		this.add(fieldListScroller);
-		this.add(treePanel);
+		this.add(middlePanel);
+		this.add(rightPanel);
 		this.repaint();
 		this.revalidate();
 	}
